@@ -1,7 +1,8 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 4
+title: First post
+date: 2023-05-23
+categories: [category, sub-category]
+tags: [sample-tag, other-tag]     # TAG names should always be lowercase
 math: true
 ---
 

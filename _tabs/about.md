@@ -5,20 +5,11 @@ order: 4
 math: true
 ---
 
-Hey! I'm Sanjit. Here's some math $x = 5y$. Here's some aligned math:
+## Introduction
+Hey, I'm Sanjit! I'm currently a third-year at UCLA pursuing a concurrent BS/MA degree in math through the Departmental Scholars program, along with a minor in data science engineering. I love applied math and computer science - more specifically, I'm interested in high-dimensional probability, optimization, and a few topics in machine learning. If I come across something I find interesting, I'll post it on this site. If you need to contact me, please use one of the links in the sidebar.
 
-$$
-\int_0^\infty f(x)\ dx = g(x).
-$$
+## Why does this site exist?
+Well, as a mathematician, I write *a lot*. I maintain a private repository on GitHub containing project write-ups, solutions to math problems, and code I've written. There's more than 500 pages of content there (as a conservative lower bound), and I feel it would be nice to consolidate some of the cooler things I've written on this website. I'm a believer in the philosophy of open source and collaboration, so I'd like to put some of this content publicly online. Plus, I think writing things up for a more general audience than just myself or the grader might help me consolidate my understanding of certain topics :)
 
-Here's some inline code `[l for l in range(5)]`. Here's a code block:
-```python
-# yes, I know there's no dynamic programming here :)
-def fibonacci(n):
-    if n <= 1:
-        return n
-    else:
-        return fibonacci(n - 1) + fibonacci(n - 2)
-```
-
-And finally, here's a test update to this page.
+## Nerdy stuff
+This site is written in Jekyll using a modification of the `chirpy` theme and deployed using GitHub Pages. I chose to use Jekyll because it's open source, highly customizable, and makes it easy to write (all posts are written in Markdown). The math is all rendered using MathJax, a popular framework for LaTeX typesetting on the internet.

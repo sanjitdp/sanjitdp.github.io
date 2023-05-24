@@ -22,23 +22,40 @@ class Morris:
     __init__(self):
         # initialize the counter to 0
         self.counter = 0
-    update(self):
+    def update(self):
         # increment counter with probability 1/2^(counter)
         if random() <= 1 / (2 ** self.counter):
             self.counter += 1
 ```
 
-This is a good idea because $\frac{1}{2^x}$ decays quickly, so with high probability our estimator will be a relatively small number (we'll quantify this later). But given this update algorithm, what should a query to the true count return? Define $X_n$ to be the count in Morris' algorithm after $n$ updates. Then, we have by the law of total expectation:
+This is a good idea because $n \mapsto \frac{1}{2^n}$ decays quickly, so with high probability our estimator will be a relatively small number (we'll quantify this later). But given this update algorithm, what should a query to the true count return? Define $X_n$ to be the count in Morris' algorithm after $n$ updates. Then, we have by the law of total expectation:
 
 <center>
 $$
 \begin{align*}
     \mathbb{E}[2^{X_{n+1}}]
     & = \sum_{k=0}^\infty \mathbb{P}(X_n = k) \cdot \mathbb{E}[2^{X_{n+1}} \vert X_n = k] \\
-    & = \sum_{k=0}^\infty \mathbb{P}(X_n = k) \cdot \left( (k + 1) \cdot \frac{1}{2^k} + k \cdot \left( 1 - \frac{1}{2^k} \right) \right) \\
-    & = \cdots
+    & = \sum_{k=0}^\infty \mathbb{P}(X_n = k) \cdot \left( 2^{k+1} \cdot \frac{1}{2^k} + 2^k \cdot \left( 1 - \frac{1}{2^k} \right) \right) \\
+    & = \sum_{k=0}^\infty \mathbb{P}(X_n = k) \cdot (2^k + 1) \\
+    & = \mathbb{E}[2^{X_n}] + 1.
 \end{align*}
 $$
 </center>
 
-(more to come...)
+Since $2^{X_0} = 2^0 = 1$, we know that $\mathbb{E}[2^{X_0}] = 1$. Solving the recurrence in $n$ gives $\mathbb{E}[2^{X_n}] = n + 1$, which suggests that $2^{X_n} - 1$ is an unbiased estimator for $n$. Therefore, we obtain the complete Morris' algorithm:
+
+```python
+class Morris:
+    __init__(self):
+        # initialize the counter to 0
+        self.counter = 0
+    def update(self):
+        # increment counter with probability 1/2^(counter)
+        if random() <= 1 / (2 ** self.counter):
+            self.counter += 1
+    def query(self):
+        # return the unbiased estimate
+        return (2 ** self.counter) - 1
+```
+
+Just how good is this estimator? Let's use some concentration inequalities to find out. (more to come...)

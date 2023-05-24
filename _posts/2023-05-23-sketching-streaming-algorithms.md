@@ -7,7 +7,7 @@ math: true
 comments: true
 ---
 
-Something I've been thinking about lately is my final project for Stats 200C at UCLA (grad. high-dimensional stats). The topic I chose is sketching and streaming algorithms, which I found particularly interesting because I participated in an REU under Prof. [Jelani Nelson](https://people.eecs.berkeley.edu/~minilek/) last summer, who's an expert on these sorts of algorithms. In any case, here are a few basic sketching algorithms to get us started.
+Something I've been thinking about lately is my final project for Stats 200C at UCLA (grad. high-dimensional stats). The topic I chose is sketching and streaming algorithms, which I found particularly interesting because I participated in an REU under Prof. [Jelani Nelson](https://people.eecs.berkeley.edu/~minilek/) last summer, who's an expert in this field. In any case, here are a few basic sketching algorithms I've been reading about.
 
 ## Morris' algorithm
 

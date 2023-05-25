@@ -7,26 +7,30 @@ math: true
 comments: true
 ---
 
-Something I've been thinking about lately is my final project for Stats 200C at UCLA (grad. high-dimensional stats). The topic I chose is algorithms for approximate counting, which I found particularly interesting because I participated in an REU under Prof. [Jelani Nelson](https://people.eecs.berkeley.edu/~minilek/) last summer, who's an expert in this field. In any case, here's a cool [counting algorithm](https://arxiv.org/pdf/2010.02116.pdf) I've been reading about (which is provably optimal).
+Something I've been thinking about lately is my final project for Stats 200C at UCLA (grad. high-dimensional stats). The topic I chose is algorithms for approximate counting, which I found particularly interesting because I participated in an REU under Prof. [Jelani Nelson](https://people.eecs.berkeley.edu/~minilek/) last summer, who's an expert in this field. In any case, here's a cool counting algorithm I've been reading about (which is [provably optimal](https://arxiv.org/pdf/2010.02116.pdf)).
 
 ## Morris' algorithm
 
-Let's start with the traditional [Morris' algorithm](https://dl.acm.org/doi/pdf/10.1145/359619.359627) due to [Robert Morris](https://en.wikipedia.org/wiki/Robert_Morris_(cryptographer)). We would like a data structure to count (approximately) up to a large number $n$ using very little storage - this is called the "approximate counting" problem. In exchange for the reduced space complexity, maybe we don't need the exact count - we only need to get reasonably close. This data structure should support `increment()` and `query()` methods, to increment the count and return an estimate of the current count respectively. Typically, we would need $\log_2(n)$ bits in the worst case to count up to a number $n$.
+Let's start with the traditional [Morris' algorithm](https://dl.acm.org/doi/pdf/10.1145/359619.359627) due to [Robert Morris](https://en.wikipedia.org/wiki/Robert_Morris_(cryptographer)) in 1978 at Bell Labs. We would like a data structure to count (approximately) up to a large number $n$ using very little storage - this is called the "approximate counting" problem. In exchange for the reduced space complexity, maybe we don't need the exact count - we only need to get reasonably close. This data structure should support `increment()` and `query()` methods, to increment the count and return an estimate of the current count respectively. Typically, we would need $\log_2(n)$ bits in the worst case to naïvely count up to a number $n$.
 
 One easy idea: what if we only incremented with probability $\frac{1}{2}$ each time? Then, maybe we could multiply our count by 2, and by the law of large numbers, we can expect a reasonably good estimator for the true count. However, we would still expect to need $\log_2(n) - 1$ bits to store the number. This still requires $O(\log(n))$ bits in expectation, but we can do better; this is the idea of Morris' algorithm. As the count gets larger, we increment with smaller probability. Here's an incomplete data structure reflecting this idea:
 
 ```python
 from random import getrandbits
 
-class Morris:
+class MorrisCounter:
     def __init__(self):
         # initialize the counter to 0
         self.counter = 0
+
     def update(self):
         # increment counter with probability 1/2^(counter)
         if not getrandbits(self.counter):
             self.counter += 1
 ```
+
+> A lot of these algorithms use dyadic probabililities (multiples of $\frac{1}{2^k}$ for $k \in \mathbb{N}$), since it's typically faster to generate pseudo-random bits than to generate a pseudo-random floating point number in an interval like $[0, 1]$.
+{: .prompt-tip}
 
 This is a good idea because $n \mapsto \frac{1}{2^n}$ decays quickly, so with high probability our estimator will be a relatively small number (we'll quantify this later). But given this update algorithm, what should a query to the true count return? Define $X_n$ to be the count in Morris' algorithm after $n$ updates. Then, we have by the law of total expectation:
 
@@ -45,18 +49,23 @@ Since $2^{X_0} = 2^0 = 1$, we know that $\mathbb{E}[2^{X_0}] = 1$. Solving the r
 ```python
 from random import getrandbits
 
-class Morris:
+class MorrisCounter:
     def __init__(self):
         # initialize the counter to 0
         self.counter = 0
+
     def update(self):
         # increment counter with probability 1/2^(counter)
         if not getrandbits(self.counter):
             self.counter += 1
+
     def query(self):
         # return the unbiased estimate
-        return (2 ** self.counter) - 1
+        return (1 << self.counter) - 1
 ```
+
+> Using bit-shift operators like 1 \<\< x instead of built-in exponentiation operators pow(2, x) or 2 ** x is sometimes slightly faster.
+{: .prompt-tip}
 
 Just how good is this estimator? Well, Chebyshev's inequality tells us that $2^{X_n} - 1$ concentrates around its mean:
 
@@ -122,7 +131,7 @@ Now, we can fix a failure probability $\delta > 0$ and choose $s \geq \frac{1}{2
 
 ### Trick #2
 
-Here's another neat trick to further reduce the dependence of our bound on the failure probability $\delta$ to $\log\left( \frac{1}{\delta} \right)$. Run $t$ instantiations of Morris+, each with failure probability $\delta = \frac{1}{3}$, for instance. Then, let $Y_i$ be 1 if the $i$th Morris+ algorithm fails and 0 otherwise, so that the following bound comes for free:
+Here's another neat trick to further reduce the dependence of our bound on the failure probability $\delta$ from $\frac{1}{\delta}$ to $\log\left( \frac{1}{\delta} \right)$. Run $t$ instantiations of Morris+, each with failure probability $\delta = \frac{1}{3}$, for instance. Then, let $Y_i$ be 1 if the $i$th Morris+ algorithm fails and 0 otherwise, so that we get the following bound for free:
 
 $$
 \mathbb{E}\left[ \sum_{i=1}^t Y_i \right]
@@ -149,8 +158,108 @@ $$
 O\left( \frac{1}{\epsilon^2} \cdot \log_2\left( \frac{1}{\delta} \right) \cdot \log_2\left( \log_2\left( \frac{n}{\epsilon \delta} \right) \right) \right).
 $$
 
-Notice that for fixed $\epsilon$ and $\delta$, the space complexity of Morris++ is $O(\log(\log(n)))$. [Terence Tao](https://terrytao.wordpress.com) once joked to our class that no one knows whether $\log(\log(n))$ actually goes to infinity - no one has seen it happen. This is a really good space complexity!
+Notice that for fixed $\epsilon$ and $\delta$, the space complexity of Morris++ is $O(\log(\log(n)))$.
 
-## Optimality and new work
+> [Terence Tao](https://terrytao.wordpress.com) once joked to our class that no one knows whether $\log(\log(n))$ actually goes to infinity - no one has ever seen it happen. This is a really good space complexity!
+{: .prompt-info}
+
+## Extensions to Morris' algorithm
+
+Morris' algorithm has been very popular for keeping approximate counts in large data streams, and there have been a number of extensions made over the years.
+
+### Generalizing the exponent
+
+One simple extension to Morris' algorithm (introduced by Robert Morris in his [original paper](https://dl.acm.org/doi/pdf/10.1145/359619.359627)) is to fix $a \geq 0$ and increment the counter with probability $\frac{1}{(1 + a)^{X_n}}$. Note that the naïve counter algorithm corresponds to $a = 0$; this algorithm requires $\log_2(n)$ bits and has no variance. On the other hand, when $a = 1$ we obtain Morris' original algorithm, which has larger variance but only requires on the order of $\log_2(\log_2(n))$ bits of storage. In fact, $a$ is a parameter controlling the tradeoff between space complexity and approximation error.
+
+In the more general case, it can be shown (by solving the recurrence as above) that $\frac{1}{a} \cdot ((1 + a)^{X_n} - 1)$ is an unbiased estimator of the true count. By computing bounds on the variance and applying Chebyshev's inequality exactly as in the previous section, we find that we can choose $a = \Theta(\epsilon^2 \delta)$ to get a $(1 + \epsilon)$-approximation with probability $1 - \delta$, while only using space on the order of:
+
+$$
+O\left( \log\left( \frac{1}{\epsilon} \right) + \log(\log(n)) + \log\left( \frac{1}{\delta} \right) \right).
+$$
+
+### Floating-point counters
+
+More recently, there was a more complex [algorithm](https://arxiv.org/pdf/0904.3062.pdf) proposed in 2018 by [Miklós Csűrös](https://diro.umontreal.ca/en/repertoire-departement/professeurs/professeur/in/in14308/sg/Miklós%20Csűrös/) using a floating-point counter. This algorithm (parametrized by $d \in \mathbb{Z}^+$) works as follows:
+
+```python
+from random import getrandbits
+
+class FloatingPointCounter:
+    def __init__(self, d):
+        # initialize the counter to 0
+        self.counter = 0
+
+        # store parameter d
+        self.d = d
+
+        # precompute 2^d
+        self.M = 1 << d
+
+    def update(self):
+        # set t = floor(counter / M) to get upper bits
+        t = self.counter >> self.M
+        
+        # otherwise, update with probability 1/2^t
+        elif not getrandbits(t):
+            self.counter += 1
+
+    def query(self):
+        # set t = floor(counter / M) to get upper bits
+        t = self.counter >> self.M
+
+        # get lower d bits by computing xor with upper bits:
+        u = (t << self.M) ^ self.counter
+
+        # return the unbiased estimate
+        return (self.M + u) * (1 << t) - self.M
+```
+
+> Python's `getrandbits()` function [will return](https://github.com/python/cpython/pull/19539) 0 when the input is 0.
+{: .prompt-info}
+
+Intuitively, this algorithm is inspired by Morris' algorithm but slows down the update by an additional factor of approximately $2^d$.
+
+#### Counting chains
+
+You may be wondering how the unbiased estimator in the floating point counter was calculated. Csűrös defines a counting chain as a Markov chain $(X_n)_{n=1}^\infty$ with transition probabilities $p(k, k+1) = q_k$ and $p(k, k) = 1 - q_k$, given $X_0 = 0$. In general, there is actually a closed-form for unbiased count estimators (we would like $\mathbb{E}[f(X_n)] = n$) of counting chains, with $f(0) = 0$:
+
+$$
+f(k) = \frac{1}{q_0} + \frac{1}{q_1} + \cdots + \frac{1}{q_{k-1}}
+$$
+
+This closed-form is Theorem 1 in [this paper](https://arxiv.org/pdf/0904.3062.pdf). The proof of Theorem 1 is a direct verification that $\mathbb{E}[f(X_n)] = n$ using the memoryless property of the geometric distribution. Furthermore, notice that $f$ has to satisfy the recurrence:
+
+$$
+\mathbb{E}[f(X_n)] = \sum_{k=0}^n p_n(k) f(k) = n.
+$$
+
+Therefore, the solution has to be unique (this is Lemma 4 in [the same paper](https://arxiv.org/pdf/0904.3062.pdf)).
+
+#### Experimentation
+
+However, when Jelani Nelson and Huacheng Yu [plotted](https://arxiv.org/pdf/2010.02116.pdf) the empirical cumulative distributions of the relative errors of `FloatingPointCounter` and Morris++, they obtained the following surprising result:
+
+![Plot of relative errors of floating point counter and Morris++ counter](/images/morris-algorithm/relative-errors.png){: width="720"}
+_Relative errors of the floating-point counter and the Morris++ counter_
+
+Hmm. This is interesting, since the relative error of a state-of-the-art algorithm from 2018 has almost the exact same cdf as the relative error of Morris' original algorithm developed in 1978. This suggested to them that perhaps the original algorithm was in fact asymptotically optimal, but it was the previous analyses of the algorithm which were imperfect.
+
+> Nelson and Yu suggest in their [paper](https://arxiv.org/pdf/2010.02116.pdf) that even people interested in theory should write a code and run a lot of experiments; they provide the above anecdote as an example.
+{: .prompt-tip}
+
+## Proof of optimality
+
+In April 2022 (very recently!), Jelani Nelson and Huacheng Yu published [this paper](https://arxiv.org/pdf/2010.02116.pdf) and proved that Morris++ is actually asymptotically optimal. In fact, this paper won the PODS [best paper award](https://sigmod.org/pods-home/pods-best-paper-awards/) in 2022. Here's their main result, which is Theorem 1.1 in their paper, loosely restated according to the notation I used above:
+
+> **Theorem 1.1.** Here, $C$, $C^\prime$, and $C^{\prime\prime}$ will be universal constants. Here, For any $\epsilon, \delta \in \left( 0, \frac{1}{2} \right)$, there is a randomized algorithm for approximate counting which outputs $\tilde{n}$ satisfying:
+> <center> $\mathbb{P}(\lvert \tilde{n} - n \rvert \geq \epsilon n) < \delta$. </center>
+> Suppose $S$ is such that:
+> <center> $S > C \left( \log(\log(n)) + \log\left( \frac{1}{\epsilon} \right) + \log\left( \log\left( \frac{1}{\delta} \right) \right) \right)$. </center>
+> Then, letting $M$ denote the required memory in bits, we have the bound:
+> <center> $\mathbb{P}(M > S) < \exp( -C^\prime \exp(C^{\prime\prime} S))$. </center>
+> Furthermore, this algorithm is asymptotically optimal up to a constant factor: any randomized algorithm which is promised that the final counter is in $\{ 1, 2, \cdots, n \}$ has space complexity lower bounded by, with high probability:
+> <center> $\Omega\left( \min\left\{ \log(n), \log(\log(n)) + \log\left( \frac{1}{\epsilon} \right) + \log\left( \log\left( \frac{1}{\delta} \right) \right) \right\} \right)$. </center>
+
+This is the result we've been building up to, and now I'll give an outline of their proof.
 
 (more to come...)

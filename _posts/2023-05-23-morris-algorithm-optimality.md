@@ -163,7 +163,7 @@ Notice that for fixed $\epsilon$ and $\delta$, the space complexity of Morris++ 
 > [Terence Tao](https://terrytao.wordpress.com) once joked to our class that no one knows whether $\log(\log(n))$ actually goes to infinity - no one has ever seen it happen. This is a really good space complexity!
 {: .prompt-info}
 
-## Extensions to Morris' algorithm
+## Extensions of Morris' algorithm
 
 Morris' algorithm has been very popular for keeping approximate counts in large data streams, and there have been a number of extensions made over the years.
 
@@ -171,7 +171,7 @@ Morris' algorithm has been very popular for keeping approximate counts in large 
 
 One simple extension to Morris' algorithm (introduced by Robert Morris in his [original paper](https://dl.acm.org/doi/pdf/10.1145/359619.359627)) is to fix $a \geq 0$ and increment the counter with probability $\frac{1}{(1 + a)^{X_n}}$. Note that the naïve counter algorithm corresponds to $a = 0$; this algorithm requires $\log_2(n)$ bits and has no variance. On the other hand, when $a = 1$ we obtain Morris' original algorithm, which has larger variance but only requires on the order of $\log_2(\log_2(n))$ bits of storage. In fact, $a$ is a parameter controlling the tradeoff between space complexity and approximation error.
 
-In the more general case, it can be shown (by solving the recurrence as above) that $\frac{1}{a} \cdot ((1 + a)^{X_n} - 1)$ is an unbiased estimator of the true count. By computing bounds on the variance and applying Chebyshev's inequality exactly as in the previous section, we find that we can choose $a = \Theta(\epsilon^2 \delta)$ to get a $(1 + \epsilon)$-approximation with probability $1 - \delta$, while only using space on the order of:
+In the more general case, it can be shown (by solving the recurrence as above) that $\frac{1}{a} \cdot ((1 + a)^{X_n} - 1)$ is an unbiased estimator of the true count. By computing bounds on the variance and applying Chebyshev's inequality exactly as in the previous section, we find that we can choose $a = \Theta(\epsilon^2 \delta)$ to get a $(1 \pm \epsilon)$-approximation with probability $1 - \delta$, while only using space on the order of:
 
 $$
 O\left( \log\left( \frac{1}{\epsilon} \right) + \log(\log(n)) + \log\left( \frac{1}{\delta} \right) \right).
@@ -260,7 +260,7 @@ In April 2022 (very recently!), Jelani Nelson and Huacheng Yu published [this pa
 > Furthermore, this algorithm is asymptotically optimal up to a constant factor: any randomized algorithm which is promised that the final counter is in $\{ 1, 2, \cdots, n \}$ has space complexity lower bounded by, with high probability:
 > <center> $\Omega\left( \min\left\{ \log(n), \log(\log(n)) + \log\left( \frac{1}{\epsilon} \right) + \log\left( \log\left( \frac{1}{\delta} \right) \right) \right\} \right)$. </center>
 
-The algorithm described by the authors is Morris++ with a general exponent $1 + a$; This is the result we've been building up to, and now I'll give an outline of their proof. First, let $Z_i$ denote the number of increments it takes before the counter increases from $i$ to $i + 1$. Letting $p_i = (1 + a)^{-i}$, notice that $Z_i \sim \operatorname{Geo}(p_i)$ with the following pmf:
+The algorithm described by the authors is Morris++ with a general exponent $1 + a$; This is the result we've been building up to, and now I'll give an outline of their proof. For the upper bound, the authors mirror the proof of the Chernoff bound with some additional machinery. First, let $Z_i$ denote the number of increments it takes before the counter increases from $i$ to $i + 1$. Letting $p_i = (1 + a)^{-i}$, notice that $Z_i \sim \operatorname{Geo}(p_i)$ with the following pmf:
 
 $$
 \mathbb{P}(Z_i = l) = p_i (1 - p_i)^{l-1}.
@@ -291,6 +291,53 @@ $$
 \end{align*}
 $$
 
-Then, we choose $t = \ln\left( \frac{1}{1 - \frac{1}{2} \epsilon (1 + a)^{-k}} \right)$, which is a choice that satisfies $e^t (1 - p_k) < 1$.
+Then, we choose $t = \ln\left( \frac{1}{1 - \frac{1}{2} \epsilon (1 + a)^{-k}} \right)$, which is a choice that satisfies $e^t (1 - p_k) < 1$. Doing some more algebra with this value of $t$ gives the inequality:
 
-(more to come...)
+$$
+\begin{align*}
+    & \frac{e^{(k+1) t} (1 + a)^{-\frac{k (k + 1)}{2}}}{\prod_{i=0}^k (1 - e^t (1 - (1 + a)^{-i}))} \cdot \exp\left( -t (1 + \epsilon) \frac{(1 + a)^{k + 1} - 1}{a} \right) \\
+    & \quad \leq \exp\left( -\frac{1}{2a} \epsilon (1 + a)^{-k} (1 + \epsilon) ((1 + a)^{k+1} - 1) \right) \cdot \prod_{i=0}^k \frac{1}{1 - \frac{1}{2} \epsilon (1 + a)^{i-k}}.
+\end{align*}
+$$
+
+Then, we use the inequality $\frac{1}{1 - z} \leq e^{z + z^2}$ for $0 < z < \frac{1}{2}$ for $z \in \mathbb{R}$ and some more algebra gives the bound:
+
+$$
+\begin{align*}
+    & \exp\left( -\frac{1}{2a} \epsilon (1 + a)^{-k} (1 + \epsilon) ((1 + a)^{k+1} - 1) \right) \cdot \prod_{i=0}^k \frac{1}{1 - \frac{1}{2} \epsilon (1 + a)^{i-k}} \\
+    & \quad \leq \exp\left( -\frac{1}{4a} \epsilon^2 (1 + a)^{-k} ((1 + a)^{k+1} - 1) \right).
+\end{align*}
+$$
+
+In particular, when $k > \frac{1}{a}$, we get the bound:
+
+$$
+\mathbb{P}\left( \sum_{i=0}^k Z_i \geq (1 + \epsilon) \sum_{i=0}^k \frac{1}{p_i} \right) \leq e^{-\frac{\epsilon^2}{8a}}.
+$$
+
+With a symmetric argument, we obtain another bound on the other side:
+
+$$
+\mathbb{P}\left( \sum_{i=0}^k Z_i \geq (1 - \epsilon) \sum_{i=0}^k \frac{1}{p_i} \right) \leq e^{-\frac{\epsilon^2}{8a}}.
+$$
+
+> Nelson and Yu note that this part of the argument can be made shorter (although less elementary) by showing that geometric random variables are sub-gamma. Then, we can use properties of sub-gamma random variables to control $\sum_{i=0}^k Z_i$. As mentioned in the paper, this observation is due to Eric Price.
+{: .prompt-info}
+
+Therefore, fixing $k > \frac{1}{a}$ as above, with probability at least $1 - e^{-\frac{\epsilon^2}{8a}}$, we have:
+
+$$
+\left\lvert \sum_{i=0}^k Z_i - \frac{(1 + a)^{k+1} - 1}{a} \right\rvert \leq \epsilon \cdot \frac{(1 + a)^{k+1} - 1}{a}.
+$$
+
+Fixing any $n > \frac{8}{a}$, an application of the union bound tells us that $\frac{(1 + a)^{X_n} - 1}{a}$ is a $(1 \pm 2 \epsilon)$-approximation of $n$ with probability at least $1 - 2 e^{-\frac{\epsilon^2}{8a}}$.
+
+Setting $a = \frac{\epsilon^2}{8 \ln\left( \frac{1}{\delta} \right)}$, this means that the space usage of $\operatorname{Morris}(a)$ is $\log(\log(n)) + 2 \log\left( \frac{1}{\epsilon} \right) + \log\left( \left( \frac{1}{\delta} \right) \right) + O(1)$ bits with high probability. Furthermore, the algorithm outputs a $(1 \pm 2 \epsilon)$-approximation with probability $1 - \frac{2}{\delta}$. Changing constants appropriately, the sharper upper bound on the performance of Morris++ is proven.
+
+On the other hand, the matching lower bound is slightly trickier to prove and uses techniques outside the scope of concentration inequalities and high-dimensional probability. The proof proceeds via a *derandomization* argument which involves fixing an initial state for all randomness and considering the resulting deterministic algorithm. Then, the authors mirror part of the proof of the [pumping lemma](https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages) for discrete finite automata. For those interested in the details, the original paper is linked above.
+
+## Applications
+
+First, Morris' algorithm spawned a lot more work in the field of random approximation algorithms. For example, the [Flajolet-Martin algorithm](https://en.wikipedia.org/wiki/Flajolet–Martin_algorithm) has a similar structure and famously solves the problem of approximating the number of distinct items in a stream. Morris' algorithm was also one of the first of many so-called [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) which produce a *sketch*, or approximation, to a true value using logarithmically smaller memory.
+
+Sketching and streaming algorithms are used everywhere when working with big data. For example, Google use algorithms like [HyperLogLog++](https://en.wikipedia.org/wiki/HyperLogLog) to [provide](https://developers.google.com/analytics/blog/2022/hll) a sketch of the number of distinct elements for their BigQuery service. As another example, Amazon's AWS service [provides](https://docs.aws.amazon.com/redshift/latest/dg/r_COUNT.html) an `APPROXIMATE COUNT DISTINCT` function to approximate the number of non-null values in a column of data (this is exactly the problem that Morris' algorithm could solve!). In fact, yet another advantage to Morris' algorithm is that it can run in an online fashion; it can update its approximate count as we receive more data. This algorithm is really useful!

@@ -260,6 +260,37 @@ In April 2022 (very recently!), Jelani Nelson and Huacheng Yu published [this pa
 > Furthermore, this algorithm is asymptotically optimal up to a constant factor: any randomized algorithm which is promised that the final counter is in $\{ 1, 2, \cdots, n \}$ has space complexity lower bounded by, with high probability:
 > <center> $\Omega\left( \min\left\{ \log(n), \log(\log(n)) + \log\left( \frac{1}{\epsilon} \right) + \log\left( \log\left( \frac{1}{\delta} \right) \right) \right\} \right)$. </center>
 
-This is the result we've been building up to, and now I'll give an outline of their proof.
+The algorithm described by the authors is Morris++ with a general exponent $1 + a$; This is the result we've been building up to, and now I'll give an outline of their proof. First, let $Z_i$ denote the number of increments it takes before the counter increases from $i$ to $i + 1$. Letting $p_i = (1 + a)^{-i}$, notice that $Z_i \sim \operatorname{Geo}(p_i)$ with the following pmf:
+
+$$
+\mathbb{P}(Z_i = l) = p_i (1 - p_i)^{l-1}.
+$$
+
+Therefore, we have:
+
+$$
+\mathbb{E}[Z_i] = \frac{1}{p_i} = (1 + a)^i.
+$$
+
+The moment generating function is (summing the geometric series):
+
+$$
+\mathbb{E}[e^{t Z_i}]
+= \sum_{l=1}^\infty e^{tl} p_i (1 - p_i)^{l-1}
+= \frac{p_i e^t}{1 - e^t (1 - p_i)}.
+$$
+
+If $t$ is such that $e^t (1 - p_k) < 1$, an application of Markov's inequality gives:
+
+$$
+\begin{align*}
+    \mathbb{P}\left( \sum_{i=0}^k Z_i \geq (1 + \epsilon) \sum_{i=0}^k \frac{1}{p_i} \right)
+    & \leq \exp\left( -t (1 + \epsilon) \sum_{i=0}^k \frac{1}{p_i} \right) \cdot \mathbb{E}\left[ \exp\left( t \sum_{i=0}^k Z_i \right) \right] \\
+    & = \cdots \\
+    & = \frac{e^{(k+1) t} (1 + a)^{-\frac{k (k + 1)}{2}}}{\prod_{i=0}^k (1 - e^t (1 - (1 + a)^{-i}))} \cdot \exp\left( -t (1 + \epsilon) \frac{(1 + a)^{k + 1} - 1}{a} \right).
+\end{align*}
+$$
+
+Then, we choose $t = \ln\left( \frac{1}{1 - \frac{1}{2} \epsilon (1 + a)^{-k}} \right)$, which is a choice that satisfies $e^t (1 - p_k) < 1$.
 
 (more to come...)

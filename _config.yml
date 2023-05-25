@@ -20,7 +20,7 @@ timezone: America/Los_Angeles
 
 title: Sanjit's Blog # the main title
 
-tagline: Some of my thoughts... # it will display as the sub-title
+tagline: "<br>Young man, in mathematics you don't understand things. You just get used to them.<br><br>- John von Neumann" # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.

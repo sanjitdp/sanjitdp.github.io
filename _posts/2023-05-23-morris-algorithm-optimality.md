@@ -64,7 +64,7 @@ class MorrisCounter:
         return (1 << self.counter) - 1
 ```
 
-> Using bit-shift operators like 1 \<\< x instead of built-in exponentiation operators pow(2, x) or 2 ** x is sometimes slightly faster.
+> Using bit-shift operators like `1 << x` instead of built-in exponentiation operators `math.pow(2, x)` or `2 ** x` is sometimes slightly faster.
 {: .prompt-tip}
 
 Just how good is this estimator? Well, Chebyshev's inequality tells us that $2^{X_n} - 1$ concentrates around its mean:

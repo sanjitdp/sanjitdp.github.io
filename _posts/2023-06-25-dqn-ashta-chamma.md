@@ -1,6 +1,6 @@
 ---
 title: Deep reinforcement learning to play Ashta Chamma
-date: 2023-05-25
+date: 2023-06-25
 categories: [deep-learning]
 tags: [cs, ashta-chamma, dqn, reinforcement-learning, ai, deep-learning]
 math: true

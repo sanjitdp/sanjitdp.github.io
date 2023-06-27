@@ -1,7 +1,7 @@
 ---
 title: The optimality of Morris' algorithm
 date: 2023-05-23
-categories: [high-dimensional-stats]
+categories: [high-dimensional-probability]
 tags: [cs, sketching, algorithms, approximate-counting, morris-algorithm]
 math: true
 comments: true

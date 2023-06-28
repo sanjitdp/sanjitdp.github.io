@@ -233,7 +233,7 @@ $$
 \end{align*}
 $$
 
-Recall that $\frac{x}{x - 1} \in [1, 2]$ for all $x \geq 2$. Then, we we can use the bound from Problem 7 to find that (substituting $t = a \left( \frac{k}{n} \right)^{\frac{1}{d}}$ and assuming that $a$ is chosen such that $\frac{1}{C_d a^d} \geq 1$):
+Recall that $\frac{x}{x - 1} \in [1, 2]$ for all $x \geq 2$. Then, we we can use the bound on binomial variables derived above to find that (substituting $t = a \left( \frac{k}{n} \right)^{\frac{1}{d}}$ and assuming that $a$ is chosen such that $\frac{1}{C_d a^d} \geq 1$):
 
 $$
 \begin{align*}

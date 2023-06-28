@@ -7,7 +7,11 @@ math: true
 comments: true
 ---
 
-Here's a cool result about the concentration of $k$th nearest neighbors of points drawn uniformly randomly from the $d$-dimensional hypercube. First, suppose we draw $X_1, \cdots, X_n$ uniformly randomly from $[0, 1]^d$. For $1 \leq k \leq n$ and $1 \leq i \leq n$, we define $R_k(X_i)$ to be the distance from $X_i$ to its $k$th nearest neighbor. If we define $R_{k, \min} = \min_{1 \leq i \leq n} R_k(X_i)$, then we'll show that there exists a constant $a > 0$ (depending only on $d$) so that:
+Here's a cool result about the concentration of $k$th nearest neighbors of points drawn uniformly randomly from the $d$-dimensional unit hypercube. First, suppose we draw $X_1, \cdots, X_n$ uniformly randomly from $[0, 1]^d$. For $1 \leq k \leq n$ and $1 \leq i \leq n$, we define $R_k(X_i)$ to be the distance from $X_i$ to its $k$th nearest neighbor.
+
+## Concentration of nearest neighbors
+
+If we define $R_{k, \min} = \min_{1 \leq i \leq n} R_k(X_i)$, then we'll show that there exists a constant $a > 0$ (depending only on $d$) so that:
 
 $$
 \begin{align*}
@@ -23,7 +27,11 @@ $$
 \end{align*}
 $$
 
-This result is really neat - it shows that the list $(R_k(X_i))_{i=1}^n$ generally grows like $\left( \frac{k}{n} \right)^{\frac{1}{d}}$ (as $n$ and $k$ are varied) with high probability. This statement looks a bit difficult to show, but we'll break it down into easier pieces. First, we'll show a set of concentration inequalities for binomial random variables; it will become clear why these are useful later. Namely, if $X \sim \operatorname{Ber}(n, p)$, we'll show:
+This result is really neat - it shows that $\lbrace R_k(X_i) \rbrace_{i=1}^n$ generally grows like $\left( \frac{k}{n} \right)^{\frac{1}{d}}$ (as $n$ and $k$ are varied) with high probability. This statement looks a bit difficult to show, but we'll break it down into easier pieces.
+
+## Binomial concentration
+
+First, we'll show a set of concentration inequalities for binomial random variables; it will become clear why these are useful later. Namely, if $X \sim \operatorname{Ber}(n, p)$, we'll show:
 
 $$
 \begin{align*}
@@ -39,7 +47,7 @@ $$
 \end{align*}
 $$
 
-We know that for a binomial random variable $\mathbb{E}[X] = np$, but these results show that $X$ stays close to its mean with high probability. In order to show these inequalities, we'll use the following elementary inequality of real variables (for $\delta \geq 0$):
+We know that for a binomial random variable $\mathbb{E}[X] = np$, but these results show that $X$ concentrates around its mean with high probability. In order to show these inequalities, we'll use the following elementary inequality of real variables (for $\delta \geq 0$):
 
 $$
 \begin{align*}
@@ -188,7 +196,11 @@ $$
 \end{align*}
 $$
 
-These are the two bounds we wanted to show, so we are done; in fact, the proof shows that these bounds hold for all $\delta > 0$. Phew - that was step one. Now, back to the original problem. First, notice that $\mathbb{P}(R_{k, \min} \leq t)$ is the probability of at least one of $R_k(X_i)$ being less than $t$ for $1 \leq i \leq n$. Therefore, the union bound gives:
+These are the two bounds we wanted to show, so we are done; in fact, the proof shows that these bounds hold for all $\delta > 0$. Phew - that was step one. Now, back to the original problem.
+
+## Proof of concentration inequality
+
+First, notice that $\mathbb{P}(R_{k, \min} \leq t)$ is the probability of at least one of $R_k(X_i)$ being less than $t$ for $1 \leq i \leq n$. Therefore, the union bound gives:
 
 $$
 \begin{align*}

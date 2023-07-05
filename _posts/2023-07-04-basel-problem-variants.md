@@ -230,7 +230,7 @@ $$
 \end{align*}
 $$
 
-Using l'H\^{o}pital's rule, this limit can be rewritten as:
+Using l'Hôpital's rule, this limit can be rewritten as:
 
 $$
 \begin{align*}

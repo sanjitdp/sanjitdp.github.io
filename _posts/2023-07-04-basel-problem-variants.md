@@ -402,10 +402,10 @@ Therefore, taking the limit as $R \to \infty$ we have:
 
 $$
 \begin{align*}
-    \sum_{n \in \mathbb{Z}} \frac{1}{\left( \frac{1}{2} - n \right)^2}
+    & \sum_{n \in \mathbb{Z}} \frac{1}{\left( \frac{1}{2} - n \right)^2}
     = \left( -4 + \sum_{n=1}^\infty \frac{1}{\left( \frac{1}{2} - n \right)^2} \right) + 4 + \sum_{n=1}^\infty \frac{1}{\left( \frac{1}{2} - n \right)^2}
-    = 2 \sum_{n=1}^\infty \frac{1}{\left( \frac{1}{2} - n \right)^2}
-    \implies \zeta(2) = \frac{1}{6} \sum_{n \in \mathbb{Z}} \frac{1}{\left( \frac{1}{2} - n \right)^2}.
+    = 2 \sum_{n=1}^\infty \frac{1}{\left( \frac{1}{2} - n \right)^2} \\
+    & \quad \implies \zeta(2) = \frac{1}{6} \sum_{n \in \mathbb{Z}} \frac{1}{\left( \frac{1}{2} - n \right)^2}.
 \end{align*}
 $$
 

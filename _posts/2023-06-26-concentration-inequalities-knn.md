@@ -353,7 +353,7 @@ $$
 \end{align*}
 $$
 
-Then, we we can use the bound from Problem 7 to find that (substituting $t = \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}}$ and assuming that $a$ is chosen such that $\frac{1}{\tilde{C}_d a^d} \geq 1$):
+Then, we we can use the bound derived above to find that (substituting $t = \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}}$ and assuming that $a$ is chosen such that $\frac{1}{\tilde{C}_d a^d} \geq 1$):
 
 $$
 \begin{align*}

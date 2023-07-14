@@ -461,9 +461,33 @@ The general strategy is to map each chunk to a thread and reduce their outputs b
 
 ### PyO3 bindings
 
-Another challenge that I faced with this project was learning how to access the Farama Foundation's `gymnasium` environments through Rust. The Rust programming language has a large centralized set of packages, called crates, at [crates.io](crates.io), which makes it incredibly easy to collaborate and use existing code in your project. In my opinion, `cargo` (Rust's package manager) is better than `pip` or `conda` and definitely better than the hack-y solution to package management that C++ takes. I wanted to use the actual `gymnasium` environments in Python and not a Rust port of similar environments so that I could correctly benchmark my algorithms.
+Another challenge that I faced with this project was learning how to access the Farama Foundation's `gymnasium` environments through Rust. The Rust programming language has a large centralized set of packages, called crates, at [crates.io](https://crates.io). This makes it incredibly easy to collaborate and use existing code from another project. For example, in order to use a prior implementation of the $k$-nearest neighbors algorithm, I only needed to add this line to my `Cargo.toml` file:
 
-In this vein, the crate I ended up choosing to use is [PyO3](https://pyo3.rs/v0.19.1/), which provides bindings for running Python code and writing Python packages. Having to keep track of many Python types is difficult, but this approach is the most extensible to other games. Here's a little code snippet that's prototypical of the work that I recently did with PyO3:
+```toml
+[dependencies]
+# ...
+knn = "0.1.3"
+```
+
+Then, in my Rust code, I could get started using the package immediately and trust that `cargo` (Rust's package manager) would handle the rest:
+
+```rust
+extern crate knn;
+
+// ...
+
+use knn::PointCloud;
+
+// ...
+
+let mut pc = PointCloud::new(euclidean_distance);
+
+// ...
+```
+
+In my opinion, `cargo` is better than `pip` or `conda` and definitely better than the hack-y solution to package management that C++ takes.
+
+For my RIPS project, I wanted to use the actual `gymnasium` environments in Python and not a Rust port of similar environments so that I could correctly benchmark my algorithms. In this vein, the crate I ended up choosing to use is [PyO3](https://pyo3.rs/v0.19.1/), which provides bindings for running Python code and writing Python packages. Having to keep track of many Python types is difficult, but this approach is the most extensible to other games. Here's a little code snippet that's prototypical of the work that I recently did with PyO3:
 
 ```rust
 let (_, _, terminated, truncated, _) = self
@@ -472,6 +496,15 @@ let (_, _, terminated, truncated, _) = self
   .unwrap()
   .extract::<(&PyArray<f32, Ix1>, f32, bool, bool, &PyDict)>()
   .unwrap();
+```
+
+To get PyO3 to work with a virtual environment, I needed to activate the environment change the `$PYTHONPATH` environment variable to force PyO3 to search my local directory for Python packages first. This grew to be slightly irksome, so I wrote up a brief shell script that automates the setup process:
+
+```bash
+#!/bin/bash
+
+source .env/bin/activate
+export PYTHONPATH=$PYTHONPATH:$(pwd)/.env/lib/python3.11/site-packages
 ```
 
 Just from rewriting our codebase in Rust, I was able to shave down our solution time for CartPole by over half (the agent survives 1000 iterations in 3.6 seconds where this previously took 7.7 seconds in Python). In addition, PyO3 allows you to release Python's GIL and run concurrent Python code, which is the next step for my work at RIPS. This will likely not provide any gains (if at all) for CartPole, but it will likely become more helpful in solving more complex games like Pong or PacMan.

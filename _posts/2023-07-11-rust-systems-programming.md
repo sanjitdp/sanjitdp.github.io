@@ -167,7 +167,7 @@ This doesn't actually change the lifetime of the `env` object, but it tells the 
 
 ### Functional programming
 
-Writing code in Rust seems to take a lot of influence from functional programming paradigms (more so than C++, for example). I've found myself using pattern matching and map-filter-reduce quite frequently, both of which are very fast. I've also used a lot of closures and lambda expressions, which are interesting due to their interplay with the rules of ownership, borrowing, and lifetimes. This is especially useful in multithreading, especially since 
+Writing code in Rust seems to take a lot of influence from functional programming paradigms (more so than C++, for example). I've found myself using pattern matching and map-filter-reduce quite frequently, both of which are very fast. I've also used a lot of closures and lambda expressions, which are interesting due to their interplay with the rules of ownership, borrowing, and lifetimes. This is especially useful in multithreading, since threads take in a lambda expression and can capture their environment.
 
 Furthermore, a lot of Rust's error handling comes from returning Results and Options, which are enumerated types. Results have `Ok` and `Err` variants and are used to communicate to the caller that an operation failed. This is sort of tedious at times, since many operations may fail (especially in my context working with Python requests, all of which may fail). On the other hand, Options have `Some` and `None` variants, which is sort of like the `nullptr` in C++ or `NULL` in C. This can be used to communicate exceptional (but not error-type) circumstances, like not finding an element in a data container.
 

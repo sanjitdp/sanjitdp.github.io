@@ -83,7 +83,7 @@ fn main() {
 }
 ```
 
-Despite not having type annotations, the Rust compiler infers that `a` and `b` are both of type `i32` (32-bit signed integer) by default. But why didn't the program compile? A snippet from the error message tells us why this code doesn't work:
+Despite not having type annotations, the Rust compiler infers that `a` and `b` are both of type `String` by default. But why didn't the program compile? A snippet from the error message tells us why this code doesn't work:
 
 ```
 error[E0382]: borrow of moved value: `a`

@@ -498,7 +498,7 @@ let (_, _, terminated, truncated, _) = self
   .unwrap();
 ```
 
-To get PyO3 to work with a virtual environment, I needed to activate the environment change the `$PYTHONPATH` environment variable to force PyO3 to search my local directory for Python packages first. This grew to be slightly irksome, so I wrote up a brief shell script that automates the setup process:
+To get PyO3 to work with a virtual environment, I needed to activate the environment and change the `$PYTHONPATH` environment variable to force PyO3 to search my local directory for Python packages first. Doing this each time grew to be slightly irksome, so I wrote up a brief shell script that automates the setup process:
 
 ```bash
 #!/bin/bash
@@ -511,6 +511,6 @@ Just from rewriting our codebase in Rust, I was able to shave down our solution 
 
 ## Final thoughts
 
-Rust has been topping the [StackOverflow developer survey](https://survey.stackoverflow.co/2022) for several years now. Having now worked with it extensively, I think I understand why. Rust is a fast compiled language, but finds more elegant solutions than existing languages to memory safety, thread safety, and garbage collection. It has an excellent package manager and helpful error messages. It almost feels like Rust's ownership and borrowing system was built for concurrency, and immutability by default can avoid a lot of hassle with mutex locks and race conditions.
+Rust has been topping the [StackOverflow developer survey](https://survey.stackoverflow.co/2022) as the most beloved language for several years now. Having now worked with it extensively, I think I understand why. Rust is a fast compiled language, but finds more elegant solutions than existing languages to memory safety, thread safety, and garbage collection. It has an excellent package manager and helpful error messages. It almost feels like Rust's ownership and borrowing system was built for concurrency, and immutability by default can avoid a lot of hassle with mutex locks and race conditions.
 
 A lot of code is functional and elegant, but Rust makes sure that the programmer is aware of many potential sources of error. As one example, `f32` does not implement the `Ord` trait, only because it's not fully clear what to do with `f32::NAN` values. This makes it harder to sort a `Vec<f32>` object, but in return, the programmer knows exactly what's going on under the hood. Things like this make Rust a pleasure to program in, and I'm looking forward to writing more Rust code in the near future.

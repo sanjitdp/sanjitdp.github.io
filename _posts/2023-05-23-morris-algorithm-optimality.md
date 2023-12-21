@@ -239,7 +239,7 @@ Therefore, the solution has to be unique (this is Lemma 4 in [the same paper](ht
 
 However, when Jelani Nelson and Huacheng Yu [plotted](https://arxiv.org/pdf/2010.02116.pdf) the empirical cumulative distributions of the relative errors of `FloatingPointCounter` and Morris++, they obtained the following surprising result:
 
-![Plot of relative errors of floating point counter and Morris++ counter](images/morris-algorithm/relative-errors.png){: width="720"}
+![Plot of relative errors of floating point counter and Morris++ counter](/images/morris-algorithm/relative-errors.png){: width="720"}
 _Relative errors of the floating-point counter and the Morris++ counter_
 
 Hmm. This is interesting, since the relative error of a state-of-the-art algorithm from 2018 has almost the exact same cdf as the relative error of Morris' original algorithm developed in 1978. This suggested to them that perhaps the original algorithm was in fact asymptotically optimal, but it was the previous analyses of the algorithm which were imperfect.

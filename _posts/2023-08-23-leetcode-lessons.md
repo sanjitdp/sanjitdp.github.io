@@ -5,6 +5,9 @@ date: 2023-08-23
 author: Sanjit Dandapanthula
 ---
 
+- TOC
+{:toc}
+
 In the past three weeks, I've solved over 130 problems on [LeetCode](https://leetcode.com), a popular site for competitive programming which contains thousands of fun problems on data structures and algorithms. The problems on LeetCode are divided into three categories: Easy, Medium, and Hard. Many of these problems (or problems in a similar style) tend to appear in software engineering interviews, so LeetCode has sort of become a cultural part of the computer science major at university.
 
 Many people seem to think of LeetCode as difficult; this makes sense, since many problems seem unapproachable at first glance even for those who have taken a class in data structures and algorithms. However, like anything else, I think LeetCode is just a game; you play enough rounds and you start to see some patterns emerge which render most problems much easier. In this post, I want to discuss some of the most important lessons and tricks I learned from my experience so far on the site.

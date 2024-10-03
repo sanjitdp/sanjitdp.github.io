@@ -5,6 +5,9 @@ date: 2023-07-11
 author: Sanjit Dandapanthula
 ---
 
+- TOC
+{:toc}
+
 This summer, I'm working as a project manager and research intern in the [IPAM RIPS](https://www.ipam.ucla.edu/programs/student-research-programs/research-in-industrial-projects-for-students-rips-2023-los-angeles/) program, which is a math REU focused on solving real-world problems from industry sponsors. For my project, I’m currently working for a startup company on applying new patented particle-type methods for optimal control to solving interesting problems in artificial intelligence.
 
 In particular, I've recently been learning Rust with the goal of writing a fast Python module parallelizing some of the operations performed in our algorithm. I've unfortunately signed a non-disclosure agreement so I can't write about specific implementation details of the algorithm here; however, I thought it would be interesting to write about some of the things I've learned during this process.

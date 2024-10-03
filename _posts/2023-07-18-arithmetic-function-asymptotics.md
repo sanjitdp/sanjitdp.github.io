@@ -5,6 +5,9 @@ date: 2023-07-18
 author: Sanjit Dandapanthula
 ---
 
+- TOC
+{:toc}
+
 These are my solutions to some [problems](https://terrytao.wordpress.com/2014/11/23/254a-notes-1-elementary-multiplicative-number-theory/) written by [Terence Tao](https://terrytao.wordpress.com/) for Math 254A (grad. analytic number theory) at UCLA. I actually enrolled in this class in Fall 2022 without any of the nine relevant prerequisite courses, but around the fourth week of the class, Prof. Tao began using some more advanced Fourier-analytic techniques (Fourier transforms on finite groups, representation theory, etc.). Eventually, the problems began to require more intuition from Fourier analysis and representation theory (which I lacked) so I ended up dropping this class after four weeks because I was spending too much time on the homeworks.
 
 In retrospect, I shouldn't have rushed to take this class without taking the requisite graduate coursework, but the experience strangely built my confidence and allowed me to get my hands dirty solving a wide variety of analysis problems. The problems here are interesting because my solutions to them apply lots of tricks from real analysis, including using big-$O$ notation to clean up some of the bounds and cleverly applying several versions of the quantitative integral test.

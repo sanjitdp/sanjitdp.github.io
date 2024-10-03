@@ -5,6 +5,9 @@ date: 2023-08-11
 author: Sanjit Dandapanthula
 ---
 
+- TOC
+{:toc}
+
 In this post, I want to write about an interesting computation I did using Bayesian statistics. I thought this example was particularly cool because it involves the beta distribution in a surprising way.
 
 ## Noninformative priors

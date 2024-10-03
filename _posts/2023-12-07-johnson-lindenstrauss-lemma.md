@@ -5,6 +5,7 @@ date: 2023-12-07
 author: Sanjit Dandapanthula
 ---
 
+- TOC
 {:toc}
 
 In this post, I'll discuss a version of the [distributional Johnson-Lindenstrauss lemma](https://en.wikipedia.org/wiki/Johnson%E2%80%93Lindenstrauss_lemma) (DJL lemma) with a sub-Gaussian assumption. The DJL lemma provides a randomized algorithm used to find low-distortion embeddings for data and has shares similarities with many results in [compressed sensing](https://en.wikipedia.org/wiki/Compressed_sensing). For instance, the DJL lemma is very similar to the [restricted isometry property](https://en.wikipedia.org/wiki/Restricted_isometry_property) (RIP), which is famously sufficient to ensure success of the [basis pursuit](https://en.wikipedia.org/wiki/Basis_pursuit) linear program for [exact recovery of sparse signals](https://arxiv.org/pdf/math/0410542.pdf).

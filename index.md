@@ -16,7 +16,6 @@ title: "Sanjit Dandapanthula"
         margin: 0 auto; /* Center the image horizontally */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
         border-radius: 8px; /* Optional: Add rounded corners */
-        filter: brightness(60%);
     }
 
     #headerim a {

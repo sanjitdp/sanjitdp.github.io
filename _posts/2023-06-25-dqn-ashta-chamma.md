@@ -39,18 +39,24 @@ Notice that the only distinction between the the Q-learning and deep Q-learning 
 
 [Ashta Chamma](https://en.wikipedia.org/wiki/Chowka_bhara) is a game that I play with my grandmother in India. Here's a picture of the initial setup of the board:
 
-![](/images/ashta-chamma/board.png){: width="600"}
-_Initial setup of the Ashta Chamma game board_
+![Initial setup of the Ashta Chamma game board](/images/ashta-chamma/board.png){: width="600"}
+<p class='caption'>
+Initial setup of the Ashta Chamma game board
+</p>
 
 The goal is to move all your pieces into the center. On your turn, you roll four cowry shells (which can either land face-up or face-down):
 
-![](/images/ashta-chamma/shells.png){: width="600"}
-_Cowry shells rolled in Ashta Chamma to determine move_
+![Cowry shells rolled in Ashta Chamma to determine move](/images/ashta-chamma/shells.png){: width="600"}
+<p class='caption'>
+Cowry shells rolled in Ashta Chamma to determine move
+</p>
 
 The number of face-up shells corresponds to the number of moves you make (where all four shells face-down represents 8). If you roll a 4 ("chamma") or an 8 ("ashta"), you must roll again. The path that your pieces take is depicted below:
 
-![](/images/ashta-chamma/board-path.png){: width="600"}
-_Path that pieces take on an Ashta Chamma board_
+![Path that pieces take on an Ashta Chamma board](/images/ashta-chamma/board-path.png){: width="600"}
+<p class='caption'>
+Path that pieces take on an Ashta Chamma board
+</p>
 
 On your turn, you can choose one piece to move forward with the number of moves corresponding to your roll. The squares marked with an "X" are safe squares and any number of pieces can be on a safe square at a time. You are not allowed to move your piece onto another one of your pieces on a non-safe square. Moving onto an opponent's piece on a non-safe square moves the opponent's piece back to start (a "capture") and you must roll again. You are not allowed to move any pieces past the end of the board. If there is no legal move for you to make, you forfeit your turn. Additionally, you are not allowed to move past the safe square on the left-hand side until you have made a capture.
 
@@ -84,27 +90,39 @@ Training was done with the Adam-W optimizer and the final results displayed in t
 
 Below are some plots depicting the running average win rate over the course of our training process. Note that the average win rate is highly irregular at the start of training due to the high $\epsilon$-value, which corresponds with the model trying random moves and exploring the environment. The three figures below display the agent's running average win rate during training against the random, fast, and offense policy, respectively. The plots display the agent training and receiving quite impressive results including a 80% winning rate against the random policy and a 75% winning rate against the offense policy.
 
-![](/images/ashta-chamma/random-avg.png){: width="600"}
-_Running average win rate of the deep Q-network training against the random policy_
+![Running average win rate of the deep Q-network training against the random policy](/images/ashta-chamma/random-avg.png){: width="600"}
+<p class='caption'>
+Running average win rate of the deep Q-network training against the random policy
+</p>
 
-![](/images/ashta-chamma/fast-avg.png){: width="600"}
-_Running average win rate of the deep Q-network training against the fast policy_
+![Running average win rate of the deep Q-network training against the fast policy](/images/ashta-chamma/fast-avg.png){: width="600"}
+<p class='caption'>
+Running average win rate of the deep Q-network training against the fast policy
+</p>
 
-![](/images/ashta-chamma/offense-avg.png){: width="600"}
-_Running average win rate of the deep Q-network training against the offense policy_
+![Running average win rate of the deep Q-network training against the offense policy](/images/ashta-chamma/offense-avg.png){: width="600"}
+<p class='caption'>
+Running average win rate of the deep Q-network training against the offense policy
+</p>
 
 Upon training an agent which could effectively play against the above policies, we trained the agent to play against the most sophisticated and competitive policy: the smart policy. The results of this experimentation are displayed below in the two below figures:
 
-![](/images/ashta-chamma/win-rate-smart-2.png){: width="600"}
-_Running average win rate against smart policy (before genetic-style training)_
+![Running average win rate against smart policy (before genetic-style training)](/images/ashta-chamma/win-rate-smart-2.png){: width="600"}
+<p class='caption'>
+Running average win rate against smart policy (before genetic-style training)
+</p>
 
-![](/images/ashta-chamma/smart-avg-5.png){: width="600"}
-_Running average win rate against smart policy (after genetic-style training)_
+![Running average win rate against smart policy (after genetic-style training)](/images/ashta-chamma/smart-avg-5.png){: width="600"}
+<p class='caption'>
+Running average win rate against smart policy (after genetic-style training)
+</p>
 
 Notice that in the first figure the model did not achieve a high win rate and was in fact still losing more often than it won against the strategy. However, we included this graph to display how significantly the agent learned to become competitive against this strategy through the training process. The second figure displays the best accuracy achieved against the smart policy, after 17 iterations of repeated genetic-style training against all of our policies. We see that the agent learns to beat the smart strategy in this case and is able to achieve a final win rate of around 52.5%.
 
-![](/images/ashta-chamma/win-rate-4.png){: width="600"}
-_Running average win rate against random policy (after genetic-style training)_
+![Running average win rate against random policy (after genetic-style training)](/images/ashta-chamma/win-rate-4.png){: width="600"}
+<p class='caption'>
+Running average win rate against random policy (after genetic-style training)
+</p>
 
 Contrarily, the above figure shows the agent training against the random policy after genetic-style training and achieving a stable accuracy rate extraordinarily fast with very few episodes. Therefore, this pre-trained agent generalizes extraordinarily well to playing opponents employing other strategies.
 
@@ -119,4 +137,3 @@ Against the smart policy, the agent developed a policy which yielded a 52.5% win
 In summary, our implementation of the Deep-Q learning algorithm succeeded in learning how to play Ashta Chamma at a high level and beat opponents of various strategies, but there is more work that can be done to improve the current agent's performance.
 
 > The version of Ashta Chamma implemented here is a very slightly simplified version of the game. While there is variety in how Ashta Chamma is played by different people, another potential extension would be to incorporate all of the rules used in the original form of Ashta Chamma that I play with my family. For example, rolling three or more 8's in a row invalidates all three 8's. Furthermore, it should actually be possible to move past the pre-capture boundary if you are doing so in order to capture a piece. Finally, if you roll a 4 or 8 and simultaneously capture a piece, this should actually give you two extra turns (and not one). Yet another extension would be to allow the algorithm to play against three other players and not just one (in the four-player version of the game).
-{: .prompt-info}

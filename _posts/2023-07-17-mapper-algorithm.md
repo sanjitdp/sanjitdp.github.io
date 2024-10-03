@@ -41,18 +41,24 @@ In addition, one common choice for the filter function is the [centrality functi
 
 The following is a diagram taken from a [paper](https://www.frontiersin.org/articles/10.3389/frai.2021.667963/full#T1) by Frédéric Chazal and Bertrand Michel.
 
-![](/images/mapper-algorithm/diagram.png){: width="500"}
-_A diagram outlining the Mapper algorithm._
+![A diagram outlining the Mapper algorithm](/images/mapper-algorithm/diagram.png){: width="500"}
+<p class='caption'>
+A diagram outlining the Mapper algorithm
+</p>
 
 In particular, consider the second example, wherein we have a finite dataset $D$. In this case, we use the height function to map $D$ into $\mathbb{R}$ and provide open cover for $f(D)$. Then, we take the pullback of each of these sets under $f$ and use a clustering algorithm to turn this into a "refined pullback" for our open cover of $f(D)$ under $f$. Then, we can compute the nerve using a [union-find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure) data structure (or something similar). Then, notice that the nerve does indeed give us valuable information about the topological structure of our original data (it has a hole in it)!
 
 The following is the output of the Mapper algorithm on data [generated](https://danedmiston.github.io/home_page/assets/Mapper.pdf) by the `sklearn` package and embedded into $\mathbb{R}^2$ using the `tadasets` package by Daniel Edmiston.
 
-![](/images/mapper-algorithm/example.png){: width="700"}
-_A sample dataset showcasing the Mapper algorithm._
+![A sample dataset showcasing the Mapper algorithm](/images/mapper-algorithm/example.png){: width="700"}
+<p class='caption'>
+A sample dataset showcasing the Mapper algorithm
+</p>
 
-![](/images/mapper-algorithm/example-output.png){: width="500"}
-_The output of the Mapper algorithm on the dataset shown above._
+![The output of the Mapper algorithm on the dataset shown above](/images/mapper-algorithm/example-output.png){: width="500"}
+<p class='caption'>
+The output of the Mapper algorithm on the dataset shown above
+</p>
 
 Aside from the one extraneous dot on the left-hand side of the output, we find that our original dataset is composed of a loop and three separate clusters as desired. Notice that the Mapper algorithm does not tell us that one of our clusters is contained inside of the loop; this is not relevant to the fundamental topological structure of the dataset. Finally, we'll discuss some applications of the Mapper algorithm. The Mapper algorithm has been used to:
 
@@ -61,7 +67,9 @@ Aside from the one extraneous dot on the left-hand side of the output, we find t
 * Classify [poses](https://research.math.osu.edu/tgda/mapperPBG.pdf) in 3D models of various animals created by illustrators and animators
 * Estimate the Betti number of high-dimensional surfaces by sampling points from the surface
 
-![](/images/mapper-algorithm/diabetes.png){: width="700"}
-_An application of the Mapper algorithm to analyzing data on diabetes risk factors._
+![An application of the Mapper algorithm to analyzing data on diabetes risk factors](/images/mapper-algorithm/diabetes.png){: width="700"}
+<p class='caption'>
+An application of the Mapper algorithm to analyzing data on diabetes risk factors
+</p>
 
 For example, in this image (from the original Mapper algorithm [paper](https://research.math.osu.edu/tgda/mapperPBG.pdf)) we can see the output of the Mapper algorithm on a dataset containing risk factors for diabetes along with clinical diagnoses. The Mapper algorithm is able to clearly identify Type I and Type II diabetes (see the left and right branches respectively) and in fact can help diagnose the severity of diabetes that someone is likely to have (!). The fact that the topology of the dataset alone can tell us something profound about diabetes (without any knowledge of the relevant biology) is a very surprising and wonderful application of mathematics.

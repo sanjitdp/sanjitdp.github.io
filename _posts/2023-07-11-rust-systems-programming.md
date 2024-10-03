@@ -13,8 +13,10 @@ In particular, I've recently been learning Rust with the goal of writing a fast 
 
 One of the first problems we worked on this summer was solving the classic [cart-pole](https://gymnasium.farama.org/environments/classic_control/cart_pole/) environment from the Farama Foundation. In this environment, a tall pole is placed on a cart through an un-actuated joint, and the goal is to keep the pole balanced in an upright position (within 15 degrees of vertical). At each step, the agent chooses whether to apply a force pushing the cart to the left or the right along a frictionless track. Typically, an agent is considered to have succeeded in this environment if it is able to survive for 200 iterations (although we can manually lengthen the duration of the game).
 
-![](/images/rust-systems-programming/cartpole.gif){: width="600"}
-_A visualization of the basic cart-pole environment from the Farama Foundation._
+![A visualization of the basic cart-pole environment from the Farama Foundation](/images/rust-systems-programming/cartpole.gif){: width="600"}
+<p class='caption'>
+A visualization of the basic cart-pole environment from the Farama Foundation
+</p>
 
 A classical approach to this problem would be to train a model (perhaps a [deep-Q network](https://sanjitdp.github.io/posts/dqn-ashta-chamma/)) by repeatedly playing the game and later run inference on a given state of the environment to come up with the next action. The issue with this approach is that the model requires prior training before the inference phase; for example, it typically takes around 5 minutes to fully train a DQN to solve cart-pole. On the other hand, our approach to the problem is to run inference on-the-fly using particle-type methods; our agent is able to fully survive all 200 iterations of cart-pole on its first try in under two seconds with no prior training.
 

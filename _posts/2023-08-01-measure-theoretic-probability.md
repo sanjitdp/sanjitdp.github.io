@@ -14,7 +14,6 @@ I'll include results in this post that I've later found useful, as well as probl
 In this problem, we'll show that if $X$ is a continuous random variable with cumulative distribution function $F$, then $F(X) \sim \operatorname{Unif}(0, 1)$.
 
 > This result gets used often when we only have access to a uniform random variable (think Python's `rand()` function) but we want to sample according to a given distribution; statisticians call this [inverse transform sampling](https://en.wikipedia.org/wiki/Inverse_transform_sampling).
-{: .prompt-info}
 
 First, extend $F$ by defining $F(-\infty) = 0$ and $F(\infty) = 1$. Now, define a function $F^{-1} : [0, 1] \to \mathbb{R}^\ast$ by $F^{-1}(x) := \sup \lbrace x_0 \in \mathbb{R}^\ast : F(x_0) \leq x \rbrace$. Note that $F : \mathbb{R}^\ast \to [0, 1]$ is surjective by the intermediate value theorem since $F$ is continuous, $\lim_{x \to -\infty} F(x) = 0$, and $\lim_{x \to \infty} F(x) = 1$. Furthermore, we know that every subset of $\mathbb{R}^*$ has a supremum, so $F^{-1}$ is well-defined.
 

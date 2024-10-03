@@ -455,8 +455,10 @@ $$
 
 To check our work, here's a drawing of this Fourier series up to the first 20 terms:
 
-![](/images/basel-problem/exponential-fourier-series.png){: width="700"}
-_A drawing of the Fourier series for $e^x$ using a partial sum up to 20 terms._
+![A drawing of the Fourier series for $e^x$ using a partial sum up to 20 terms.](/images/basel-problem/exponential-fourier-series.png){: width="700"}
+<p class='caption'>
+A drawing of the Fourier series for $e^x$ using a partial sum up to 20 terms.
+</p>
 
 If we set $x = 0$ in the above Fourier series for $e^x$, we can compute the alternating series:
 

@@ -99,7 +99,6 @@ $$
 It's well known that $\Gamma\left( \frac{1}{2} \right) = \sqrt{\pi}$ by substituting $t = u^2$ and evaluating the resulting Gaussian integral.
 
 > The [Gaussian integral](https://en.wikipedia.org/wiki/Gaussian_integral) $\int_{-\infty}^\infty e^{-u^2}\ du$ can be evaluated using either polar coordinates or by [Feynman's trick](https://web.williams.edu/Mathematics/lg5/Feynman.pdf) (differentiating under the integral sign).
-{: .prompt-tip}
 
 Therefore, we have:
 

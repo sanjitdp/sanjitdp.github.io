@@ -31,7 +31,6 @@ class MorrisCounter:
 ```
 
 > A lot of these algorithms use dyadic probabililities (multiples of $\frac{1}{2^k}$ for $k \in \mathbb{N}$), since it's typically faster to generate pseudo-random bits than to generate a pseudo-random floating point number in an interval like $[0, 1]$.
-{: .prompt-tip}
 
 This is a good idea because $n \mapsto \frac{1}{2^n}$ decays quickly, so with high probability our estimator will be a relatively small number (we'll quantify this later). But given this update algorithm, what should a query to the true count return? Define $X_n$ to be the count in Morris' algorithm after $n$ updates. Then, we have by the law of total expectation:
 
@@ -66,7 +65,6 @@ class MorrisCounter:
 ```
 
 > Using bit-shift operators like `1 << x` instead of built-in exponentiation operators `math.pow(2, x)` or `2 ** x` is sometimes slightly faster.
-{: .prompt-tip}
 
 Just how good is this estimator? Well, Chebyshev's inequality tells us that $2^{X_n} - 1$ concentrates around its mean:
 
@@ -162,7 +160,6 @@ $$
 Notice that for fixed $\epsilon$ and $\delta$, the space complexity of Morris++ is $O(\log(\log(n)))$.
 
 > [Terence Tao](https://terrytao.wordpress.com) once joked to our class that no one knows whether $\log(\log(n))$ actually goes to infinity - no one has ever seen it happen. This is a really good space complexity!
-{: .prompt-info}
 
 # Extensions of Morris' algorithm
 
@@ -216,7 +213,6 @@ class FloatingPointCounter:
 ```
 
 > Python's `getrandbits()` function [will return](https://github.com/python/cpython/pull/19539) 0 when the input is 0.
-{: .prompt-info}
 
 Intuitively, this algorithm is inspired by Morris' algorithm but slows down the update by an additional factor of approximately $2^d$.
 
@@ -242,7 +238,7 @@ However, when Jelani Nelson and Huacheng Yu [plotted](https://arxiv.org/pdf/2010
 
 ![Plot of relative errors of floating point counter and Morris++ counter](/assets/images/bayes.jpeg){: width="720"}
 <p class='caption'>
-Relative errors of the floating point counter and the Morris++ counter. 
+Relative errors of the floating point counter and the Morris++ counter
 </p>
 
 Hmm. This is interesting, since the relative error of a state-of-the-art algorithm from 2018 has almost the exact same cdf as the relative error of Morris' original algorithm developed in 1978. This suggested to them that perhaps the original algorithm was in fact asymptotically optimal, but it was the previous analyses of the algorithm which were imperfect.
@@ -324,7 +320,6 @@ $$
 $$
 
 > Nelson and Yu note that this part of the argument can be made shorter (although less elementary) by showing that geometric random variables are sub-gamma. Then, we can use properties of sub-gamma random variables to control $\sum_{i=0}^k Z_i$. As mentioned in the paper, this observation is due to Eric Price.
-{: .prompt-info}
 
 Therefore, fixing $k > \frac{1}{a}$ as above, with probability at least $1 - e^{-\frac{\epsilon^2}{8a}}$, we have:
 

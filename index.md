@@ -54,7 +54,7 @@ I'm a first year PhD student at Carnegie Mellon University studying [statistics]
 ## Research
 
 <p markdown="1">
-I'm currently interested in studying the theory of statistics and machine learning. More details to come.
+I'm currently interested in the theory of statistics and machine learning. More details to come.
 </p>
 </div> 
 </div>

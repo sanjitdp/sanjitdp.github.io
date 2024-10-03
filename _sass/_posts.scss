@@ -1,0 +1,148 @@
+.research-notes-quote {
+    text-align: justify;
+    font-size: 11pt;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.writing {
+    font-size: 13.5pt;
+}
+
+// shared between notes and writing 
+.note,
+.writing {
+    color: black;
+
+    #author {
+        text-align: center;
+        color: gray;
+        font-size: 12pt;
+        padding-top: 15px;
+    }
+
+    #date {
+        text-align: center;
+        color: gray;
+        font-size: 12pt;
+        margin-top: -10px;
+    }
+
+    #markdown-toc {
+
+        padding-bottom: 20px;
+        text-align: left;
+
+        li {
+            ul {
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .title {
+        padding-top: 20px;
+        font-size: 20pt;
+        text-align: center;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 18pt;
+        padding-bottom: 15px;
+        padding-top: 20px;
+    }
+
+    h2 {
+        font-size: 16pt;
+        font-weight: bold;
+        padding-top: 16px;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    .caption {
+        font-size: 12pt;
+        color: gray;
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+    }
+
+    #center {
+        text-align: center;
+    }
+}
+
+
+
+// research notes only 
+.note {
+    text-align: justify;
+
+    img {
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
+
+// writing only 
+.writing {
+    .twitter-tweet {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    #img-50 {
+        width: 50%;
+    }
+
+    #img-80 {
+        width: 80%;
+    }
+
+    #img-70 {
+        width: 70%;
+    }
+
+    #img-90 {
+        width: 90%;
+    }
+
+    #img-40 {
+        width: 40%;
+    }
+
+    #img-60 {
+        width: 60%;
+    }
+}
+
+
+.container {
+    width: 60em;
+    max-width: 95%;
+}
+
+html {
+    scroll-padding-top: 3.5rem;
+    /* height of sticky header */
+}

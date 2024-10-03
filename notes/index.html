@@ -1,0 +1,118 @@
+---
+layout: default
+title: My Blog
+---
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        /* background-color: #f4f4f4; */
+    }
+
+    .post-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .post-list li {
+        background: #fff;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-list li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .post-date {
+        font-size: 14px;
+        color: #888;
+        margin-top: 5px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .pagination .button {
+        margin: 0 10px;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pagination .button:hover {
+        opacity: 0.8;
+    }
+
+    .pagination .button.disabled {
+        background-color: #f3f3f3;
+        cursor: not-allowed;
+    }
+
+    .pagination .page_number {
+        color: #333;
+        background-color: transparent;
+        margin: 0 10px;
+    }
+</style>
+
+<main>
+    <br>
+    Here are a few of my notes that I've written over the years.<br><br>
+
+    <ul class="post-list">
+        <!-- This loops through the paginated posts -->
+        {% for post in paginator.posts %}
+        <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Pagination links below the posts -->
+    <div class="pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="previous button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        {% else %}
+        <span class="previous button disabled">
+            <i class="fas fa-arrow-left"></i>
+        </span>
+        {% endif %}
+        <span class="page_number">
+            {{ paginator.page }} / {{ paginator.total_pages }}
+        </span>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="next button">
+            <i class="fas fa-arrow-right"></i>
+        </a>
+        {% else %}
+        <span class="next button disabled">
+            <i class="fas fa-arrow-right"></i>
+        </span>
+        {% endif %}
+    </div>
+</main>

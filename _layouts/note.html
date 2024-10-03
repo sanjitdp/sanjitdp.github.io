@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="note-div">
+    <article class="note">
+      <small>
+        <a id="links" , href="/notes/index.html" , class="noprint">&larr;&nbsp; Back to all notes</a>
+      </small>
+      <br /><br />
+      <p class='title'>{{ page.title }}</p>
+      <p id="author">{{ page.author }}</p>
+      <p id="date">{{ page.date | date: '%B %d, %Y' }}</p>
+      <br />
+      {{ content }}
+      <br />
+      <small>
+        <a id="links" , href="/notes/index.html" , class="noprint">&larr;&nbsp; Back to all notes</a>
+      </small>
+    </article>
+  </div>
+</div>

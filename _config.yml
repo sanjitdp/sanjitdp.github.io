@@ -1,0 +1,73 @@
+# Built with Jekyll 3.6.0
+
+# Setup
+title: Sanjit Dandapanthula
+tagline: "Mayhem & Math"
+description: "This is the personal website of Sanjit Dandapanthula; it contains my information and some math notes."
+url: "https://sanjitdp.github.io/"
+baseurl: "https://sanjitdp.github.io/"
+
+# About/contact
+author:
+  name: Sanjit Dandapanthula
+  url: sanjitdp.github.io
+  email: sanjitd@cmu.edu
+
+social:
+  name: Sanjit Dandapanthula
+  links:
+    - https://github.com/sanjitdp
+    - https://www.linkedin.com/in/sanjitd/
+
+# Permalinks
+permalink: /notes/:title/
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:title/
+
+# Set encoding to UTF-8
+encoding: UTF-8
+
+# Markdown specs
+markdown: kramdown
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  footnote_backlink: "&#x21a9;&#xfe0e;"
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  syntax_highlighter: rouge
+  parse_block_html: true
+
+# Exclusions from the final site
+exclude:
+  - optional
+  - vendor
+  - ed..gemspec
+  - Gemfile
+  - Gemfile.lock
+  - backstop_data
+  - backstop.json
+
+# Theme
+# (Used for local or custom-server deployments)
+# Uncomment the `theme` line if using the Ed. theme gem on your own computer or server.
+# See https://jekyllrb.com/docs/themes/
+# theme: "ed."
+
+# Remote Theme
+# (Used only for GitHub deployments)
+# See https://help.github.com/en/articles/adding-a-jekyll-theme-to-your-github-pages-site
+remote_theme: minicomp/ed
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+paginate: 10
+paginate_path: "/notes/page:num/"

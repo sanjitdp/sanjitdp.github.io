@@ -1,0 +1,33 @@
+---
+sitemap: false
+---
+
+
+/*
+  Common Variables
+
+  Feel free to change!
+*/
+
+/* Fonts */
+$main-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+$heading-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+$regular-font-size: 13pt; /*1.25em; /* 20px / 16px = 1.25em; support text resizing in all browsers */
+
+
+/*
+  Color
+
+  Make sure to leave color-scheme in `_config.yml` file empty for granular control
+*/
+
+$text-color: #686565;
+$heading-color: #000000;
+$link-color: #121a84;
+
+@import "ed";
+@import "syntax";
+@import "posts";
+@import "papers";
+@import "footer";
+@import "subscribe";

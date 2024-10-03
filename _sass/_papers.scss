@@ -1,0 +1,54 @@
+.papers {
+
+  h1 {
+    padding-top: 20px;
+  }
+
+  p {
+    strong {
+      color: black;
+    }
+  }
+
+
+  .pubtitle {
+    font-weight: bold;
+    color: black;
+  }
+
+
+  .papers-table {
+    border: 0px;
+    margin-top: 35px;
+
+    tr:nth-child(odd) td {
+      background-color: white;
+    }
+
+    td {
+      border: 0px;
+      padding: 0;
+      vertical-align: top;
+      padding-bottom: 20px;
+    }
+
+    .pubinfo {
+      text-align: right;
+
+      #highlight {
+        color: black;
+        font-weight: bold;
+        font-size: 10pt;
+      }
+    }
+
+    #highlight {
+      color: green;
+      // font-weight: bold;
+    }
+  }
+
+
+
+
+}

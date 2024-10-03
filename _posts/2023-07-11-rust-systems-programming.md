@@ -2,10 +2,7 @@
 layout: note
 title: Experiments with systems programming in Rust
 date: 2023-07-11
-categories: [systems-programming]
-tags: [rust, pyo3, concurrency, python, ai]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 This summer, I'm working as a project manager and research intern in the [IPAM RIPS](https://www.ipam.ucla.edu/programs/student-research-programs/research-in-industrial-projects-for-students-rips-2023-los-angeles/) program, which is a math REU focused on solving real-world problems from industry sponsors. For my project, I’m currently working for a startup company on applying new patented particle-type methods for optimal control to solving interesting problems in artificial intelligence.

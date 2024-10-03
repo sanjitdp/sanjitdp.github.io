@@ -2,10 +2,7 @@
 layout: note
 title: Asymptotic statistics of arithmetic functions
 date: 2023-07-18
-categories: [analytic-number-theory]
-tags: [natural-density, logarithmic-density, number-theory, analysis, arithmetic-functions]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 These are my solutions to some [problems](https://terrytao.wordpress.com/2014/11/23/254a-notes-1-elementary-multiplicative-number-theory/) written by [Terence Tao](https://terrytao.wordpress.com/) for Math 254A (grad. analytic number theory) at UCLA. I actually enrolled in this class in Fall 2022 without any of the nine relevant prerequisite courses, but around the fourth week of the class, Prof. Tao began using some more advanced Fourier-analytic techniques (Fourier transforms on finite groups, representation theory, etc.). Eventually, the problems began to require more intuition from Fourier analysis and representation theory (which I lacked) so I ended up dropping this class after four weeks because I was spending too much time on the homeworks.

@@ -2,10 +2,7 @@
 layout: note
 title: Concentration inequalities for nearest neighbors in hypercubes
 date: 2023-06-26
-categories: [high-dimensional-probability]
-tags: [concentration-inequalities, n-ball, k-nearest-neighbors, sub-gaussian]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 Here's a cool result about the concentration of $k$th nearest neighbors of points drawn uniformly randomly from the $d$-dimensional unit hypercube. First, suppose we draw $X_1, \cdots, X_n$ uniformly randomly from $[0, 1]^d$. For $1 \leq k \leq n$ and $1 \leq i \leq n$, we define $R_k(X_i)$ to be the distance from $X_i$ to its $k$th nearest neighbor.

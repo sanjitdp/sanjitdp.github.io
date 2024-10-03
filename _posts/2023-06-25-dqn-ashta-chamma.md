@@ -2,11 +2,7 @@
 layout: note
 title: Deep reinforcement learning to play Ashta Chamma
 date: 2023-06-25
-categories: [deep-learning]
-tags: [cs, ashta-chamma, dqn, reinforcement-learning, ai, deep-learning]
-math: true
-comments: true
-authors: [sanjit, kason]
+author: Sanjit Dandapanthula and Kason Ancelin
 ---
 
 This is a brief paper written by myself and [Kason Ancelin](https://www.github.com/kasonancelin/) (UCLA) for our final project in CS 260C (grad. deep learning). We used [deep-Q learning](https://huggingface.co/learn/deep-rl-course/unit3/deep-q-algorithm?fw=pt) with [experience replay](https://paperswithcode.com/method/experience-replay#:~:text=Experience%20Replay%20is%20a%20replay,episodes%20into%20a%20replay%20memory.) to train an agent to play [Ashta Chamma](https://en.wikipedia.org/wiki/Chowka_bhara), a board game that I play with my grandmother in India. Ashta Chamma is somewhat similar to Sorry, Ludo, or Trouble (if you're familiar with those games). All of the code that we wrote can be found in the associated [repository](https://github.com/sanjitdp/dqn-ashta-chamma) on GitHub. You can run the `play.py` file on your local machine to play against any of our preset policies or the final trained deep reinforcement learning agent.

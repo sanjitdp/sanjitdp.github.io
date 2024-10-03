@@ -2,10 +2,7 @@
 layout: note
 title: The sub-Gaussian distributional Johnson-Lindenstrauss lemma 
 date: 2023-12-07
-categories: [high-dimensional-probability]
-tags: [cs, algorithms, concentration-inequalities, sub-gaussian]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 {:toc}

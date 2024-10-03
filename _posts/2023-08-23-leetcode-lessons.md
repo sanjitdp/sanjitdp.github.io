@@ -2,10 +2,7 @@
 layout: note
 title: A few programming lessons from LeetCode
 date: 2023-08-23
-categories: [algorithms]
-tags: [data-structures, algorithms, cs]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 In the past three weeks, I've solved over 130 problems on [LeetCode](https://leetcode.com), a popular site for competitive programming which contains thousands of fun problems on data structures and algorithms. The problems on LeetCode are divided into three categories: Easy, Medium, and Hard. Many of these problems (or problems in a similar style) tend to appear in software engineering interviews, so LeetCode has sort of become a cultural part of the computer science major at university.

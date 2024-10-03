@@ -2,10 +2,7 @@
 layout: note
 title: Some variants of the Basel problem
 date: 2023-07-04
-categories: [complex-analysis, fourier-analysis]
-tags: [analysis, infinite-series, fourier-series, complex-analysis]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 This post studies the [Basel problem](https://en.wikipedia.org/wiki/Basel_problem), named after the [hometown](https://en.wikipedia.org/wiki/Basel) of Euler. This problem was unsuccessfully attempted by three members of the Bernoulli family before it was famously solved by Euler in 1735. The Euler problem is to explicitly compute $\zeta(2) = \sum_{n=1}^\infty \frac{1}{n^2}$, where $\zeta$ denotes the [Riemann zeta](https://en.wikipedia.org/wiki/Riemann_zeta_function) function. We know that the sum is convergent by the $p$-series test, but the Basel problem is to compute its explicit value. The result is surprising, so here's a solution to the Basel problem that I wrote up using complex analytic techniques. Later in this post, I'll also include my solution to a variant of the Basel problem using Fourier analysis.

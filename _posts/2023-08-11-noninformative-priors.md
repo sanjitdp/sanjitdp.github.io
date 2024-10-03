@@ -2,10 +2,7 @@
 layout: note
 title: Noninformative priors and Bayesian statistics
 date: 2023-08-11
-categories: [bayesian-statistics]
-tags: [statistics, bayesian-statistics, noninformative-prior, jeffreys-prior, real-analysis]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 In this post, I want to write about an interesting computation I did using Bayesian statistics. I thought this example was particularly cool because it involves the beta distribution in a surprising way.

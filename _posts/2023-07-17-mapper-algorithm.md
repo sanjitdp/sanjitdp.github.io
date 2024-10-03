@@ -2,10 +2,7 @@
 layout: note
 title: The Mapper algorithm for topological data analysis (TDA)
 date: 2023-07-17
-categories: [differential-geometry]
-tags: [mapper-algorithm, tda, data-science, cs, algorithms]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 In this post, I'll discuss some of the ways in which differential geometry can be applied to study the topological features of a dataset. We'll discuss some of the fundamental concepts behind [topological data analysis](https://en.wikipedia.org/wiki/Topological_data_analysis) (TDA), and my goal is to provide an exposition to the [Mapper algorithm](https://research.math.osu.edu/tgda/mapperPBG.pdf), the most commonly-used TDA algorithm.

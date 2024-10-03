@@ -2,10 +2,7 @@
 layout: note
 title: Selected proofs from measure-theoretic probability
 date: 2023-08-01
-categories: [probability-theory]
-tags: [real-analysis, measure-theory, analysis, laws-of-large-numbers, borel-cantelli-lemmas, kolmogorov-zero-one, central-limit-theorem]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 This post will contain some problems I solved as part of Math 275A (grad. probability theory) at UCLA, taught by [Tim Austin](https://www.math.ucla.edu/~tim/) last fall. Many of these problems ended up not being submitted due to the [UC-UAW TA strike](https://www.universityofcalifornia.edu/UAW), but I still learned a lot from writing up these solutions.

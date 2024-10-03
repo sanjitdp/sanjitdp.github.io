@@ -2,10 +2,7 @@
 layout: note
 title: Assorted hitting times of Brownian motion
 date: 2023-06-27
-categories: [stochastic-processes]
-tags: [brownian-motion, feller-process, hitting-time, stopping-time, exit-time, reflection-principle]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 This post will contain some calculations I've done for hitting times of Brownian motion. The purpose of writing out this post is to remind myself of some common tricks used for computations with Brownian motion, including the reflection principle and optional stopping theorem.

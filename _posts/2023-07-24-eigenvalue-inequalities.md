@@ -2,10 +2,7 @@
 layout: note
 title: A few interesting eigenvalue inequalities
 date: 2023-07-24
-categories: [numerical-linear-algebra]
-tags: [linear-algebra, numerical-analysis, analysis, scientific-computing]
-math: true
-comments: true
+author: Sanjit Dandapanthula
 ---
 
 In this post, I'll prove some eigenvalue inequalities that are sometimes used in numerical linear algebra. Note that several of these results are exercises from the book "[Topics in random matrix theory](https://terrytao.files.wordpress.com/2011/02/matrix-book.pdf)". We'll start with an easy optimization problem.

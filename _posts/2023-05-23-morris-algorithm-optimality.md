@@ -236,7 +236,7 @@ Therefore, the solution has to be unique (this is Lemma 4 in [the same paper](ht
 
 However, when Jelani Nelson and Huacheng Yu [plotted](https://arxiv.org/pdf/2010.02116.pdf) the empirical cumulative distributions of the relative errors of `FloatingPointCounter` and Morris++, they obtained the following surprising result:
 
-![Plot of relative errors of floating point counter and Morris++ counter](/assets/images/bayes.jpeg){: width="720"}
+![Plot of relative errors of floating point counter and Morris++ counter](/images/morris-algorithm/relative-errors.png){: width="720"}
 <p class='caption'>
 Relative errors of the floating point counter and the Morris++ counter
 </p>

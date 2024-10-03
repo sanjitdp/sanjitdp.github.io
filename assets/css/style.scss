@@ -1,8 +1,4 @@
----
-sitemap: false
----
-
-
+--- sitemap: false ---
 /*
   Common Variables
 
@@ -12,7 +8,8 @@ sitemap: false
 /* Fonts */
 $main-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 $heading-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-$regular-font-size: 13pt; /*1.25em; /* 20px / 16px = 1.25em; support text resizing in all browsers */
+$regular-font-size: 13pt;
+/*1.25em; /* 20px / 16px = 1.25em; support text resizing in all browsers */
 
 
 /*
@@ -28,6 +25,4 @@ $link-color: #121a84;
 @import "ed";
 @import "syntax";
 @import "posts";
-@import "papers";
 @import "footer";
-@import "subscribe";

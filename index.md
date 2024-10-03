@@ -32,9 +32,9 @@ title: "Sanjit Dandapanthula"
 <div id='headerim'>
 <img id='im' src="/assets/images/sanjit.jpg">
 <p>
-    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/sanjitdp" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/sanjitd" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:sanjitd@cmu.edu"><i class="fas fa-envelope"></i></a>
 </p>
 </div>
 

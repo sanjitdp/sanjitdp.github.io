@@ -256,7 +256,7 @@ In April 2022 (very recently!), Jelani Nelson and Huacheng Yu published [this pa
 > Then, letting $M$ denote the required memory in bits, we have the bound:
 > <center> $\mathbb{P}(M > S) < \exp( -C^\prime \exp(C^{\prime\prime} S))$. </center>
 > Furthermore, this algorithm is asymptotically optimal up to a constant factor: any randomized algorithm which is promised that the final counter is in $\lbrace 1, 2, \cdots, n \rbrace$ has space complexity lower bounded by, with high probability:
-> <center> $\Omega\left( \min\left\{ \log(n), \log(\log(n)) + \log\left( \frac{1}{\epsilon} \right) + \log\left( \log\left( \frac{1}{\delta} \right) \right) \right\} \right)$. </center>
+> <center> $\begin{align*}\Omega\left( \min\left\{ \log(n), \log(\log(n)) + \log\left( \frac{1}{\epsilon} \right) + \log\left( \log\left( \frac{1}{\delta} \right) \right) \right\} \right)\end{align*}$. </center>
 
 The algorithm described by the authors is Morris++ with a general exponent $1 + a$; This is the result we've been building up to, and now I'll give an outline of their proof. For the upper bound, the authors mirror the proof of the Chernoff bound with some additional machinery. First, let $Z_i$ denote the number of increments it takes before the counter increases from $i$ to $i + 1$. Letting $p_i = (1 + a)^{-i}$, notice that $Z_i \sim \operatorname{Geo}(p_i)$ with the following pmf:
 

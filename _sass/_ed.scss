@@ -91,11 +91,22 @@ body {
   Center the page content.
 */
 
-.container {
+// .container {
+//   padding-left: 1rem;
+//   padding-right: 1rem;
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 60em;
+//   max-width: 95%;
+// }
+
+.middle-container {
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
+  width: 60em;
+  max-width: 95%;
 }
 
 // @media (min-width: 56em) {

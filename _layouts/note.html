@@ -11,7 +11,7 @@ layout: default
       <br /><br />
       <p class='title'>{{ page.title }}</p>
       <p id="author">{{ page.author }}</p>
-      <p id="date">{{ page.date | date: '%B %d, %Y' }}</p>
+      <p id="date">{{ page.date | date: '%B %-d, %Y' }}</p>
       <br />
       {{ content }}
       <br />
@@ -21,3 +21,29 @@ layout: default
     </article>
   </div>
 </div>
+
+<button id="scrollToTopBtn" class="scroll-to-top" title="Go to top">&uarr;</button>
+<script>
+  // Get the button
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  // Function to check scroll position and show/hide button
+  function checkScrollPosition() {
+    if (document.body.scrollTop > window.innerHeight || document.documentElement.scrollTop > window.innerHeight) {
+      scrollToTopBtn.style.display = "block";
+    } else {
+      scrollToTopBtn.style.display = "none";
+    }
+  }
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = checkScrollPosition;
+
+  // Call the function on page load
+  window.onload = checkScrollPosition;
+
+  // When the user clicks on the button, scroll to the top of the document
+  scrollToTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

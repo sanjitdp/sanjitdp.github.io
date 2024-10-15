@@ -46,4 +46,77 @@ layout: default
   scrollToTopBtn.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const tocLinks = document.querySelectorAll('#markdown-toc a');
+    const sections = Array.from(tocLinks).map(link => document.querySelector(link.getAttribute('href')));
+
+    window.addEventListener('scroll', () => {
+      let currentSection = sections[0];
+
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionBottom = section.getBoundingClientRect().bottom;
+        const viewportHeight = window.innerHeight;
+        const headerHeight = 3.5 * 16; // 3.5rem
+
+        if (sectionTop < viewportHeight && sectionBottom > 0) {
+          currentSection = section;
+          break;
+        }
+
+        // Check if scrolling up and the section is off the top of the viewport
+        if (sectionTop < 0 && sectionBottom > 0) {
+          currentSection = section;
+        } else if (sectionTop < 0 && i > 0 && sections[i - 1].getBoundingClientRect().bottom > 0) {
+          currentSection = sections[i - 1];
+        }
+      }
+
+      // Check if the current section header isn't in the viewport when scrolling up
+      if (currentSection.getBoundingClientRect().top < 0) {
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i];
+          if (section.getBoundingClientRect().top >= 0) {
+            currentSection = sections[i - 1] || sections[0];
+            break;
+          }
+        }
+      }
+
+      const tocItems = document.querySelectorAll('#markdown-toc li');
+      tocItems.forEach(item => {
+        item.classList.remove('unfold');
+        item.querySelector('a').classList.remove('active');
+      });
+
+      tocLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentSection.id}`) {
+          let parent = link.parentElement;
+          link.classList.add('active');
+          while (parent && parent.id !== 'markdown-toc') {
+            if (parent.tagName === 'LI') {
+              parent.classList.add('unfold');
+            }
+            parent = parent.parentElement;
+          }
+        }
+      });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    headers.forEach(header => {
+      const id = header.id;
+      if (id) {
+        const anchor = document.createElement('a');
+        anchor.href = `#${id}`;
+        anchor.className = 'header-link';
+        anchor.innerHTML = '#';
+        header.appendChild(anchor);
+      }
+    });
+  });
 </script>

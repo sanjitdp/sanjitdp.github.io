@@ -57,7 +57,7 @@ layout: default
       for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
         const sectionTop = section.getBoundingClientRect().top;
-        const sectionBottom = section.getBoundingClientRect().bottom;
+        const sectionBottom = (i < sections.length - 1) ? section.getBoundingClientRect().bottom : Infinity;
         const viewportHeight = window.innerHeight;
         const headerHeight = 3.5 * 16; // 3.5rem
 

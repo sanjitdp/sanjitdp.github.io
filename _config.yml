@@ -4,8 +4,8 @@
 title: Sanjit Dandapanthula
 tagline: "A personal profile and collection of math notes."
 description: "This is the personal website of Sanjit Dandapanthula; it contains my information and some math notes."
-url: ""
-baseurl: ""
+url: "https://sanjitdp.github.io/"
+baseurl: "https://sanjitdp.github.io/"
 
 # About/contact
 author:

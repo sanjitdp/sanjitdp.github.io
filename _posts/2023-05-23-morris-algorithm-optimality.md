@@ -110,7 +110,7 @@ This bound suggests that this algorithm is really not that great. In particular,
 
 Okay, so we have a not-so-great algorithm. But we're computer scientists, and that isn't going to stop us from trying to make this work! There are a few tricks we can use to sharpen our estimate.
 
-## Trick #1
+# Trick #1
 
 We'll create $s$ independent instantiations of the Morris algorithm and take an average to reduce the variance. Letting $\tilde{n}\_i$ be the estimator given by the $i$th instantiation, our estimator is $\tilde{n} = \frac{1}{s} \sum_{i=1}^s \tilde{n}_i$. Then, by properties of variance and our previous result about Morris' original algorithm:
 
@@ -128,7 +128,7 @@ $$
 
 Now, we can fix a failure probability $\delta > 0$ and choose $s \geq \frac{1}{2 \epsilon^2 \delta}$ so that $\mathbb{P}(\lvert \tilde{n} - n \rvert \geq n \epsilon) < \delta$. This algorithm is sometimes called "Morris+".
 
-## Trick #2
+# Trick #2
 
 Here's another neat trick to further reduce the dependence of our bound on the failure probability $\delta$ from $\frac{1}{\delta}$ to $\log\left( \frac{1}{\delta} \right)$. Run $t$ instantiations of Morris+, each with failure probability $\delta = \frac{1}{3}$, for instance. Then, let $Y_i$ be 1 if the $i$th Morris+ algorithm fails and 0 otherwise, so that we get the following bound for free:
 
@@ -165,7 +165,7 @@ Notice that for fixed $\epsilon$ and $\delta$, the space complexity of Morris++ 
 
 Morris' algorithm has been very popular for keeping approximate counts in large data streams, and there have been a number of extensions made over the years.
 
-## Generalizing the exponent
+# Generalizing the exponent
 
 One simple extension to Morris' algorithm (introduced by Robert Morris in his [original paper](https://dl.acm.org/doi/pdf/10.1145/359619.359627)) is to fix $a \geq 0$ and increment the counter with probability $\frac{1}{(1 + a)^{X_n}}$. Note that the naïve counter algorithm corresponds to $a = 0$; this algorithm requires $\log_2(n)$ bits and has no variance. On the other hand, when $a = 1$ we obtain Morris' original algorithm, which has larger variance but only requires on the order of $\log_2(\log_2(n))$ bits of storage. In fact, $a$ is a parameter controlling the tradeoff between space complexity and approximation error.
 
@@ -175,7 +175,7 @@ $$
 O\left( \log\left( \frac{1}{\epsilon} \right) + \log(\log(n)) + \log\left( \frac{1}{\delta} \right) \right).
 $$
 
-## Floating-point counters
+# Floating-point counters
 
 More recently, there was a more complex [algorithm](https://arxiv.org/pdf/0904.3062.pdf) proposed in 2018 by [Miklós Csűrös](https://diro.umontreal.ca/en/repertoire-departement/professeurs/professeur/in/in14308/sg/Miklós%20Csűrös/) using a floating-point counter. This algorithm (parametrized by $d \in \mathbb{Z}^+$) works as follows:
 
@@ -216,7 +216,7 @@ class FloatingPointCounter:
 
 Intuitively, this algorithm is inspired by Morris' algorithm but slows down the update by an additional factor of approximately $2^d$.
 
-## Counting chains
+# Counting chains
 
 You may be wondering how the unbiased estimator in the floating point counter was calculated. Csűrös defines a counting chain as a Markov chain $(X_n)_{n=1}^\infty$ with transition probabilities $p(k, k+1) = q_k$ and $p(k, k) = 1 - q_k$, given $X_0 = 0$. In general, there is actually a closed-form for unbiased count estimators (we would like $\mathbb{E}[f(X_n)] = n$) of counting chains, with $f(0) = 0$:
 
@@ -232,7 +232,7 @@ $$
 
 Therefore, the solution has to be unique (this is Lemma 4 in [the same paper](https://arxiv.org/pdf/0904.3062.pdf)).
 
-## Experimentation
+# Experimentation
 
 However, when Jelani Nelson and Huacheng Yu [plotted](https://arxiv.org/pdf/2010.02116.pdf) the empirical cumulative distributions of the relative errors of `FloatingPointCounter` and Morris++, they obtained the following surprising result:
 

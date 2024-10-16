@@ -40,7 +40,7 @@ title: "Sanjit Dandapanthula"
 
 <div id='index-intro-text' markdown='1'>
 
-## About me
+# About me
 
 <p markdown='1'>
 I'm a first year PhD student at Carnegie Mellon University studying [statistics](https://www.cmu.edu/dietrich/statistics-datascience/index.html) and [machine learning](https://www.ml.cmu.edu/).
@@ -50,7 +50,7 @@ I'm a first year PhD student at Carnegie Mellon University studying [statistics]
 
 <div id='index-main-text' markdown='1'>
 
-## Research
+# Research
 
 <p markdown="1">
 I'm currently interested in the theory of statistics and machine learning. More details to come.

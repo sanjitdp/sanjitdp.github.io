@@ -12,7 +12,7 @@ In this post, I'll discuss a version of the [distributional Johnson-Lindenstraus
 
 I originally learned about the DJL lemma from Prof. [Jelani Nelson](https://people.eecs.berkeley.edu/~minilek/) during my participation in an REU with him in 2022. Prof. Nelson is an expert in this field -- in fact, he proved the [optimality of the JL lemma bound](https://arxiv.org/pdf/1609.02094.pdf) in 2017.
 
-## Introduction
+# Introduction
 
 The setup of the problem is as follows: fix $\epsilon > 0$ and $\delta > 0$. Suppose we have a set of points $u_1, u_2, \cdots, u_N \in \mathbb{R}^d$ and let $X = \frac{Z}{\sqrt{m}}$ where $Z \in \mathbb{R}^{m \times d}$ has independent zero-mean, unit-variance, and [sub-Gaussian](https://en.wikipedia.org/wiki/Sub-Gaussian_distribution) entries. Then, if $m$ is chosen large enough (we'll make this more precise soon), the DJL lemma gives the following bound for all $i \neq j$, with probability at least $1 - \epsilon$:
 
@@ -28,7 +28,7 @@ Note that many kernel methods from statistical learning (such as the [$k$-neares
 
 In fact, it's even better than that! Suppose we've used the DJL lemma to reduce the dimension of our dataset, but we suddenly get 20 new data points. We don't even need to do very much re-computation, since the matrix $X$ has no dependence on the data. Instead, we just compute $X u_i$ for each of our 20 new data points, and our pre-computed projections all still work. Additionally, if $X$ is sparse, it becomes even quicker to compute these projections. In particular, the algorithmic efficiency of applying the DJL lemma makes it a good choice when working with big data.
 
-## Sub-Gaussian variance bound
+# Sub-Gaussian variance bound
 
 Suppose that $X$ is sub-Gaussian with parameter $\sigma$; this is equivalent to the bound $\mathbb{E}[e^{\lambda X}] \leq e^{\sigma^2 \lambda^2 / 2}$ on the moment-generating function. First, Jensen's inequality gives $e^{\lambda \mathbb{E}[X]} \leq \mathbb{E}[e^{\lambda X}] \leq e^{\sigma^2 \lambda^2 / 2}$, so taking the logarithm gives:
 
@@ -65,7 +65,7 @@ $$
 
 This is the desired inequality.
 
-## Johnson-Lindenstrauss Lemma
+# Johnson-Lindenstrauss Lemma
 
 First, we'll show that if $z \in \mathbb{R}^d$ is a random vector with independent components, each zero-mean and sub-Gaussian with parameter $\sigma_i \leq 1$, then $\langle z, v \rangle$ is sub-Gaussian with parameter 1 for any unit vector $v \in \mathbb{R}^d$. To see this, note that:
 
@@ -160,7 +160,7 @@ $$
 
 This gives the distributional Johnson-Lindenstrauss lemma in the sub-Gaussian case as desired.
 
-## Example application
+# Example application
 
 In fact, we can explicitly compute an example of a sparse matrix $X$ with an associated integer matrix $Z$ that satisfies the distributional Johnson-Lindenstrauss lemma as stated above. For $s \in \left[ 0, \frac{1}{2} \right]$, define the following probability distribution on $\{ -1, 0, 1 \}$:
 

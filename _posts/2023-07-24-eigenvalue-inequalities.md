@@ -10,7 +10,7 @@ author: Sanjit Dandapanthula
 
 In this post, I'll prove some eigenvalue inequalities that are sometimes used in numerical linear algebra. Note that several of these results are exercises from the book "[Topics in random matrix theory](https://terrytao.files.wordpress.com/2011/02/matrix-book.pdf)". We'll start with an easy optimization problem.
 
-## Positive semi-definite approximation
+# Positive semi-definite approximation
 
 For a symmetric matrix $A$, we would like to solve the optimization problem:
 
@@ -54,7 +54,7 @@ $$
 
 However, we can achieve this lower bound if we choose $Y = \operatorname{ReLU}(\Lambda)$ (where $\operatorname{ReLU}$ denotes the [rectified linear unit](https://en.wikipedia.org/wiki/Rectifier_(neural_networks))), and the result follows.
 
-## Schur-Horn inequalities
+# Schur-Horn inequalities
 
 In this section, we're going to prove the [Schur-Horn inequalities](https://en.wikipedia.org/wiki/Schur–Horn_theorem); suppose $A$ is symmetric. Since $A$ is symmetric we know that we can diagonalize $A$ with orthonormal eigenvectors as $A = Q \Lambda Q^\top$ where $Q$ is orthogonal and $\Lambda$ is diagonal. Now, suppose $u_i$ are the columns of $Q$ with associated eigenvalues $\lambda_i$ so that $\Lambda = \operatorname{diag}(\lambda_i)$. Now, we know that the $u_i$ form a basis for $\mathbb{R}^n$; let $V_k$ be the $k$-dimensional span of $u_1, \cdots, u_k$. Next, if $\lbrace v_1, \cdots, v_m \rbrace$ is any orthonormal basis for a subspace $V$, we define the [partial trace](https://en.wikipedia.org/wiki/Partial_trace) of $A$ over $V$ as:
 
@@ -116,7 +116,7 @@ $$
 
 These are called the Schur-Horn inequalities.
 
-## Ky Fan inequality
+# Ky Fan inequality
 
 In this section, we're going to quickly prove the [Ky Fan eigenvalue inequality](https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-5/issue-S2/A-comparison-theorem-for-eigenvalues-of-normal-matrices/pjm/1172000954.pdf) using the results we've shown above. First, we know by inequalities proven above that:
 
@@ -151,7 +151,7 @@ $$
 
 This establishes the Ky Fan inequality.
 
-## Davis-Kahan $\sin(\Theta)$ theorem
+# Davis-Kahan $\sin(\Theta)$ theorem
 
 In this section, we'll prove a version of the [Davis-Kahan $\sin(\Theta)$ theorem](https://core.ac.uk/download/pdf/82382146.pdf), which is a result from random matrix theory which is commonly used in image denoising (along with other applications). The statement of this theorem is somewhat long and seems unmotivated, but Philippe Rigollet at MIT has some [lecture notes](https://math.mit.edu/~rigollet/IDS160/Notes/IDS_160_Lecture_10.pdf) containing a few neat applications.
 
@@ -265,7 +265,7 @@ $$
 
 Dividing by $\delta$ on both sides of the inequality, we deduce the Davis-Kahan $\sin(\Theta)$ theorem.
 
-## Low-rank perturbations
+# Low-rank perturbations
 
 Here, we're going to characterize the singular values of a matrix as the solution to an optimization problem involving low-rank perturbations; in particular, we'll show that $\sigma_n(A) = \min_{X, \operatorname{rank}(A+X) < n} \lVert X \rVert _2$. We'll do this by showing the inequalities in both directions.
 
@@ -303,7 +303,7 @@ $$
 
 Therefore, we find that $\min_{X_0, \operatorname{rank}(X_0) < n} \lVert A - X_0 \rVert _2 \geq \sigma_n$, and the result follows.
 
-## Small gain theorem
+# Small gain theorem
 
 Finally, we'll prove a version of the [small gain theorem](https://en.wikipedia.org/wiki/Small-gain_theorem) as a corollary of the previous result; in particular, we want to show that if $A$ has full rank, then $\min_{X, \operatorname{rank}(I-AX) < n} \lVert X \rVert _2 = \frac{1}{\sigma_1(A)}$. We know that because $A$ has full rank, $I-AX$ and $A^{-1}(I-AX) = A^{-1}-X$ have the same rank. Therefore, we compute:
 

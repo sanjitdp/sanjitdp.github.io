@@ -10,7 +10,7 @@ author: Sanjit Dandapanthula
 
 In this post, I want to write about an interesting computation I did using Bayesian statistics. I thought this example was particularly cool because it involves the beta distribution in a surprising way.
 
-## Noninformative priors
+# Noninformative priors
 
 Under the [Bayesian paradigm](https://en.wikipedia.org/wiki/Bayesian_statistics), the statistician assumes a [likelihood function](https://en.wikipedia.org/wiki/Likelihood_function) $f(x \vert \theta)$ which gives the probability of observing some data $x$ given an unknown parameter $\theta$. Furthermore, the statistician needs to quantify their initial belief by placing a [prior probability distribution](https://en.wikipedia.org/wiki/Prior_probability) $p(\theta)$ on the unknown parameter $\theta$. Then, Bayes' rule gives the update for this belief about $\theta$:
 
@@ -28,7 +28,7 @@ Hmm... so we have actually placed a nontrivial belief on $\frac{1}{\theta}$, des
 
 Let $\mathcal{I}(\theta) = -\mathbb{E}_X\left[ \frac{\partial^2}{\partial \theta^2} \log(f(x \vert \theta)) \right]$ denote the [Fisher information](https://en.wikipedia.org/wiki/Fisher_information); this measures the curvature of the likelihood function and therefore the amount of information that $X$ carries about the unknown $\theta$. Then, it can be shown that choosing $p(\theta) \propto \sqrt{\mathcal{I}(\theta)}$ satisfies the invariance condition. This choice of $p(\theta)$ is known as the [Jeffreys prior](https://en.wikipedia.org/wiki/Jeffreys_prior), and most modern Bayesian statisticians agree that this is generally a better choice for a noninformative prior than Laplace's choice of the uniform distribution.
 
-## Binomial noninformative prior
+# Binomial noninformative prior
 
 As an example, we'll compute the Jeffreys noninformative prior for the success probability $\theta$ where $X \sim \operatorname{Bin}(n, \theta)$ is a binomial random variable. We know since $X \sim \operatorname{Bin}(n, \theta)$ that:
 
@@ -88,7 +88,7 @@ $$
 
 In particular, $p(\theta) \propto \theta^{-\frac{1}{2}} (1 - \theta)^{-\frac{1}{2}}$. In particular, this means that the uninformed prior $p(\theta)$ follows the [beta distribution](https://en.wikipedia.org/wiki/Beta_distribution) $\operatorname{Be}\left( \frac{1}{2},\ \frac{1}{2} \right)$.
 
-## Marginal distribution with beta prior
+# Marginal distribution with beta prior
 
 Now, suppose our prior for $\theta$ is $p(\theta) \sim \operatorname{Be}(\alpha, \beta)$. Let's compute the associated marginal distribution of $X \sim \operatorname{Bin}(n, \theta)$. We compute the prior distribution of $X$ directly, where $B(\alpha, \beta) = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha + \beta)}$ is the [beta function](https://en.wikipedia.org/wiki/Beta_function) and $\Gamma$ denotes the [gamma function](https://en.wikipedia.org/wiki/Gamma_function):
 
@@ -120,7 +120,7 @@ $$
 
 This is the marginal distribution we needed to compute.
 
-## Constant marginal distribution
+# Constant marginal distribution
 
 Consider the setup of the previous section. In this section, we would like to answer the question, when is the marginal distribution constant? In fact, we will show that the marginal $p(X = x)$ is constant if and only if $\alpha = \beta = 1$. First, we know that since $X \sim \operatorname{Bin}(n, \theta)$:
 

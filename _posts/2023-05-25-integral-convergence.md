@@ -10,11 +10,11 @@ author: Sanjit Dandapanthula
 
 Here are a few examples where I figure out when an indefinite integral converges. There are only really a few tricks that get used over and over again (Abel's criterion, contour integration, repeated application of l'Hôpital's rule, etc.), so I figured it would be nice to collect some of these tricks in this post. These examples are both integrals I worked with last year when I was learning real analysis from Rudin.
 
-## Example #1
+# Example #1
 
 We will show that $\int_0^\infty \frac{\sin(x)}{\sqrt{x}}\ dx$ is convergent but not absolutely convergent.
 
-### Convergence analysis
+## Convergence analysis
 
 First, we know that $x \mapsto \frac{\sin(x)}{\sqrt{x}}$ is continuous on $(0, \infty)$ and is therefore integrable on the interval $(0, 1)$. Furthermore, we know that:
 
@@ -50,7 +50,7 @@ $$
 
 However, this sum is divergent by the $p$-series test (or by comparison to the harmonic series), so we deduce that the original integral $\int_0^\infty \frac{\lvert \sin(x) \rvert}{\sqrt{x}}\ dx$ is divergent. Hence $\int_0^\infty \frac{\sin(x)}{\sqrt{x}}\ dx$ is convergent but not absolutely convergent, which is what we wanted to show.
 
-### Explicit computation
+## Explicit computation
 
 In fact, now that we know it converges, let's compute $\int_0^\infty \frac{\sin(x)}{\sqrt{x}}$ using contour integration (I guess this will be good review for me). In particular, we're going to integrate $f(z) = \frac{e^{iz}}{\sqrt{z}}$ around the quarter-circle of radius $R$ in the first quadrant of $\mathbb{C}$. To be explicit, the curve we're integrating around is the composition of the following three curves:
 
@@ -117,7 +117,7 @@ $$
 
 Contour integrals are cool.
 
-## Example #2
+# Example #2
 
 Let's analyze the convergence of $\int_2^\infty \frac{1}{x^a \ln(x)^b}\ dx$ for different values of $a \in \mathbb{R}$ and $b \in \mathbb{R}$.
 

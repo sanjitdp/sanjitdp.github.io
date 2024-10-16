@@ -114,7 +114,7 @@ layout: default
         const anchor = document.createElement('a');
         anchor.href = `#${id}`;
         anchor.className = 'header-link';
-        anchor.innerHTML = '#';
+        anchor.innerHTML = '<i class="fas fa-hashtag" style="font-size: 16px; color: rgb(175, 100, 5)"></i>';
         header.appendChild(anchor);
       }
     });
@@ -145,7 +145,7 @@ layout: default
       // Position the button relative to the code block
       const rect = codeBlock.getBoundingClientRect();
       button.style.top = `${rect.top + window.scrollY + 10}px`;
-      button.style.left = `${rect.right + window.scrollX - button.offsetWidth - 10}px`;
+      button.style.left = `${rect.right + window.scrollX - button.offsetWidth - 13}px`;
     });
   });
 </script>

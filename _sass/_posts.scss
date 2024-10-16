@@ -77,18 +77,22 @@
 
     h1 {
         font-weight: bold;
-        font-size: 18pt;
+        font-size: 16pt;
         padding-bottom: 15px;
         padding-top: 20px;
     }
 
     h2 {
-        font-size: 16pt;
+        font-size: 15pt;
         font-weight: bold;
-        padding-top: 16px;
+        padding-top: 12px;
+        padding-bottom: 11px;
     }
 
-    h3 {
+    h3,
+    h4,
+    h5,
+    h6 {
         font-weight: bold;
     }
 
@@ -107,6 +111,10 @@
         background-color: #f9f9f9;
         color: #555;
         font-style: italic;
+    }
+
+    blockquote p:last-child {
+        margin-bottom: 0;
     }
 
     #center {

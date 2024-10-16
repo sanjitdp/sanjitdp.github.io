@@ -10,11 +10,11 @@ author: Sanjit Dandapanthula
 
 This post studies the [Basel problem](https://en.wikipedia.org/wiki/Basel_problem), named after the [hometown](https://en.wikipedia.org/wiki/Basel) of Euler. This problem was unsuccessfully attempted by three members of the Bernoulli family before it was famously solved by Euler in 1735. The Euler problem is to explicitly compute $\zeta(2) = \sum_{n=1}^\infty \frac{1}{n^2}$, where $\zeta$ denotes the [Riemann zeta](https://en.wikipedia.org/wiki/Riemann_zeta_function) function. We know that the sum is convergent by the $p$-series test, but the Basel problem is to compute its explicit value. The result is surprising, so here's a solution to the Basel problem that I wrote up using complex analytic techniques. Later in this post, I'll also include my solution to a variant of the Basel problem using Fourier analysis.
 
-## The Basel problem
+# The Basel problem
 
 We approach this problem by first studying the complex cotangent function.
 
-### Uniform limits of analytic functions
+## Uniform limits of analytic functions
 
 First, we'll show that the uniform limit of a sequence of holomorphic functions is itself holomorphic on a disk $D$. Suppose $(f_n)\_{n \in \mathbb{N}}$ is a sequence of holomorphic functions that uniformly converges to some function $f$ on $D$. Then suppose $T$ is any triangle contained in $D$. Because $f_n$ is holomorphic for all $n \in \mathbb{N}$ we know by Cauchy's theorem that $\int_{\partial T} f_n(z)\ dz = 0$. Fix $\epsilon > 0$ and choose $N \in \mathbb{N}$ such that $\sup_{z \in D}\ \lvert f(z) - f_n(z) \rvert < \frac{\epsilon}{\operatorname{length}(\partial T)}$ for all $n \geq N$ by uniform convergence. Then, it follows from this that:
 
@@ -29,7 +29,7 @@ $$
 
 Hence we deduce that $\int_{\partial T} f(z)\ dz = 0$ for all triangles $T$ contained in $D$, which means that $f$ is holomorphic on $D$ by Morera's theorem; we have proven our original claim.
 
-### The complex cotangent function
+## The complex cotangent function
 
 We'll start by defining a function $f$ by the following Laurent series:
 
@@ -302,7 +302,7 @@ $$
 
 Now that we have a handle on $f$, we need to prove one more lemma before arriving at the main result.
 
-### Convergence on compact subsets
+## Convergence on compact subsets
 
 Suppose $f_n, f$ are holomorphic and $f_n \to f$ converges uniformly on compact subsets of $\Omega$. Then, we'll show that $f_n^\prime \to f^\prime$ on compact subsets of $\Omega$ as well. Let $K \subseteq \Omega$ be a compact set. Notice that $\Omega$ is clearly open so we can choose $\delta_x > 0$ for each $x \in K$ such that $\overline{B\_{\delta_x}(x)} \subseteq \Omega$. Then, it's clear that $\{ B\_{\delta_x}(x) \}\_{x \in K}$ forms an open cover for $K$ and by compactness we can choose a finite subcover (after renaming) called $\{ B_{\delta_k}(x_k) \}\_{k=1}^r$. Fix $\epsilon > 0$ and choose $N \in \mathbb{N}$ such that for all $n \geq N$ we have $\sup_{z \in K}\ \lvert f(z) - f_n(z) \rvert < \epsilon$ by uniform convergence of $(f_n)$ to $f$ on compact subsets of $\Omega$. Now, for all $1 \leq k \leq r$ we know by the Cauchy inequalities that:
 
@@ -316,7 +316,7 @@ $$
 
 Since $\epsilon$ could have been chosen arbitrarily small, we deduce that $(f_n^\prime)$ converges uniformly to $f^\prime$ on $B_{\delta_k}(x_k)$ for all $1 \leq k \leq r$. Now, for any $\epsilon > 0$ there exist indices $N_1, N_2, \cdots, N_r$ such that $n \geq N_k$ implies that $\sup_{z \in B_{\delta_k}(x_k)}\ \lvert f^\prime(z) - f_n^\prime(z) \rvert < \epsilon$. Finally, we can choose $N = \max_k \{ N_k \}$ so that $n \geq N$ implies that $\sup_{z \in K}\ \lvert f^\prime(z) - f_n^\prime(z) \rvert < \epsilon$. Hence we have shown that $f_n^\prime$ converges uniformly to $f^\prime$ on compact subsets of $\Omega$. Armed with this lemma and our previous results about $f$, we can begin to see why all of this relates to the Basel problem.
 
-### Solving the Basel problem
+## Solving the Basel problem
 
 We'll now differentiate both sides of the identity that we derived for $f$. First, we find:
 
@@ -422,7 +422,7 @@ $$
 
 Thus we deduce that $\zeta(2) = \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$, which is a well-known but beautiful and surprising result!
 
-## A variant of the Basel problem
+# A variant of the Basel problem
 
 One variant of the Basel problem is to compute $\sum_{n=1}^\infty \frac{1}{n^2 + 1}$ and the associated alternating series $\sum_{n=1}^\infty \frac{(-1)^n}{n^2 + 1}$. This problem turns out to be much easier and we can compute the sums using Fourier series. First, we'll compute the Fourier series for $f(x) = e^x$ on $[-\pi, \pi]$:
 

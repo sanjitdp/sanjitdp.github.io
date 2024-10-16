@@ -14,7 +14,7 @@ Many people seem to think of LeetCode as difficult; this makes sense, since many
 
 First, many thanks to my good friend [Jack Rankin](https://github.com/jackrankin), who was my teammate at the [IPAM RIPS program](https://www.ipam.ucla.edu/programs/student-research-programs/research-in-industrial-projects-for-students-rips-2023-los-angeles/) this summer. Jack taught me many of these tricks; I'm certain this process would have taken me much longer without the generous help and friendly competition that he provided.
 
-## Picking the right data structure
+# Picking the right data structure
 
 Lesson one: most Easy problems can be solved just by picking an appropriate data structure. For instance, take the first problem on the site, which is called [Two Sum](https://leetcode.com/problems/two-sum/). In this question, we're asked to find two unique elements in an array which sum to a given `target` value and return their indices. Additionally, we are guaranteed that there is exactly one solution. This constraint is important, since we no longer need to worry about the case when there are not two numbers which sum to `target`.
 
@@ -140,7 +140,7 @@ def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
 
 Now this approach runs in 69 milliseconds and beats 99.87% of other solutions. The general principle at play is that a heap allows fast `push` and `pop` operations in $O(\log(n))$ time, so HeapSort is an easy way to merge lists. Eventually, I learned many of these principles through experience with a variety of different problems on LeetCode.
 
-## Two-pointer problems
+# Two-pointer problems
 
 One common approach in LeetCode problems is to use two pointers. This approach works well whenever the input container has some sort of monotonicity property (e.g., a sorted array, a binary search tree, etc.). For instance, consider the problem [Two Sum II](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/). This problem is the same as Two Sum (described above) but we are given a sorted input array. We could try the same approach as we did in Two Sum, which would create a dictionary mapping each element to its index. However, this approach would require $O(n)$ additional space, which we don't need here. 
 
@@ -162,7 +162,7 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 
 This is much better, because we only use $O(1)$ additional space. This "two-pointer" pattern shows up all over the place on LeetCode, and it's a good one to keep in mind.
 
-## Sliding window problems
+# Sliding window problems
 
 Another common trick is to use a sliding window which slides across all "valid" subarrays. One classic example of this is the Medium problem [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/). Given a string `s`, we want to find the longest contiguous substring without repeating characters. The idea is to use a sliding window from index `i` to index `j`. As long as there are no repeated characters, we increment `j`. If there is a repeated character, we increment `i` until there are no longer any repeats. This technique is guaranteed to find all candidates, since we find the longest substrings ending at the characters `s[j]` for `0 <= j < n`. Furthermore, since `i` and `j` are both being incremented from `0` to `n - 1`, this sliding window algorithm takes only $O(n)$ time.
 
@@ -190,7 +190,7 @@ def lengthOfLongestSubstring(self, s: str) -> int:
 
 This trick appears relatively frequently in subarray and substring questions, so it should be kept in mind.
 
-## Binary search
+# Binary search
 
 Binary search in a sorted array is simple enough (despite all the annoying off-by-one errors you inevitably get), and Python even provides built-in functions `bisect_left()` and `bisect_right()` that do this for you. However, some neater applications of binary search are in solving "maximality" questions. If we're asked to find a maximal $k$ so that a property holds, we could just binary search over the whole range of $k$ and see if the property holds for each value of $k$ that we try; this automatically gives an algorithm which has a logarithmic dependence on the size of $k$'s range!
 
@@ -220,11 +220,11 @@ def hIndex(self, citations: List[int]) -> int:
 
 In many problems (think questions in the family of maximum subarray) the optimal algorithm may be something like an $O(n)$ monotonic deque, which can be hard to come up with. On the other hand, you can easily get an $O(n \log(n))$ algorithm instead of an $O(n^2)$ algorithm without much thought using binary search, which can be a useful first step on these questions.
 
-## Graph algorithms
+# Graph algorithms
 
 A lot of graph algorithms are just recursive, and don't require much thought. First trick: the easiest way to deal with a graph is to immediately convert it to an adjacency list. This is fast and makes it easier to perform more complex algorithms on the graph. After this, the most common patterns in more involved graph questions tend to be simple search algorithms, especially depth-first search.
 
-### Depth-first search (DFS)
+## Depth-first search (DFS)
 
 Depth-first search is the simplest algorithm possible to traverse a graph. The way I remember DFS is by the associated data structure: it's just a stack algorithm. We keep a stack which represents the path we took to get to a particular node, and we pop from the stack if there are no more valid outgoing edges. In addition, we often keep a copy of the stack in the form of a hash set, which allows us to efficiently check if a vertex has been visited already and avoid cycles. Sometimes we keep track of the stack explicitly; other times, we write a recursive function and represent the stack implicitly using the function call stack. DFS is a simple algorithm, but it has many clever applications in LeetCode problems.
 
@@ -284,7 +284,7 @@ def numIslands(self, grid: List[List[str]]) -> int:
 
 DFS is used in many other places, and is typically the first thing I think of when I see a new graph question.
 
-### Breadth-first search (BFS)
+## Breadth-first search (BFS)
 
 Similarly, I remember BFS by the associated data structure: a queue. We pop the front node from a queue, append its children to the back of the queue, and continue recursively. For instance, BFS can be used to find the shortest path to any node or perform a level-order traversal of a tree or a graph (a traversal by distance from the root). One problem which uses BFS is [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/). Note that a level-order traversal is just a BFS where the queue is processed in phases by distance from the root.
 
@@ -312,7 +312,7 @@ def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
     return lot
 ```
 
-## Binary trees
+# Binary trees
 
 Most tree algorithms are either flat-out recursive or an application of one of the above search algorithms. Consider the Easy problem [Same Tree](https://leetcode.com/problems/same-tree/), where we're asked to determine whether two binary trees are identical.
 
@@ -358,11 +358,11 @@ def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
 
 Note that the other traversals also correspond to a DFS, but we just change when we process the current node.
 
-## Dynamic programming (DP)
+# Dynamic programming (DP)
 
 Dynamic programming is just the process of reducing a problem into subproblems, memorizing the solutions to any subproblems for easier reuse, and combining the subproblem solutions into a solution of the larger problem. Technically, this is top-down DP; bottom-up DP is generating the solutions to the subproblems and iteratively building up a solution to the larger problem. DP problems are generally pretty easy in my opinion, and it usually boils down to finding an appropriate subproblem to solve. Jack Rankin loves to point out that DP is equivalent to performing a DFS (which is sometimes a useful intuition to have). We try something, see if we can make it work, and then backtrack.
 
-### 1-D dynamic programming
+## 1-D dynamic programming
 
 As an example, consider the problem [Coin Change](https://leetcode.com/problems/coin-change/). Given an `amount`, we need to return the fewest number of coins from `coins` that we need to make `amount`, assuming we have an infinite amount of each coin. This is a classic DP problem, and I solved it using top-down DP. One optimization that can be made is that if we sort `coins`, we can stop considering coins which have amount larger than `n` in the DP.
 
@@ -416,7 +416,7 @@ def numDecodings(self, s: str) -> int:
     return int(dp[0])
 ```
 
-### 2-D dynamic programming
+## 2-D dynamic programming
 
 In fact, many two-dimensional DP problems can be solved using similar approaches. For instance, consider the Medium problem [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/description/), in which we need to return the length of longest common subsequence of two strings `text1` and `text2` (here, the subsequence doesn't need to be contiguous). As usual, I start with a top-down DP approach, where the DP is over the longest common subsequence in `text1[m:]` and `text2[n:]`. Then, we can case over whether the `text1[m]` and `text2[n]` are equal and use the subproblem solutions for larger `m` and `n`.
 
@@ -454,7 +454,7 @@ def longestCommonSubsequence(self, text1: str, text2: str) -> int:
 
 Now, this solution runs in only 670 milliseconds and beats 70.69% of solutions to this problem.
 
-## Prefix-suffix patterns
+# Prefix-suffix patterns
 
 Yet another common pattern is to do some computation for the prefixes and suffixes of an array and use these to build a solution. For instance, take the problem [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/). In this problem, we are given an array `nums` and we want to create a new array which has `i`th element consisting of the product of all other elements in `nums` in $O(n)$ time without using the `/` operator. We're going to compute the prefix products and the suffix products, and then the problem will become easy. This might sort of seem like a clever ad-hoc solution, but it's a pattern which shows up in many LeetCode problems.
 
@@ -494,7 +494,7 @@ def productExceptSelf(self, nums: List[int]) -> List[int]:
 
 However, this problem is really just a prefix-suffix problem at heart.
 
-## Linked lists
+# Linked lists
 
 With linked lists, one common trick is to use fast and slow pointers. One example of this is the Medium problem [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/), wherein we would like to remove the $n$ th node from the back of a linked list. To find the $n$ th node from the end of a linked list, we can maintain a fast pointer which has a headstart by $n$ vertices. Then, we allow the fast and slow pointers to traverse, and as the fast pointer finishes processing the list, the slow pointer will be at the $n$th node from the end.
 
@@ -517,7 +517,7 @@ def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNod
     return head
 ```
 
-### Cycle detection
+## Cycle detection
 
 One neat cycle detection algorithm for lists is [Floyd's algorithm](https://en.wikipedia.org/wiki/Cycle_detection), which uses a tortoise-hare paradigm. A fast and a slow pointer start from the root node; the fast pointer increments twice and the slow pointer increments once with each iteration. Then, if there is a cycle, the slow pointer will catch up to the fast pointer at some point. I wasn't convinced of this the first time I heard it, so here's a quick proof. Suppose there's a cycle of length $N$. Eventually, both the fast and slow pointers will get caught in this cycle; at this point, suppose the fast pointer is $k$ ahead of the slow pointer. Essentially, we're now solving the congruence $i \equiv 2i + k \pmod N \iff i \equiv -k \pmod N$. But we know this will happen after $i = N - k$ steps! In particular, we're guaranteed to find a cycle in $O(n)$ time, which is the best that we could hope for.
 
@@ -539,7 +539,7 @@ def hasCycle(self, head: Optional[ListNode]) -> bool:
     return False
 ```
 
-### Dummy nodes
+## Dummy nodes
 
 Another common trick in linked list questions is to use a dummy node when there's no clear start for a list. One instance where we might use a dummy node is in the Easy problem [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/description/), where we are given two sorted linked lists and need to merge them into one large linked list.
 
@@ -583,19 +583,19 @@ def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) ->
 
 The most common linked list patterns are just to play around with pointers; I think most of what needs to be done here is pretty intuitive. In general, we can use reversing a linked list and merging linked lists as black-box operations to build more complex algorithms.
 
-## Priority queues (heaps)
+# Priority queues (heaps)
 
 Priority queues, or heaps, are commonly used when we need to find the smallest element (or smallest $k$ elements) but not necessarily sort the list. Heapification of an array only takes $O(n)$ time, while pushing to and popping from a heap can be done in $O(\log(n))$ time. Therefore, for instance, finding the $k$ largest elements in an array can be done in $O(k \log(n))$ time using a heap. A heap is represented as a complete binary tree, which can be represented easily as an array containing the level-order traversal of the tree. Heapification is pretty cool, so I might write a brief post on heaps at some point later.
 
-### Dijkstra's algorithm
+## Dijkstra's algorithm
 
 Dijkstra's algorithm is a classic algorithm for finding shortest paths in graphs with positive weights. This algorithm was introduced to me in both my discrete math class and my data structures and algorithms class as some sort of extremely clever algorithm. However, it's really not special -- it's just that the problem of finding the shortest path is easiest using a priority queue. We keep a priority queue of outgoing edges from our current set of vertices and process the edges with least total weight first. This way, we ensure that we have found the shortest possible path to any vertex in our current set.
 
-### Prim's algorithm
+## Prim's algorithm
 
 Prim's algorithm is a technique for computing the minimal spanning tree. It has a fancy name, but it's basically the same as Dijkstra's algorithm. We pick a root arbitrarily, and add all outgoing edges from our current tree into a priority queue. Then, we pop the minimum weight edge, follow it, and add the associated node to our tree with the given edge. Repeating this process, we can grow a minimal spanning tree. Prim's algorithm can be made more efficient in the long-run using a fancier data structure: the Fibonacci heap. However, this data structure and others like it are harder to program correctly and don't offer much of a speed-up (if any) over a traditional heap in practice.
 
-### Max-min heap pairs
+## Max-min heap pairs
 
 We can use a max-heap and min-heap pair to keep track of order statistics in an online fashion. For instance, take the Hard problem [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/). We need to implement a data structure which supports adding a number and finding the median of all current numbers. We solve the problem by keeping a max-heap of all elements smaller than the median and a min-heap of all elements larger than the median, ensuring that both of these heaps stay balanced in their number of elements.
 
@@ -625,7 +625,7 @@ def findMedian(self) -> float:
         return (self.minheap[0] - self.maxheap[0]) / 2
 ```
 
-## Prefix trees ("tries")
+# Prefix trees ("tries")
 
 Prefix trees, or tries, are trees which represent objects like dictionaries for fast prefix lookup. Each trie contains 27 subtries, which represent each letter along with a special "end of word" character. For instance, `"a"` maps to a trie which represents all words which start with the letter `"a"`, and so forth. Here's my implementation of a `Trie` object, which solves the Medium problem [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/).
 
@@ -709,7 +709,7 @@ def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
     return self.all_words
 ```
 
-## Stacks
+# Stacks
 
 One common application for stacks is in processing things like parentheses and operators (as in a calculator, for example). As an example, the Easy problem [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/), where we are asked to determine whether the given string constitutes a valid set of matching parentheses, can be solved very easily using a stack.
 
@@ -730,7 +730,7 @@ def isValid(self, s: str) -> bool:
     return not stack
 ```
 
-## Monotonic stacks + deques
+# Monotonic stacks + deques
 
 This is perhaps one of the coolest tricks on the list, since it isn't really taught in a standard data structures and algorithms class but is relatively common on LeetCode. Monotonic stacks and monotonic deques are stacks and deques respectively which maintain the property that they are always sorted (and typically maintain an additional monotonicity property as well, sometimes with respect to indices in an array). If we want to insert an element, we need to pop off elements until the inserted element respects the monotonicity property.
 
@@ -765,7 +765,7 @@ def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
 
 Monotonic stacks and deques are definitely more complicated than some of the other data structures I've mentioned. However, once you have the idea to use one of these structures, it's usually not too hard to figure out how it can be used.
 
-## Interval problems
+# Interval problems
 
 Most interval problems can be made much easier by sorting the intervals by start time or by end time. For instance, take the Medium problem [Merge Intervals](https://leetcode.com/problems/merge-intervals/). We're given a list of closed intervals and we need to return a new list of intervals where overlapping intervals have been merged. Once we sort by end time, this problem becomes easy. For a given end time, pop from the list as long as its end time is larger than the smallest start time we've seen so far. Then, we append the associated interval to our output array and continue.
 
@@ -784,11 +784,11 @@ def merge(self, intervals: List[List[int]]) -> List[List[int]]:
     return output
 ```
 
-## Bit manipulation
+# Bit manipulation
 
 Many bit manipulation problems can be boiled down into two tricks: using bitmasks and using properties of the XOR operation.
 
-### Using bitmasks
+## Using bitmasks
 
 Of course, one simple application of bitmasks is to find the least significant bit. For instance, consider the Easy problem [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/), where we're asked to count the number of 1 bits in an unsigned integer.
 
@@ -829,7 +829,7 @@ def getSum(self, a: int, b: int) -> int:
 
 This is by no means an exhaustive list of the applications of bitmasks, but hopefully this motivates why you should keep bitmasks in mind.
 
-### XOR properties
+## XOR properties
 
 Many problems can be solved using properties of the XOR operation. Recall that XOR corresponds to bit-wise addition of two bit-strings modulo 2. First, XOR is associative and commutative. Second, every element is self-inverse under XOR. Finally, zero is the identity element for bit-strings under XOR. We can use these properties to solve all kinds of problems. For instance, take the Easy problem [Single Number](https://leetcode.com/problems/single-number/). Here, we're given a list where each element appears twice except for one; we want to find the only single number. Well, XOR is commutative and associative, so since each element is self-inverse, we can XOR together all of the elements to find the only single element.
 
@@ -847,11 +847,11 @@ def missingNumber(self, nums: List[int]) -> int:
 
 In many cases, bit operations can make otherwise slow code much faster, so it's useful to try and use these on LeetCode whenever possible.
 
-## Rarer algorithms
+# Rarer algorithms
 
 Here are a few of the rarer algorithms on LeetCode and other competitive programming platforms which are still worth knowing.
 
-### Union-find and Kruskal's algorithm
+## Union-find and Kruskal's algorithm
 
 The union-find data structure supports two operations: performing a union on two disjoint member sets and finding which set contains a given element. Typically, union-find data structures are represented using an array of trees, where the root node of each tree is the representative of a given member set (represented by the remainder of the tree). Two optimizations are typically used for a union-find data structure. The first is union-by-rank, which factors in the maximum depth of both trees when deciding how to union two different trees. The second is path compression, where each inserted node is actually made a child of its grandparent, which halves the length of all paths to the root node.
 
@@ -859,19 +859,19 @@ Union-find is sometimes used in graph algorithms, where each connected component
 
 In general, union-find questions are more rare and many competitive programmers have a pre-written class handling all union-find operations. I think most union-find questions can be solved in other ways (or by coming up with union-find on the spot) so I think this is a less useful technique than others listed here.
 
-### Max-flow and min-cut
+## Max-flow and min-cut
 
 The Ford-Fulkerson algorithm for max-flow and min-cut finds the maximum flow that can be sent through a sequence of pipes with capacity constraints on each of the edges. This is an interesting optimization problem (I might write a post on this someday) but it is rare that such a problem appears on LeetCode.
 
-### $A^*$ search algorithm
+## $A^*$ search algorithm
 
 The $A^\*$ search algorithm is a fancier version of breadth-first search which uses a priority queue with a given heuristic function instead of one based only on depth. This algorithm can be *much* more efficient than BFS for finding shortest paths, but the problem needs to have some structure which we can take advantage of with a clever heuristic.
 
-### Fenwick trees + segtrees
+## Fenwick trees + segtrees
 
 Fenwick trees, or binary indexed trees, are dynamic prefix sum arrays that allow for fast computations of prefix sums and allow updates to the original array. Segment trees, or segtrees, are a generalization of Fenwick trees that store some property of segments that makes it easier to compute some property of the whole (for example, the minimum value of a segment). Both of these have efficient and clever algorithms associated with them, but they don't appear very frequently on LeetCode. Therefore, I'll save discussion of these for a potential future post.
 
-## Matrix operations
+# Matrix operations
 
 One neat trick I learned from Jack Rankin was for rotating a matrix (this is the Medium problem [Rotate Image](https://leetcode.com/problems/rotate-image/)), where we want to rotate a given matrix by 90 degrees clockwise in-place. Jack noticed that you can flip the columns, then flip the rows -- this will rotate the matrix. Here's my proof: take a square piece of paper and mark the four corners with different colors. Then, if you flip the square across its vertical axis followed by its horizontal axis, the colors remain in the same place. This observation makes an otherwise annoying problem significantly easier.
 
@@ -890,7 +890,7 @@ def rotate(self, matrix: List[List[int]]) -> None:
     matrix.reverse()
 ```
 
-## Python-specific tricks
+# Python-specific tricks
 
 One Python-specific trick is to use string operations where possible. Oftentimes, string operations with a high theoretical time complexity will still run faster than other algorithms due to Python's optimizations for strings. Another related trick is to use list slices. Python's list slicing is also highly optimized and will make for significantly faster code. Furthermore, sorting is very fast in Python and can often be faster than using a heap (even though using a heap should be more efficient for things like finding the `k` largest elements in an array).
 
@@ -905,6 +905,6 @@ print(my_output, file=f)
 
 I find this one a bit cheap, but to each their own.
 
-## Guessing time complexities
+# Guessing time complexities
 
 Finally, one silly trick is to guess the time complexity required by looking at the input size constraints. If a constraint says `0 <= n < 10^4`, you might be able to get away with an $O(n^2)$ algorithm while an $O(n \log(n))$ or an $O(n)$ solution is likely optimal. If a constraint says `1 <= n < 10^9`, on the other hand, you automatically know that your algorithm has to be linear. In dynamic programming problems, constraints like these can help determine what dimension your dynamic programming should recurse over.

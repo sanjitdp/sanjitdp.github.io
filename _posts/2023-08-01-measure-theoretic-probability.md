@@ -12,7 +12,7 @@ This post will contain some problems I solved as part of Math 275A (grad. probab
 
 I'll include results in this post that I've later found useful, as well as problems that demonstrate some of the techniques I learned in the class; these include the [Borel-Cantelli lemmas](https://en.wikipedia.org/wiki/Borel–Cantelli_lemma), the [laws of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers), the [Kolmogorov 0-1 law](https://en.wikipedia.org/wiki/Kolmogorov%27s_zero–one_law), and the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem).
 
-## Inverse transform sampling
+# Inverse transform sampling
 
 In this problem, we'll show that if $X$ is a continuous random variable with cumulative distribution function $F$, then $F(X) \sim \operatorname{Unif}(0, 1)$.
 
@@ -33,11 +33,11 @@ $$
 
 Hence we deduce that $Y = F(X)$ has a uniform distribution on $(0, 1)$ as desired, and we are done.
 
-## Non-existent lower bounds
+# Non-existent lower bounds
 
 This is Problem 1.6.5 in Rick Durrett's *Probability: Theory and Examples*. Both parts of this problem are about constructing examples explicitly and controlling probability mass.
 
-### The first bound
+## The first bound
 
 First, we'll show that if $\epsilon > 0$, then $\inf \lbrace \mathbb{P}(\lvert X \rvert > \epsilon) : \mathbb{E}[X] = 0, \operatorname{Var}(X) = 1 \rbrace = 0$. Suppose $\Omega = \lbrace 1, 2, \cdots, n \rbrace$ and $\mathbb{P}$ the probability measure characterized by $\mathbb{P}(\lbrace k \rbrace) = \frac{1}{n}$ for $1 \leq k \leq n$. Let $X_n : \Omega \to \mathbb{R}$ be a random variable defined by:
 
@@ -86,7 +86,7 @@ $$
 
 This is the desired result, so we are done.
 
-### The second bound
+## The second bound
 
 Next, we will show that if $y \geq 1$ and $\sigma^2 > 0$, then $\inf \lbrace \mathbb{P}(\lvert X \rvert > y) : \mathbb{E}[X] = 1, \operatorname{Var}(X) = \sigma^2 \rbrace = 0$. Suppose $\Omega = \lbrace 1, 2, \cdots, n \rbrace$ and $\mathbb{P}$ the probability measure characterized by $\mathbb{P}(\lbrace k \rbrace) = \frac{1}{n}$ for $1 \leq k \leq n$. Let $X_n : \Omega \to \mathbb{R}$ be a random variable defined by:
 
@@ -134,7 +134,7 @@ $$
 
 This is the desired result, so we are done.
 
-## Generalization of the $L^2$ weak law
+# Generalization of the $L^2$ weak law
 
 This is Problem 2.2.2 in Rick Durrett's *Probability: Theory and Examples*. This is a generalization of the $L^2$ weak law of large numbers to sequences that are decreasingly dependent, and the proof is analogous to that of the weak law of large numbers. If $\mathbb{E}[X_n] = 0$ and $\mathbb{E}[X_n X_m] = r(n - m)$ for $m \leq n$ with $r(k) \to 0$ as $k \to \infty$, then we want to show that $\frac{X_1 + \cdots + X_n}{n} \to 0$ converges in probability.
 
@@ -199,7 +199,7 @@ $$
 
 However, since $\epsilon_0$ was arbitrary, we deduce that $\mathbb{P}\left( \frac{\lvert S_n \rvert}{n} \geq \epsilon \right) \to 0$ as $n \to \infty$; namely, $\frac{S_n}{n} \to 0$ in probability as desired.
 
-## Monte Carlo integration
+# Monte Carlo integration
 
 This is Problem 2.2.3 in Rick Durrett's *Probability: Theory and Examples*. This problem demonstrates how the weak law of large numbers is typically used. Suppose $f$ is a measurable function on $[0, 1]$ with $\int_0^1 \lvert f(x) \rvert\ dx < +\infty$ and $U_1, U_2, \cdots$ are independent and uniformly distributed on $[0, 1]$. Then, if we let $I_n = n^{-1} (f(U_1) + \cdots + f(U_n))$, we'll show that $I_n \to I = \int_0^1 f(x)\ dx$ in probability; namely, we have a good estimate for the integral of $f$.
 
@@ -239,7 +239,7 @@ $$
 
 Hence, we have obtained a bound on $\mathbb{P}\left( \lvert I_n - I \rvert > \frac{a}{\sqrt{n}} \right)$ using Chebyshev's inequality, and the result follows.
 
-## Independence + infinite occurrence
+# Independence + infinite occurrence
 
 This is Problem 2.3.8 in Rick Durrett's *Probability: Theory and Examples*, and showcases an application of the second Borel-Cantelli lemma. If $(A_n)$ is a sequence of independent events with $\mathbb{P}(A_n) < 1$ for all $n \geq 1$ but $\mathbb{P}\left( \bigcup_{n=1}^\infty A_n \right) = 1$, then $\mathbb{P}(A_n\ \text{i.o.}) = 1$. Here, we use $\lbrace A_n\ \text{i.o.} \rbrace$ to denote the event that infinitely many of the $A_n$ occur.
 
@@ -278,7 +278,7 @@ $$
 
 Hence, using the above result, $\sum_n \mathbb{P}(A_n)$ must diverge. Finally, by the second Borel-Cantelli lemma and independence of the events $A_n$ we conclude that $\mathbb{P}(A_n\ \text{i.o.}) = 1$ as desired.
 
-## Bernoulli convergence to zero
+# Bernoulli convergence to zero
 
 This is Problem 2.3.11 in Rick Durrett's *Probability: Theory and Examples*, and showcases an application of the first Borel-Cantelli lemma. First, we will show that if $X_n \sim \operatorname{Ber}(p_n)$ are independent, then $X_n \to 0$ in probability if and only if $p_n \to 0$. Well, we know that for $\epsilon > 0$:
 
@@ -296,7 +296,7 @@ Therefore, it's clear that $\mathbb{P}(\lvert X_n \rvert > \epsilon) \to 0$ as $
 
 Next, we'll show that $X_n \to 0$ almost surely if and only if $\sum_n p_n < +\infty$. Suppose $\sum_n p_n < +\infty$ and define $A_n = \lbrace X_n = 1 \rbrace$. Then, we know that $\mathbb{P}(A_n) = p_n$ so $\sum_n \mathbb{P}(A_n) = \sum_n p_n < +\infty$. Therefore, we have the equality $\mathbb{P}(A_n\ \text{i.o.}) = \mathbb{P}(\lbrace X_n = 1 \rbrace\ \text{i.o.}) = 0$ by the first Borel-Cantelli lemma. Hence, we deduce that $X_n \to 0$ almost surely, which gives the desired result.
 
-## Uniformly random points in balls
+# Uniformly random points in balls
 
 This is Problem 2.3.11 in Rick Durrett's *Probability: Theory and Examples*. This problem demonstrates how the strong law of large numbers can make light work of a seemingly difficult problem. Let $X_0 = (1, 0)$ and define $X_{n+1} \in \mathbb{R}^2$ to be chosen at random from the ball of radius $\lVert X_n \rVert _2$ centered at the origin. We want to show that there exists a constant $c$ such that $n^{-1} \log(\lVert X_n \rVert _2) \to c$ almost surely, and compute $c$.
 
@@ -325,7 +325,7 @@ $$
 
 Now, because the $Y_n$ are i.i.d., we deduce by the strong law of large numbers that $n^{-1} S_n = n^{-1} \log(\lVert X_n \rVert _2) \to \mathbb{E}[\log(\lVert Y_0 \rVert _2)] = -\frac{1}{2}$ almost surely. This is what we wanted to show.
 
-## Tightness and uniform convergence
+# Tightness and uniform convergence
 
 This is Problem 3.3.13 in Rick Durrett's *Probability: Theory and Examples*. This problem mirrors the proof of the Arzelà-Ascoli theorem to show that if $\lbrace \mu_i \rbrace_{i \in I}$ is a tight family of measures and $\mu_n \Rightarrow \mu$ converges weakly, then their characteristic functions converge uniformly on compact sets. Fix $\epsilon > 0$; by tightness, we can choose $M > 0$ such that $\sup_n \mu_n([-M, M]^c) < \epsilon$. Furthermore, by compactness we can choose $\delta > 0$ such that $\left\lvert \mathbb{E}[e^{ihX}] - 1 \right\rvert < \epsilon$ for all $\lvert h \rvert < \delta$ and $x \in [-M, M]$. Then, we know that for any $n \in \mathbb{N}$ and $\lvert h \rvert < \delta$:
 
@@ -354,7 +354,7 @@ $$
 
 Since $\epsilon$ was arbitrary, we deduce that the characteristic functions $\varphi_n \to \varphi$ converge uniformly on compact sets as desired.
 
-## Sums grow faster than $\sqrt{n}$
+# Sums grow faster than $\sqrt{n}$
 
 This is Problem 3.4.2 in Rick Durrett's *Probability: Theory and Examples*, and is a nice application of the central limit theorem and Kolmogorov's 0-1 law. Suppose $X_1, \cdots, X_n$ are i.i.d. with $\mathbb{E}[X_i] = 0$ and $0 < \operatorname{Var}(X_i) < +\infty$ and let $S_n = X_1 + \cdots + X_n$ denote the partial sums. Now, we will show that $\limsup_{n \to \infty} \frac{S_n}{\sqrt{n}} = +\infty$ almost surely.
 
@@ -371,7 +371,7 @@ $$
 
 Then, it's clear that the event $A := \left\lbrace \limsup_{n \to \infty} \frac{S_n}{\sqrt{n}} > M \right\rbrace$ is in the tail $\sigma$-algebra $\mathcal{T}$, since it does not depend on $X_1, \cdots, X_N$ for any $N \in \mathbb{N}$. Furthermore, we know that $\left\lbrace \frac{S_n}{\sqrt{n}} > M\ \text{i.o.} \right\rbrace \subseteq A$ so by the Kolmogorov 0-1 law we deduce that $\mathbb{P}(A) = 1$. Since $M$ was arbitrary, we deduce that $\limsup_{n \to \infty} \frac{S_n}{\sqrt{n}} = \infty$ almost surely, so the result follows.
 
-## Self-normalized sums
+# Self-normalized sums
 
 This is Problem 3.4.2 in Rick Durrett's *Probability: Theory and Examples*. This problem constitutes another application of the central limit theorem and the weak law of large numbers, as well as some manipulation of various modes of convergence. Let $\chi \sim \mathcal{N}(0, 1)$. If $X_1, \cdots, X_n$ are i.i.d. with $\mathbb{E}[X_i] = 0$ and $\mathbb{E}[X_i^2] = \sigma^2 \in (0, +\infty)$, then:
 
@@ -407,7 +407,7 @@ $$
 
 Therefore, we know that $Y_n Z_n \to \mathcal{N}(0, 1)$ by Skorokhod's representation theorem and the result follows.
 
-## An alternate central limit theorem
+# An alternate central limit theorem
 
 This is Problem 3.4.11 in Rick Durrett's *Probability: Theory and Examples*. In this problem, we'll show that if the moments of $X_i$ are uniformly bounded, then we don't need independence. Suppose $\mathbb{E}[X_i] = 0$, $\mathbb{E}[X_i^2] = 1$, and $\mathbb{E}[\lvert X_i \rvert^{2+\delta}] \leq C$ for some $\delta > 0$ and $C < +\infty$. Then, if $S_n = X_1 + \cdots + X_n$ and $\chi \sim \mathcal{N}(0, 1)$, we have $\frac{S_n}{\sqrt{n}} \Rightarrow \chi$.
 

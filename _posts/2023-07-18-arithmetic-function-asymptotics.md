@@ -14,7 +14,7 @@ In retrospect, I shouldn't have rushed to take this class without taking the req
 
 Learning from Prof. Tao in class and during his office hours helped me develop an intuition for controlling the rates at which different mathematical objects grow, which is very useful for an analyst or applied mathematician. Also, I think it's pretty cool to say I had the opportunity to be taught by (arguably) the greatest mathematician of all time. 🙂
 
-## Existence of the logarithmic density
+# Existence of the logarithmic density
 
 Let $f : \mathbb{N} \to \mathbb{C}$ be an arithmetic function and suppose that the [natural density](https://en.wikipedia.org/wiki/Natural_density) $\lim_{x \to \infty} \frac{1}{x} \sum_{n \leq x} f(n)$ of $f$ exists and is equal to $\alpha \in \mathbb{C}$. Then, we want to show that the logarithmic density $\lim_{x \to \infty} \frac{1}{\log(x)} \sum_{n \leq x} \frac{f(n)}{n}$ also exists and is equal to $\alpha$. First, we will show the following identity:
 
@@ -67,7 +67,7 @@ $$
 
 Since $\epsilon$ was arbitrary, we find that the logarithmic density $\lim_{x \to \infty} \frac{1}{\log(x)} \sum_{n \leq x} \frac{f(n)}{n}$ exists and is equal to $\alpha$ as desired.
 
-## Convergence result for Dirichlet series
+# Convergence result for Dirichlet series
 
 This result builds on the previous problem to show a result about the [Dirichlet series](https://en.wikipedia.org/wiki/Dirichlet_series), which commonly appears in analytic number theory. Let $f : \mathbb{N} \to \mathbb{C}$ be an arithmetic function and suppose that the logarithmic density $\lim_{x \to \infty} \frac{1}{\log(x)} \sum_{n \leq x} \frac{f(n)}{n}$ of $f$ exists and is equal to $\alpha \in \mathbb{C}$. Furthermore, suppose that $f = O(n^{o(1)})$. Then, if $\mathcal{D} f(s) = \sum_{n=1}^\infty \frac{f(n)}{n^s}$, we would like to show that $\lim_{s \to 1^+} (s - 1) \cdot \mathcal{D} f(s) = \alpha$. Well, we know that:
 
@@ -130,7 +130,7 @@ $$
 
 Since $\epsilon$ was arbitrary, we find that $\lim_{s \to 1^+} (s-1) \cdot \mathcal{D} f(s) = \alpha$ and the result is shown.
 
-## A neat quantitative integral test
+# A neat quantitative integral test
 
 In this problem, we'll show the following quantitative integral test for functions $f \in C^1(\mathbb{R})$:
 
@@ -217,7 +217,7 @@ $$
 
 Hence we see that $\lvert f(x) \rvert = O\left( \lvert f(y) \rvert + \int_y^x \lvert f^\prime(w) \rvert\ dw \right)$. Summing the bounds we have for all three parts of the integral, we obtain the desired result.
 
-## Non-existence of the natural density
+# Non-existence of the natural density
 
 As an application of the above problem, we'll show that the converse to the first statement we proved is not true; namely, if $t \in \mathbb{R} \setminus \lbrace 0 \rbrace$ then $n \mapsto n^{it}$ has logarithmic density zero but does not have a natural density. Letting $f(n) = n^{it}$, we compute the logarithmic density using the above quantitative integral test:
 
@@ -313,7 +313,7 @@ $$
 
 However, the above quantity is strictly positive because $\lvert (1+\epsilon)^{it+1} \rvert = 1+\epsilon$. Hence, all terms of the form $\frac{1}{(1+\epsilon) x} \sum_{x \leq n \leq (1+\epsilon) x} n^{it}$ are (uniformly in $x$) bounded away from zero. This means that $\frac{1}{x} \sum_{n \leq x} f(n)$ is not Cauchy in $x$ and hence the natural density does not exist; this is what we needed to show.
 
-## Derivatives of the Riemann zeta function
+# Derivatives of the Riemann zeta function
 
 Recall that $\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}$ is the [Riemann zeta function](https://en.wikipedia.org/wiki/Riemann_zeta_function), which famously has a number of applications to prime number theory. In this problem, we would like to rigorously show that the derivatives of $\zeta$ are given by:
 
@@ -422,7 +422,7 @@ $$
 
 This was the desired result, so we are done.
 
-## Logarithmic derivative of the Riemann zeta
+# Logarithmic derivative of the Riemann zeta
 
 Finally, in this problem, we will rigorously show that the logarithmic derivative of the Riemann zeta function $\zeta(s)$ is given by:
 

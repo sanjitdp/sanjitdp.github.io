@@ -12,7 +12,7 @@ This summer, I'm working as a project manager and research intern in the [IPAM R
 
 In particular, I've recently been learning Rust with the goal of writing a fast Python module parallelizing some of the operations performed in our algorithm. I've unfortunately signed a non-disclosure agreement so I can't write about specific implementation details of the algorithm here; however, I thought it would be interesting to write about some of the things I've learned during this process.
 
-## Motivation
+# Motivation
 
 One of the first problems we worked on this summer was solving the classic [cart-pole](https://gymnasium.farama.org/environments/classic_control/cart_pole/) environment from the Farama Foundation. In this environment, a tall pole is placed on a cart through an un-actuated joint, and the goal is to keep the pole balanced in an upright position (within 15 degrees of vertical). At each step, the agent chooses whether to apply a force pushing the cart to the left or the right along a frictionless track. Typically, an agent is considered to have succeeded in this environment if it is able to survive for 200 iterations (although we can manually lengthen the duration of the game).
 
@@ -31,11 +31,11 @@ While Python does have multiprocessing capabilities, this approach to concurrenc
 
 Computing speed is becoming increasingly important for our project as we move towards more complex games like Pong or PacMan, as well as applications to 3D robotics and factory simulations in the [Nvidia Omniverse](https://www.nvidia.com/en-us/omniverse/). In fact, one of my stretch goals for this project is to use the [CUDA framework](https://developer.nvidia.com/cuda-toolkit) to implement very fast GPU-level parallelization (which [can also be done](https://github.com/Rust-GPU/Rust-CUDA) in Rust). This is especially appealing since IPAM has generously paid for a Google Colab Pro+ subscription (which gives me access to virtual machines with Nvidia A100 GPUs) and a Google Cloud server with an Nvidia T4 GPU capable of rendering the Nvidia Omniverse .
 
-## Cool Rust language features
+# Cool Rust language features
 
 Rust is a newer language that's been gaining a lot of traction because of its clever approach to garbage collection and memory safety using ownership and borrowing (which carries over to thread safety as well), so I thought an interesting next step for the project would be to rewrite our code into a fast Python package implemented entirely in Rust. With the rest of this post, I want to talk about some interesting aspects of software engineering in Rust that I've learned about so far.
 
-### Static type checking
+## Static type checking
 
 The general philosophy of Rust is to prevent a lot of runtime errors by having a very restrictive compilation step. Rust is strongly and statically typed, although it will infer most types in your program. In fact, there are valid programs that won't compile because the compiler needs help with type inference. Variables are immutable by default, and Rust requires an explicit `mut` annotation in order to define mutable variables.
 
@@ -74,7 +74,7 @@ fn main() {
 
 This outputs 1, as expected. These sorts of little type conversions need to happen all the time in Rust, which is one of the first things I learned about the language. Additionally, strings are all UTF-encoded, which sacrifices string indexing (for example) in favor of first-class emoji support and support for characters in other languages 😄. Despite its usual strictness, Rust allows you to turn off a lot of its compiler checks using the `unsafe` keyword; the use of this keyword is detailed in the aptly-named [Rustonomicon](https://doc.rust-lang.org/nomicon/).
 
-### Ownership
+## Ownership
 
 One interesting feature is that in Rust, variables take ownership of values. Only one variable can own a value, and when that owner goes out of scope, the value can be dropped from memory. This means that Rust doesn't need a garbage collector like that of Java or Python and also avoids manual memory management like that of C or C++. Although this seems like a simple concept, it seems like the rules of ownership and borrowing infuse their way into every aspect of Rust programming and lead to lots of unintuitive behavior. For example, the following code won't compile:
 
@@ -122,7 +122,7 @@ warning: unused variable: `b`
 
 Rust's compiler will warn you about unused variables, which can be kind of annoying when prototyping a solution. Typically I'll turn this warning off or prefix variables with underscores to get rid of these warnings, though.
 
-### Borrowing and lifetimes
+## Borrowing and lifetimes
 
 Since you might not always want to take ownership of a variable, Rust also allows you to take references of the variable using syntax like `b = &a;` for an immutable reference or `b = &mut a` to take a mutable reference. At any time, you can have either one mutable reference to an object or any number of immutable references. This is intended to prevent errors where two threads of execution are simultaneously trying to modify a value in the concurrency setting or iterator invalidation when elements of an array are deleted during iteration.
 
@@ -168,7 +168,7 @@ pub struct Agent<'a> {
 
 This doesn't actually change the lifetime of the `env` object, but it tells the compiler that we know that `env` will survive at least as long as the `Agent` object. Theoretically speaking, lifetimes are specified for every object, but some patterns of lifetime annotation are so common that the Rust compiler will automatically add lifetime annotations; this is called "elision".
 
-### Functional programming
+## Functional programming
 
 Writing code in Rust seems to take a lot of influence from functional programming paradigms (more so than C++, for example). I've found myself using pattern matching and map-filter-reduce quite frequently, both of which are very fast. I've also used a lot of closures and lambda expressions, which are interesting due to their interplay with the rules of ownership, borrowing, and lifetimes. This is especially useful in multithreading, since threads take in a lambda expression and can capture their environment.
 
@@ -176,7 +176,7 @@ Furthermore, a lot of Rust's error handling comes from returning Results and Opt
 
 Technically, Rust intends for the programmer to deal with `Result` and `Option` objects using its fast pattern matching. Often, though, I sidestep the issue of explicit error handling using the `?` or `.unwrap()` functions.
 
-### Macro expansion
+## Macro expansion
 
 One last little pattern I've noticed in Rust is that a lot of Rust code relies on C-style macros. For example, the `println` macro is the way that developers typically write to `stdout`, and the `vec` macro is commonly used to initialize vectors. Here's an example that uses these macros:
 
@@ -189,7 +189,7 @@ fn main() {
 
 Notice that Rust uses `!` for macro expansion and we can use `{:?}` as a debug format specifier. In general, we can make any struct printable for debugging using `#[derive(Debug)]` above the struct definition; this line will provide an implementation of the `Debug` trait for the given struct. I use this all the time when writing Rust code in order to see what my objects look like during execution of my program.
 
-## Example: QuickSelect and MergeSort
+# Example: QuickSelect and MergeSort
 
 One of the first little pieces of code I wrote when learning Rust was to calculate the mean of a vector. It's pretty similar to C++ code, but you'll notice the Rust compiler is quite pedantic and won't perform implicit casts from `i32` to `f64`; I had to do this myself:
 
@@ -320,11 +320,11 @@ mod tests {
 }
 ```
 
-## High-performance computing
+# High-performance computing
 
 One of the main purposes of my project was to explore the potential for concurrency and high-performance computing to speed up computationally expensive operations. The two main challenges that I faced in working towards this goal are in implementing CPU-bound concurrency and allowing Rust to work with Python objects.
 
-### Thread-level concurrency
+## Thread-level concurrency
 
 One of my first experiments with multithreading in Rust was to try multiplying every element of a vector by two concurrently:
 
@@ -462,7 +462,7 @@ fn main() {}
 
 The general strategy is to map each chunk to a thread and reduce their outputs by adding the `HashMap`s together. More recently, people have been using the lightweight `rayon` crate for easier-to-use concurrency, which is what I might end up doing for my project.
 
-### PyO3 bindings
+## PyO3 bindings
 
 Another challenge that I faced with this project was learning how to access the Farama Foundation's `gymnasium` environments through Rust. The Rust programming language has a large centralized set of packages, called crates, at [crates.io](https://crates.io). This makes it incredibly easy to collaborate and use existing code from another project. For example, in order to use a prior implementation of the $k$-nearest neighbors algorithm, I only needed to add this line to my `Cargo.toml` file:
 
@@ -512,7 +512,7 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)/.env/lib/python3.11/site-packages
 
 Just from rewriting our codebase in Rust, I was able to shave down our solution time for CartPole by over half (the agent survives 1000 iterations in 3.6 seconds where this previously took 7.7 seconds in Python). In addition, PyO3 allows you to release Python's GIL and run concurrent Python code, which is the next step for my work at RIPS. This will likely not provide any gains (if at all) for CartPole, but it will likely become more helpful in solving more complex games like Pong or PacMan.
 
-## Final thoughts
+# Final thoughts
 
 Rust has been topping the [StackOverflow developer survey](https://survey.stackoverflow.co/2022) as the most beloved language for several years now. Having now worked with it extensively, I think I understand why. Rust is a fast compiled language, but finds more elegant solutions than existing languages to memory safety, thread safety, and garbage collection. It has an excellent package manager and helpful error messages. It almost feels like Rust's ownership and borrowing system was built for concurrency, and immutability by default can avoid a lot of hassle with mutex locks and race conditions.
 

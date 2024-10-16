@@ -10,7 +10,7 @@ author: Sanjit Dandapanthula
 
 This post will contain some calculations I've done for hitting times of Brownian motion. The purpose of writing out this post is to remind myself of some common tricks used for computations with Brownian motion, including the reflection principle and optional stopping theorem.
 
-## Hitting time of a line
+# Hitting time of a line
 
 First, let $B(t)$ be a standard Brownian motion started at zero. If $\tau$ is the hitting time associated with $B(t)$ of a line $a + bt$ with $a > 0$ and $b > 0$, we'll calculate the moment generating function $\mathbb{E}[e^{-\lambda \tau}]$.
 
@@ -81,7 +81,7 @@ $$
 
 Hence, we have also calculated $\mathbb{P}(\tau < +\infty)$; namely, the probability that a standard Brownian motion ever hits the line $a + bt$. Pretty cool.
 
-## Hitting time of the origin (delayed)
+# Hitting time of the origin (delayed)
 
 Let $X(t)$ denote a standard Brownian motion started at $x$ and let $\tau_1 = \inf\lbrace t > 0 : X(t) = 0 \rbrace$ and $\tau_2 = \inf\lbrace t > 1 : X(t) = 0 \rbrace$ (the delayed hitting time of the origin). We're going to write down an explicit formula for the density of $\tau_2$ using the reflection principle. First, notice that $$\mathbf{1}_{\lbrace \tau_2 \leq t \rbrace} = \mathbf{1}_{\lbrace \tau_1 \leq t - 1 \rbrace} \circ \theta_1$$, where $\theta_1$ denotes the shift operator. Therefore, using the law of total expectation and the Markov property for $Y = \mathbf{1}_{\lbrace \tau_1 \leq t - 1 \rbrace}$, we get:
 
@@ -144,7 +144,7 @@ $$
 \end{align*}
 $$
 
-## Hitting time of the origin (left drift)
+# Hitting time of the origin (left drift)
 
 Now, suppose we have a Feller process $X(t)$ with generator $\mathcal{L} f = \frac{1}{2} f^{\prime\prime} - f^\prime$ and associated domain $\mathcal{D}(\mathcal{L}) = C_c^2(\mathbb{R})$ (we'll show later that this is the generator of Brownian motion with drift to the left). Our goal is to compute the expected hitting time for $X(t)$ of the origin, but for now, let $\tau$ be the hitting time of $\lbrace a, b \rbrace$ with $a < X(0) < b$. Define a function $f \in C_c^\infty(\mathbb{R}) \supseteq C_c^2(\mathbb{R})$ which has $f(y) = y$ on $[a - 1, b + 1]$, decays to 0 smoothly in $[a - 2, a - 1]$ and $[b + 1, b + 2]$, and has $f(y) = 0$ outside of $[a - 2, b + 2]$. Then, we know that $f \in C_c^2(\mathbb{R}) = \mathcal{D}(\mathcal{L})$ so $f(X(t)) - \int_0^t \mathcal{L} f(X(s))\ ds$ is a $\mathbb{P}^x$-martingale for all $x \in \mathbb{R}$.
 
@@ -267,7 +267,7 @@ $$
 
 Equipped with this crude bound, we now know that $R \cdot p_R \leq \sqrt{\frac{2}{\pi}} \cdot R e^{-R/8}$. Taking the limit as $R \to \infty$, we deduce that $R \cdot p_R \to 0$; in particular, if $\tau$ is the hitting time for $X(t)$ of the origin, then we have $\mathbb{E}^x[\tau] = x$.
 
-## Exit time of a ball
+# Exit time of a ball
 
 Now, suppose $X(t)$ is a multi-dimensional Brownian motion started at $x \in \mathbb{R}^n$ with $\lVert x \rVert_2 < r$. We want to calculate the expected time for this Brownian motion to leave $D = \lbrace y \in \mathbb{R}^n : \lVert y \rVert_2 < r \rbrace$ (the ball of radius $r$ centered at the origin). Recall that $B(t)^2 - t$ is the quadratic martingale associated to a Brownian motion $B(t)$. In particular, $\lVert X(t) \rVert_2^2 - nt = \sum_{i=1}^n (X_i(t)^2 - t)$ is the sum of $n$ independent martingales so it is also a martingale. By the optional stopping theorem, since $\tau_D \wedge t \leq t$ is bounded, we have:
 

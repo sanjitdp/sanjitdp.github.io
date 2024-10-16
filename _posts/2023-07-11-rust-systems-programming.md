@@ -21,7 +21,7 @@ One of the first problems we worked on this summer was solving the classic [cart
 A visualization of the basic cart-pole environment from the Farama Foundation
 </p>
 
-A classical approach to this problem would be to train a model (perhaps a [deep-Q network](https://sanjitdp.github.io/posts/dqn-ashta-chamma/)) by repeatedly playing the game and later run inference on a given state of the environment to come up with the next action. The issue with this approach is that the model requires prior training before the inference phase; for example, it typically takes around 5 minutes to fully train a DQN to solve cart-pole. On the other hand, our approach to the problem is to run inference on-the-fly using particle-type methods; our agent is able to fully survive all 200 iterations of cart-pole on its first try in under two seconds with no prior training.
+A classical approach to this problem would be to train a model (perhaps a [deep-Q network](https://sanjitdp.github.io/notes/dqn-ashta-chamma/)) by repeatedly playing the game and later run inference on a given state of the environment to come up with the next action. The issue with this approach is that the model requires prior training before the inference phase; for example, it typically takes around 5 minutes to fully train a DQN to solve cart-pole. On the other hand, our approach to the problem is to run inference on-the-fly using particle-type methods; our agent is able to fully survive all 200 iterations of cart-pole on its first try in under two seconds with no prior training.
 
 I'm not sure we can do much better on the cart-pole problem at this point using our current methods, but one interesting observation is that with our approach, each particle's computation is effectively unique. This means that we can theoretically implement naïve concurrency (without any mutex locks, race conditions, or shared resources) in order to greatly increase the speed of the model.
 
@@ -33,7 +33,7 @@ Computing speed is becoming increasingly important for our project as we move to
 
 # Cool Rust language features
 
-Rust is a newer language that's been gaining a lot of traction because of its clever approach to garbage collection and memory safety using ownership and borrowing (which carries over to thread safety as well), so I thought an interesting next step for the project would be to rewrite our code into a fast Python package implemented entirely in Rust. With the rest of this post, I want to talk about some interesting aspects of software engineering in Rust that I've learned about so far.
+Rust is a newer language that's been gaining a lot of traction because of its clever approach to garbage collection and memory safety using ownership and borrowing (which carries over to thread safety as well), so I thought an interesting next step for the project would be to rewrite our code into a fast Python package implemented entirely in Rust. With the rest of this note, I want to talk about some interesting aspects of software engineering in Rust that I've learned about so far.
 
 ## Static type checking
 

@@ -8,7 +8,7 @@ author: Sanjit Dandapanthula
 - TOC
 {:toc}
 
-This post will contain some calculations I've done for hitting times of Brownian motion. The purpose of writing out this post is to remind myself of some common tricks used for computations with Brownian motion, including the reflection principle and optional stopping theorem.
+This note will contain some calculations I've done for hitting times of Brownian motion. The purpose of writing out this note is to remind myself of some common tricks used for computations with Brownian motion, including the reflection principle and optional stopping theorem.
 
 # Hitting time of a line
 

@@ -10,7 +10,7 @@ author: Sanjit Dandapanthula
 
 In the past three weeks, I've solved over 130 problems on [LeetCode](https://leetcode.com), a popular site for competitive programming which contains thousands of fun problems on data structures and algorithms. The problems on LeetCode are divided into three categories: Easy, Medium, and Hard. Many of these problems (or problems in a similar style) tend to appear in software engineering interviews, so LeetCode has sort of become a cultural part of the computer science major at university.
 
-Many people seem to think of LeetCode as difficult; this makes sense, since many problems seem unapproachable at first glance even for those who have taken a class in data structures and algorithms. However, like anything else, I think LeetCode is just a game; you play enough rounds and you start to see some patterns emerge which render most problems much easier. In this post, I want to discuss some of the most important lessons and tricks I learned from my experience so far on the site.
+Many people seem to think of LeetCode as difficult; this makes sense, since many problems seem unapproachable at first glance even for those who have taken a class in data structures and algorithms. However, like anything else, I think LeetCode is just a game; you play enough rounds and you start to see some patterns emerge which render most problems much easier. In this note, I want to discuss some of the most important lessons and tricks I learned from my experience so far on the site.
 
 First, many thanks to my good friend [Jack Rankin](https://github.com/jackrankin), who was my teammate at the [IPAM RIPS program](https://www.ipam.ucla.edu/programs/student-research-programs/research-in-industrial-projects-for-students-rips-2023-los-angeles/) this summer. Jack taught me many of these tricks; I'm certain this process would have taken me much longer without the generous help and friendly competition that he provided.
 
@@ -329,7 +329,7 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
 Other common patterns for binary tree problems include using the preorder, inorder, or postorder traversals. The preorder traversal processes the root node, then the left subtree, then the right subtree. It is useful because it is the most intuitive way to process a tree. The inorder traversal processes the left subtree, then the root node, then the right subtree. Finally, the postorder traversal processes the left subtree, then the right subtree, then the current node.
 
-Preorder traversals are useful because they are the most intuitive way to process a binary tree and correspond to a DFS. The inorder traversal is useful because it effectively sorts the elements of a binary search tree. As for postorder traversals, Jack Rankin once told me, "all my homies hate postorder traversals". He was unfortunately correct -- postorder traversals are not very useful. One example application of an inorder traversal is the Medium problem [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/), which corresponds exactly to the $k$th element in the inorder traversal.
+Preorder traversals are useful because they are the most intuitive way to process a binary tree and correspond to a DFS. The inorder traversal is useful because it effectively sorts the elements of a binary search tree. As for postorder traversals, Jack Rankin once said to me, "all my homies hate postorder traversals". He was unfortunately correct -- postorder traversals are not very useful. One example application of an inorder traversal is the Medium problem [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/), which corresponds exactly to the $k$th element in the inorder traversal.
 
 ```python
 def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
@@ -585,7 +585,7 @@ The most common linked list patterns are just to play around with pointers; I th
 
 # Priority queues (heaps)
 
-Priority queues, or heaps, are commonly used when we need to find the smallest element (or smallest $k$ elements) but not necessarily sort the list. Heapification of an array only takes $O(n)$ time, while pushing to and popping from a heap can be done in $O(\log(n))$ time. Therefore, for instance, finding the $k$ largest elements in an array can be done in $O(k \log(n))$ time using a heap. A heap is represented as a complete binary tree, which can be represented easily as an array containing the level-order traversal of the tree. Heapification is pretty cool, so I might write a brief post on heaps at some point later.
+Priority queues, or heaps, are commonly used when we need to find the smallest element (or smallest $k$ elements) but not necessarily sort the list. Heapification of an array only takes $O(n)$ time, while pushing to and popping from a heap can be done in $O(\log(n))$ time. Therefore, for instance, finding the $k$ largest elements in an array can be done in $O(k \log(n))$ time using a heap. A heap is represented as a complete binary tree, which can be represented easily as an array containing the level-order traversal of the tree. Heapification is pretty cool, so I might write a brief note on heaps at some point later.
 
 ## Dijkstra's algorithm
 
@@ -861,7 +861,7 @@ In general, union-find questions are more rare and many competitive programmers 
 
 ## Max-flow and min-cut
 
-The Ford-Fulkerson algorithm for max-flow and min-cut finds the maximum flow that can be sent through a sequence of pipes with capacity constraints on each of the edges. This is an interesting optimization problem (I might write a post on this someday) but it is rare that such a problem appears on LeetCode.
+The Ford-Fulkerson algorithm for max-flow and min-cut finds the maximum flow that can be sent through a sequence of pipes with capacity constraints on each of the edges. This is an interesting optimization problem (I might write a note on this someday) but it is rare that such a problem appears on LeetCode.
 
 ## $A^*$ search algorithm
 
@@ -869,7 +869,7 @@ The $A^\*$ search algorithm is a fancier version of breadth-first search which u
 
 ## Fenwick trees + segtrees
 
-Fenwick trees, or binary indexed trees, are dynamic prefix sum arrays that allow for fast computations of prefix sums and allow updates to the original array. Segment trees, or segtrees, are a generalization of Fenwick trees that store some property of segments that makes it easier to compute some property of the whole (for example, the minimum value of a segment). Both of these have efficient and clever algorithms associated with them, but they don't appear very frequently on LeetCode. Therefore, I'll save discussion of these for a potential future post.
+Fenwick trees, or binary indexed trees, are dynamic prefix sum arrays that allow for fast computations of prefix sums and allow updates to the original array. Segment trees, or segtrees, are a generalization of Fenwick trees that store some property of segments that makes it easier to compute some property of the whole (for example, the minimum value of a segment). Both of these have efficient and clever algorithms associated with them, but they don't appear very frequently on LeetCode. Therefore, I'll save discussion of these for a potential future note.
 
 # Matrix operations
 

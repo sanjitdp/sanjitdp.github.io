@@ -8,7 +8,7 @@ author: Sanjit Dandapanthula
 - TOC
 {:toc}
 
-Here are a few examples where I figure out when an indefinite integral converges. There are only really a few tricks that get used over and over again (Abel's criterion, contour integration, repeated application of l'Hôpital's rule, etc.), so I figured it would be nice to collect some of these tricks in this post. These examples are both integrals I worked with last year when I was learning real analysis from Rudin.
+Here are a few examples where I figure out when an indefinite integral converges. There are only really a few tricks that get used over and over again (Abel's criterion, contour integration, repeated application of l'Hôpital's rule, etc.), so I figured it would be nice to collect some of these tricks in this note. These examples are both integrals I worked with last year when I was learning real analysis from Rudin.
 
 # Example #1
 

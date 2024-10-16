@@ -8,9 +8,9 @@ author: Sanjit Dandapanthula
 - TOC
 {:toc}
 
-This post will contain some problems I solved as part of Math 275A (grad. probability theory) at UCLA, taught by [Tim Austin](https://www.math.ucla.edu/~tim/) last fall. Many of these problems ended up not being submitted due to the [UC-UAW TA strike](https://www.universityofcalifornia.edu/UAW), but I still learned a lot from writing up these solutions.
+This note will contain some problems I solved as part of Math 275A (grad. probability theory) at UCLA, taught by [Tim Austin](https://www.math.ucla.edu/~tim/) last fall. Many of these problems ended up not being submitted due to the [UC-UAW TA strike](https://www.universityofcalifornia.edu/UAW), but I still learned a lot from writing up these solutions.
 
-I'll include results in this post that I've later found useful, as well as problems that demonstrate some of the techniques I learned in the class; these include the [Borel-Cantelli lemmas](https://en.wikipedia.org/wiki/Borel–Cantelli_lemma), the [laws of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers), the [Kolmogorov 0-1 law](https://en.wikipedia.org/wiki/Kolmogorov%27s_zero–one_law), and the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem).
+I'll include results in this note that I've later found useful, as well as problems that demonstrate some of the techniques I learned in the class; these include the [Borel-Cantelli lemmas](https://en.wikipedia.org/wiki/Borel–Cantelli_lemma), the [laws of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers), the [Kolmogorov 0-1 law](https://en.wikipedia.org/wiki/Kolmogorov%27s_zero–one_law), and the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem).
 
 # Inverse transform sampling
 

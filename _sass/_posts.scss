@@ -39,6 +39,8 @@
             }
         }
 
+        line-height: 1.5;
+
         li {
             ul {
                 padding-bottom: 0;
@@ -98,6 +100,15 @@
         text-align: center;
     }
 
+    blockquote {
+        padding: 10px 20px;
+        margin: 20px 0;
+        border-left: 5px solid #ccc;
+        background-color: #f9f9f9;
+        color: #555;
+        font-style: italic;
+    }
+
     #center {
         text-align: center;
     }
@@ -118,45 +129,6 @@
         margin-left: auto;
         margin-right: auto;
         width: 50%;
-    }
-}
-
-// writing only 
-.writing {
-    .twitter-tweet {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    img {
-        margin-top: 30px;
-        margin-left: auto;
-        margin-right: auto;
-        width: auto;
-    }
-
-    #img-50 {
-        width: 50%;
-    }
-
-    #img-80 {
-        width: 80%;
-    }
-
-    #img-70 {
-        width: 70%;
-    }
-
-    #img-90 {
-        width: 90%;
-    }
-
-    #img-40 {
-        width: 40%;
-    }
-
-    #img-60 {
-        width: 60%;
     }
 }
 
@@ -217,4 +189,22 @@ h4:hover .header-link,
 h5:hover .header-link,
 h6:hover .header-link {
     visibility: visible;
+}
+
+.copy-button {
+    position: absolute;
+    /* Position absolute to allow dynamic positioning */
+    background-color: #f9f9f9;
+    /* Match the background color of pre */
+    color: rgb(175, 100, 5);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    z-index: 1000;
+    /* Ensure it is above other elements */
+}
+
+.copy-button:hover {
+    color: rgb(195, 120, 25);
 }

@@ -120,3 +120,32 @@ layout: default
     });
   });
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre').forEach((codeBlock) => {
+      const button = document.createElement('button');
+      button.className = 'copy-button';
+      button.innerHTML = '<i class="far fa-clipboard"></i>';
+
+      button.addEventListener('click', () => {
+        const code = codeBlock.querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          button.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            button.innerHTML = '<i class="far fa-clipboard"></i>';
+          }, 1000);
+        }).catch((err) => {
+          console.error('Failed to copy: ', err);
+        });
+      });
+
+      document.body.appendChild(button); // Append to body
+
+      // Position the button relative to the code block
+      const rect = codeBlock.getBoundingClientRect();
+      button.style.top = `${rect.top + window.scrollY + 10}px`;
+      button.style.left = `${rect.right + window.scrollX - button.offsetWidth - 10}px`;
+    });
+  });
+</script>

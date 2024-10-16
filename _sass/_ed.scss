@@ -231,10 +231,10 @@ img {
   margin-left: 2%;
   margin-right: 4%;
   // margin-bottom: 2%;
-  margin-top: 4%;
-  margin-bottom: 0;
+  margin-top: 9%;
+  margin-bottom: -3%;
 
-  @media (max-width: 750px) {
+  @media (max-width: 840px) {
     width: 60%;
     display: block;
     float: none;
@@ -251,7 +251,7 @@ img {
   padding-top: 4%;
   display: block;
 
-  @media (max-width: 750px) {
+  @media (max-width: 840px) {
     display: grid;
     float: none;
     margin-left: auto;
@@ -351,13 +351,13 @@ tbody tr:nth-child(odd) th {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 840px) {
   #normal-top-links {
     display: none;
   }
 }
 
-@media (min-width: 750px) {
+@media (min-width: 840px) {
   #responsive-top-links {
     display: none;
   }

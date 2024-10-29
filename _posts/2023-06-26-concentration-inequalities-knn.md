@@ -16,7 +16,7 @@ If we define $R_{k, \min} = \min_{1 \leq i \leq n} R_k(X_i)$, then we'll show th
 
 $$
 \begin{align*}
-    \mathbb{P}\left( R_{k, \min} \leq a \left( \frac{k}{n} \right)^{\frac{1}{d}} \right) \leq n e^{-k/3}.
+    \mathbb{P}\left( R_{k, \min} \leq a (k / n)^{1/d} \right) \leq n e^{-k/3}.
 \end{align*}
 $$
 
@@ -24,11 +24,11 @@ Similarly, if we define $R_{k, \max} = \max_{1 \leq i \leq n} R_k(X_i)$, we'll s
 
 $$
 \begin{align*}
-    \mathbb{P}\left( R_{k, \max} \geq \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}} \right) \leq n e^{-k/3}.
+    \mathbb{P}\left( R_{k, \max} \geq \tilde{a} (k / n)^{1/d} \right) \leq n e^{-k/3}.
 \end{align*}
 $$
 
-This result is really neat - it shows that $\lbrace R_k(X_i) \rbrace_{i=1}^n$ generally grows like $\left( \frac{k}{n} \right)^{\frac{1}{d}}$ (as $n$ and $k$ are varied) with high probability. This statement looks a bit difficult to show, but we'll break it down into easier pieces.
+This result is really neat - it shows that $\lbrace R_k(X_i) \rbrace_{i=1}^n$ generally grows like $(k / n)^{1/d}$ (as $n$ and $k$ are varied) with high probability. This statement looks a bit difficult to show, but we'll break it down into easier pieces.
 
 # Binomial concentration
 
@@ -215,7 +215,7 @@ In particular, it will suffice to show that there exists $a > 0$ depending only 
 
 $$
 \begin{align*}
-    \mathbb{P}\left( R_k(X_i) \leq a \left( \frac{k}{n} \right)^{\frac{1}{d}} \right) \leq e^{-k/3}.
+    \mathbb{P}\left( R_k(X_i) \leq a (k / n)^{1/d} \right) \leq e^{-k/3}.
 \end{align*}
 $$
 
@@ -246,7 +246,7 @@ $$
 \end{align*}
 $$
 
-Recall that $\frac{x}{x - 1} \in [1, 2]$ for all $x \geq 2$. Then, we we can use the bound on binomial variables derived above to find that (substituting $t = a \left( \frac{k}{n} \right)^{\frac{1}{d}}$ and assuming that $a$ is chosen such that $\frac{1}{C_d a^d} \geq 1$):
+Recall that $\frac{x}{x - 1} \in [1, 2]$ for all $x \geq 2$. Then, we we can use the bound on binomial variables derived above to find that (substituting $t = a (k / n)^{1/d}$ and assuming that $a$ is chosen such that $\frac{1}{C_d a^d} \geq 1$):
 
 $$
 \begin{align*}
@@ -302,8 +302,8 @@ This proves the desired concentration inequality for $R_{k, \min}$; namely, for 
 
 $$
 \begin{align*}
-    \mathbb{P}\left( R_{k, \min} \leq a \left( \frac{k}{n} \right)^{\frac{1}{d}} \right)
-    \leq \sum_{i=1}^n \mathbb{P}\left( R_k(X_i) \leq a \left( \frac{k}{n} \right)^{\frac{1}{d}} \right)
+    \mathbb{P}\left( R_{k, \min} \leq a (k / n)^{1/d} \right)
+    \leq \sum_{i=1}^n \mathbb{P}\left( R_k(X_i) \leq a (k / n)^{1/d} \right)
     \leq n e^{-k/3}.
 \end{align*}
 $$
@@ -322,7 +322,7 @@ In particular, it will suffice to show that there exists $\tilde{a} > 0$ dependi
 
 $$
 \begin{align*}
-    \mathbb{P}\left( R_k(X_i) \geq \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}} \right) \leq e^{-k/3}.
+    \mathbb{P}\left( R_k(X_i) \geq \tilde{a} (k / n)^{1/d} \right) \leq e^{-k/3}.
 \end{align*}
 $$
 
@@ -344,7 +344,7 @@ $$
 \end{align*}
 $$
 
-Then, substituting $t = \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}}$, note that if $\tilde{a}$ is chosen so that $\delta > 0$:
+Then, substituting $t = \tilde{a} (k / n)^{1/d}$, note that if $\tilde{a}$ is chosen so that $\delta > 0$:
 
 $$
 \begin{align*}
@@ -354,7 +354,7 @@ $$
 \end{align*}
 $$
 
-Then, we we can use the bound derived above to find that (substituting $t = \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}}$ and assuming that $a$ is chosen such that $\frac{1}{\tilde{C}_d a^d} \geq 1$):
+Then, we we can use the bound derived above to find that (substituting $t = \tilde{a} (k / n)^{1/d}$ and assuming that $a$ is chosen such that $\frac{1}{\tilde{C}_d a^d} \geq 1$):
 
 $$
 \begin{align*}
@@ -408,8 +408,8 @@ This proves the desired concentration inequality for $R_{k, \max}$; namely, for 
 
 $$
 \begin{align*}
-    \mathbb{P}\left( R_{k, \max} \geq \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}} \right)
-    \leq \sum_{i=1}^n \mathbb{P}\left( R_k(X_i) \geq \tilde{a} \left( \frac{k}{n} \right)^{\frac{1}{d}} \right)
+    \mathbb{P}\left( R_{k, \max} \geq \tilde{a} (k / n)^{1/d} \right)
+    \leq \sum_{i=1}^n \mathbb{P}\left( R_k(X_i) \geq \tilde{a} (k / n)^{1/d} \right)
     \leq n e^{-k/3}.
 \end{align*}
 $$

@@ -12,7 +12,7 @@ These are my solutions to some [problems](https://terrytao.wordpress.com/2014/11
 
 In retrospect, I shouldn't have rushed to take this class without taking the requisite graduate coursework, but the experience strangely built my confidence and allowed me to get my hands dirty solving a wide variety of analysis problems. The problems here are interesting because my solutions to them apply lots of tricks from real analysis, including using big-$O$ notation to clean up some of the bounds and cleverly applying several versions of the quantitative integral test.
 
-Learning from Prof. Tao in class and during his office hours helped me develop an intuition for controlling the rates at which different mathematical objects grow, which is very useful for an analyst or applied mathematician. Also, I think it's pretty cool to say I had the opportunity to be taught by (arguably) the greatest mathematician of all time. 🙂
+Learning from Prof. Tao in class and during his office hours helped me develop an intuition for controlling the rates at which different mathematical objects grow, which is very useful for an analyst or applied mathematician. Also, I think it's pretty cool that I had the opportunity to be taught by (probably) the most famous mathematician of our time. 🙂
 
 # Existence of the logarithmic density
 

@@ -216,3 +216,21 @@ h6:hover .header-link {
 .copy-button:hover {
     color: rgb(195, 120, 25);
 }
+
+.copy-button {
+    position: absolute;
+    /* Position absolute to allow dynamic positioning */
+    background-color: #f9f9f9;
+    /* Match the background color of pre */
+    color: rgb(175, 100, 5);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    z-index: 1000;
+    /* Ensure it is above other elements */
+}
+
+.copy-button:hover {
+    color: rgb(195, 120, 25);
+}

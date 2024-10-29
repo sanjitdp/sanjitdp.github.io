@@ -141,12 +141,12 @@ layout: default
         });
       });
 
-      document.body.appendChild(button); // Append to body
+      codeBlock.style.position = 'relative'; // Ensure the code block is positioned relative
+      codeBlock.appendChild(button); // Append to the code block
 
       // Position the button relative to the code block
-      const rect = codeBlock.getBoundingClientRect();
-      button.style.top = `${rect.top + window.scrollY + 10}px`;
-      button.style.left = `${rect.right + window.scrollX - button.offsetWidth - 13}px`;
+      button.style.top = '10px';
+      button.style.right = '10px';
     });
   });
 </script>

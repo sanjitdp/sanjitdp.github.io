@@ -1,6 +1,6 @@
 ---
 layout: note
-title: The sub-Gaussian distributional Johnson-Lindenstrauss lemma 
+title: The distributional Johnson-Lindenstrauss lemma 
 date: 2023-12-07
 author: Sanjit Dandapanthula
 ---

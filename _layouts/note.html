@@ -125,6 +125,12 @@ layout: default
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('pre').forEach((codeBlock) => {
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+
+      codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
       const button = document.createElement('button');
       button.className = 'copy-button';
       button.innerHTML = '<i class="far fa-clipboard"></i>';
@@ -141,12 +147,16 @@ layout: default
         });
       });
 
-      codeBlock.style.position = 'relative'; // Ensure the code block is positioned relative
-      codeBlock.appendChild(button); // Append to the code block
+      button.style.position = 'absolute';
+      button.style.top = '0px';
+      button.style.right = '0px';
+      button.style.width = '50px';
+      button.style.height = '50px';
 
-      // Position the button relative to the code block
-      button.style.top = '10px';
-      button.style.right = '10px';
+
+      wrapper.appendChild(button);
+
+      codeBlock.style.paddingRight = '60px';
     });
   });
 </script>

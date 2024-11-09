@@ -57,7 +57,7 @@ If you would like to contact me, please use one of the links on this page. Alter
 
 # Research
 <p markdown='1' style="margin-bottom: 15px; margin-top: 15px;">
-I'm currently lucky to be working with [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU on problems related to [multiple testing](https://en.wikipedia.org/wiki/Multiple_comparisons_problem) and sequential multi-stream [change detection](https://en.wikipedia.org/wiki/Change_detection).
+I'm currently lucky to be working with [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU on problems related to [sequential change detection](https://en.wikipedia.org/wiki/Change_detection).
 </p>
 </div>
 ---

@@ -15,6 +15,7 @@ title: "Sanjit Dandapanthula"
         display: block;
         margin: 0 auto; /* Center the image horizontally */
         margin-top: 20px; /* Move the image slightly down */
+        margin-right: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
         border-radius: 8px; /* Optional: Add rounded corners */
     }
@@ -62,10 +63,6 @@ I'm also working with [Mikael Kuusela](https://www.stat.cmu.edu/~mkuusela/) at C
 <p>
 Lately, I have also been very interested in the theory of [optimal transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) &mdash; see some of my (incomplete) related notes [here](notes/index.html).
 </p>
-</div>
----
-
-<div id="index-main-text">
 
 # Other stuff
 <p markdown='1' style="margin-bottom: 10px; margin-top: 15px;">
@@ -74,5 +71,10 @@ Outside of the time I spend doing math, I play Indian classical music on the [Ba
 <p markdown='1'>
 I've been known to watch TV shows, read books, and play video games with friends in my spare time. I recently read *[Mistborn](https://en.wikipedia.org/wiki/Mistborn)* and *[The Stormlight Archive](https://en.wikipedia.org/wiki/The_Stormlight_Archive)* by Brandon Sanderson &mdash; both excellent series that I highly recommend.
 </p>
+</div>
+
+<div id="index-main-text">
+
+
 </div>
 </div>

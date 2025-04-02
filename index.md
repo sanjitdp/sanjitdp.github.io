@@ -14,6 +14,7 @@ title: "Sanjit Dandapanthula"
     #im {
         display: block;
         margin: 0 auto; /* Center the image horizontally */
+        margin-top: 20px; /* Move the image slightly down */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
         border-radius: 8px; /* Optional: Add rounded corners */
     }
@@ -46,10 +47,6 @@ I'm a first year PhD student at Carnegie Mellon University studying [statistics]
 </p>
 
 <p markdown='1' style="margin-bottom: 10px;">
-I love doing math and writing code. If you're interested in the former, check out my notes [here](https://sanjitdp.github.io/notes/). For the latter, check out my GitHub [here](https://www.github.com/sanjitdp/).
-</p>
-
-<p markdown='1' style="margin-bottom: 10px;">
 If you would like to contact me, please use one of the links on this page. Alternatively, you can try [shouting my name](https://www.youtube.com/watch?v=z3mQCsRE668) in a public place.
 </p>
 
@@ -57,7 +54,13 @@ If you would like to contact me, please use one of the links on this page. Alter
 
 # Research
 <p markdown='1' style="margin-bottom: 15px; margin-top: 15px;">
-I'm currently lucky to be working with [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU on problems related to [sequential change detection](https://en.wikipedia.org/wiki/Change_detection).
+I'm extremely lucky to be advised by [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU. Currently, I am working on problems related to [sequential change detection](https://en.wikipedia.org/wiki/Change_detection), [multiple testing](https://en.wikipedia.org/wiki/Multiple_comparisons_problem), and [conformal prediction](https://en.wikipedia.org/wiki/Conformal_prediction). You can find my papers [here](papers/index.html).
+</p>
+<p>
+I'm also working with [Mikael Kuusela](https://www.stat.cmu.edu/~mkuusela/) at CMU and scientists from the [Jet Propulsion Laboratory](https://www.jpl.nasa.gov/) at NASA analyzing [land surface temperature](https://www.earthdata.nasa.gov/topics/land-surface/land-surface-temperature#:~:text=Land%20surface%20temperature%20(LST)%20describes,the%20reflectance%20%E2%80%94%20of%20a%20surface.) data from the [ECOSTRESS](https://ecostress.jpl.nasa.gov/) mission.
+</p>
+<p>
+Lately, I have also been very interested in the theory of [optimal transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) &mdash; see some of my (incomplete) related notes [here](notes/index.html).
 </p>
 </div>
 ---
@@ -69,7 +72,7 @@ I'm currently lucky to be working with [Aaditya Ramdas](https://www.stat.cmu.edu
 Outside of the time I spend doing math, I play Indian classical music on the [Bansuri flute](https://en.wikipedia.org/wiki/Bansuri). I also run marathons, bike long distance, and hike glacier mountains supporting [Asha for Education](https://ashanet.org/) (please donate [here](https://ashanet.org/donate/)!), and I volunteer for the [Crisis Text Line](https://www.crisistextline.org/) as a Crisis Counselor (donate [here](https://www.crisistextline.org/donate/)!).
 </p>
 <p markdown='1'>
-I've been known to watch TV and play video games with friends in my spare time. I recently watched *[The Bear](https://en.wikipedia.org/wiki/The_Bear_(TV_series))* on Hulu -- an excellent show that I highly recommend.
+I've been known to watch TV shows, read books, and play video games with friends in my spare time. I recently read *[Mistborn](https://en.wikipedia.org/wiki/Mistborn)* and *[The Stormlight Archive](https://en.wikipedia.org/wiki/The_Stormlight_Archive)* by Brandon Sanderson &mdash; both excellent series that I highly recommend.
 </p>
 </div>
 </div>

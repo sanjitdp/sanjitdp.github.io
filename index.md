@@ -69,7 +69,7 @@ Lately, I have also been very interested in the theory of [optimal transport](ht
 Outside of the time I spend doing math, I play Indian classical music on the [Bansuri flute](https://en.wikipedia.org/wiki/Bansuri). I also run marathons, bike long distance, and hike glacier mountains supporting [Asha for Education](https://ashanet.org/) (please donate [here](https://ashanet.org/donate/)!), and I volunteer for the [Crisis Text Line](https://www.crisistextline.org/) as a Crisis Counselor (donate [here](https://www.crisistextline.org/donate/)!).
 </p>
 <p markdown='1'>
-I've been known to watch TV shows, read books, and play video games with friends in my spare time. I recently read *[Mistborn](https://en.wikipedia.org/wiki/Mistborn)* and *[The Stormlight Archive](https://en.wikipedia.org/wiki/The_Stormlight_Archive)* by Brandon Sanderson &mdash; both excellent series that I highly recommend.
+I've been known to watch TV shows, read books, and play video games with friends in my spare time. I recently read *[Mistborn](https://en.wikipedia.org/wiki/Mistborn)* and *[The Stormlight Archive](https://en.wikipedia.org/wiki/The_Stormlight_Archive)* by Brandon Sanderson &mdash; both excellent series that I highly recommend. I also recently enjoyed watching *[Severance](https://en.wikipedia.org/wiki/Severance_(TV_series))*.
 </p>
 </div>
 

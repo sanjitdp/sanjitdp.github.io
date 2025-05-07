@@ -3,6 +3,10 @@ layout: page
 title: "Sanjit Dandapanthula"
 ---
 
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+</head>
+
 <style>
     #headerim {
         display: flex;
@@ -34,6 +38,7 @@ title: "Sanjit Dandapanthula"
 <div id='headerim'>
 <img id='im' src="/assets/images/sanjit.jpg">
 <p>
+    <a href="https://scholar.google.com/citations?user=Z9hX41UAAAAJ&hl=en"><i class="ai ai-google-scholar"></i></a>
     <a href="https://github.com/sanjitdp" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://www.linkedin.com/in/sanjitd" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="mailto:sanjitd@cmu.edu"><i class="fas fa-envelope"></i></a>
@@ -55,13 +60,13 @@ If you would like to contact me, please use one of the links on this page. Alter
 
 # Research
 <p markdown='1' style="margin-bottom: 15px; margin-top: 15px;">
-I'm extremely lucky to be advised by [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU. Currently, I am working on problems related to [sequential change detection](https://en.wikipedia.org/wiki/Change_detection), [multiple testing](https://en.wikipedia.org/wiki/Multiple_comparisons_problem), and [conformal prediction](https://en.wikipedia.org/wiki/Conformal_prediction). You can find my papers [here](papers/index.html).
+I'm extremely lucky to be advised by [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU. I am generally interested in mathematical statistics and machine learning; recently, I have worked on problems related to [changepoint detection](https://en.wikipedia.org/wiki/Change_detection), [multiple testing](https://en.wikipedia.org/wiki/Multiple_comparisons_problem), and [conformal prediction](https://en.wikipedia.org/wiki/Conformal_prediction). You can find my papers [here](papers/index.html).
 </p>
 <p>
 I'm also working with [Mikael Kuusela](https://www.stat.cmu.edu/~mkuusela/) at CMU and scientists from the [Jet Propulsion Laboratory](https://www.jpl.nasa.gov/) at NASA analyzing [land surface temperature](https://www.earthdata.nasa.gov/topics/land-surface/land-surface-temperature#:~:text=Land%20surface%20temperature%20(LST)%20describes,the%20reflectance%20%E2%80%94%20of%20a%20surface.) data from the [ECOSTRESS](https://ecostress.jpl.nasa.gov/) mission.
 </p>
 <p>
-Lately, I have also been very interested in the theory of [optimal transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) &mdash; see some of my (incomplete) related notes [here](notes/index.html).
+Lately, I have also been interested in the theory of [optimal transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)) &mdash; see some of my (incomplete) related notes [here](notes/index.html).
 </p>
 
 # Other stuff

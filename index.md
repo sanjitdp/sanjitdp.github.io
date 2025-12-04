@@ -66,7 +66,7 @@ I'm extremely lucky to be advised by [Aaditya Ramdas](https://www.stat.cmu.edu/~
 I'm also working with [Mikael Kuusela](https://www.stat.cmu.edu/~mkuusela/) at CMU and scientists from the [Jet Propulsion Laboratory](https://www.jpl.nasa.gov/) at NASA analyzing [land surface temperature](https://www.earthdata.nasa.gov/topics/land-surface/land-surface-temperature#:~:text=Land%20surface%20temperature%20(LST)%20describes,the%20reflectance%20%E2%80%94%20of%20a%20surface.) data from the [ECOSTRESS](https://ecostress.jpl.nasa.gov/) mission.
 </p>
 <p>
-Last summer, I was an applied science intern at [Amazon Web Services (AWS)](https://aws.amazon.com/) working on research problems related to optimal transport and [Gromov-Wasserstein alignment](https://media.adelaide.edu.au/acvt/Publications/2011/2011-Gromov%E2%80%93Wasserstein%20Distances%20and%20the%20Metric%20Approach%20to%20Object%20Matching.pdf).
+Last summer, I was an applied science intern at [Amazon Web Services (AWS)](https://aws.amazon.com/) working on research problems related to optimal transport and Gromov-Wasserstein alignment (see our paper [here](https://arxiv.org/abs/2512.03579)).
 </p>
 
 # Other stuff

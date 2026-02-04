@@ -63,7 +63,7 @@ If you would like to contact me, please use one of the links on this page. Alter
 I'm extremely lucky to be advised by [Aaditya Ramdas](https://www.stat.cmu.edu/~aramdas/) at CMU. I am generally interested in a wide variety of topics related to mathematical statistics and machine learning. Most recently, I've been working on [deep learning theory](https://en.wikipedia.org/wiki/Deep_learning) and [optimal transport](https://en.wikipedia.org/wiki/Transportation_theory_(mathematics)).
 </p>
 <p>
-Previously, I also worked with [Mikael Kuusela](https://www.stat.cmu.edu/~mkuusela/) at CMU and scientists from the [Jet Propulsion Laboratory](https://www.jpl.nasa.gov/) at NASA to develop novel statistical methods for data from the [ECOSTRESS](https://ecostress.jpl.nasa.gov/) mission, with agricultural applications in mind.
+Previously, I also worked with [Mikael Kuusela](https://www.stat.cmu.edu/~mkuusela/) at CMU and scientists from the [Jet Propulsion Laboratory](https://www.jpl.nasa.gov/) at NASA to develop novel statistical methods for data from the [ECOSTRESS](https://ecostress.jpl.nasa.gov/) mission, with agricultural applications in mind (see our paper [here](https://arxiv.org/abs/2602.02813)).
 </p>
 <p>
 Last summer, I was an applied science intern at [Amazon Web Services (AWS)](https://aws.amazon.com/) working on research problems related to optimal transport and Gromov-Wasserstein alignment (see our paper [here](https://arxiv.org/abs/2512.03579)).

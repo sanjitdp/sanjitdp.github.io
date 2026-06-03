@@ -109,19 +109,18 @@ p {
 }
 
 a {
-  color: var(--accent);
-  text-decoration: none;
-  text-underline-offset: 0.18em;
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
   text-decoration-thickness: 1px;
-  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--link) 55%, transparent);
   transition: color 0.16s var(--ease), text-decoration-color 0.16s var(--ease);
 }
 
 a:hover,
 a:focus {
-  color: var(--accent-strong);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-strong);
+  color: var(--link-strong);
+  text-decoration-color: var(--link-strong);
 }
 
 strong { font-weight: 600; color: var(--heading); }
@@ -379,6 +378,7 @@ th { color: var(--heading); font-weight: 600; }
   border-top: 1px solid var(--line);
   color: var(--faint);
   font-size: 0.82rem;
+  text-align: center;
 }
 
 /* ---------- home sections ---------- */

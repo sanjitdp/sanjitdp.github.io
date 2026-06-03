@@ -4,42 +4,40 @@ title: Notes
 ---
 
 <style>
+    .page-intro {
+        color: var(--muted);
+        font-size: 0.98rem;
+        max-width: 60ch;
+    }
+
+    .pdf-frame {
+        margin-top: 2rem;
+    }
+
     .pdf-viewer {
-        width: 80%;
-        height: 570px;
-        border: 2px solid #ccc;
-        /* Added border */
-        border-radius: 5px;
-        /* Optional: rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Added shadow */
-    }
-
-    p {
-        margin-bottom: 1em;
-        /* Spacing larger than <br> but smaller than <br><br> */
-    }
-
-    main {
-        padding-top: 1em;
+        width: 100%;
+        height: 82vh;
+        min-height: 480px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        box-shadow: 0 1px 2px rgba(12, 12, 13, 0.04), 0 16px 36px rgba(12, 12, 13, 0.06);
     }
 </style>
 
-<main>
-    <p>
-        Here are a few assorted math notes that I've been writing (starting in March 2025). The
-        notes are mostly for me, but I'm a big believer in the philosophy of open source and collaboration. If you catch
-        any
-        errors or otherwise want to talk, please <a href="mailto:sanjitd@cmu.edu">email me</a> 🙂
-    </p>
+<a class="home-link" href="/">&larr;&nbsp; Back</a>
 
-    <p>
-        These notes are current as of November 30, 2025 (<a href="notes.pdf" download>download as a PDF</a>).
+<header class="page-head">
+    <h1>Notes</h1>
+    <p class="page-intro">
+        A few assorted math notes that I've been writing (starting in March 2025). They're mostly for me, but I'm a big
+        believer in open source and collaboration &mdash; if you catch any errors or otherwise want to talk, please
+        <a href="mailto:sanjitd@cmu.edu">email me</a> 🙂
     </p>
+    <p class="page-intro">
+        Current as of November 30, 2025 (<a href="notes.pdf" download>download as a PDF</a>).
+    </p>
+</header>
 
-    <center>
-        <div class="pdf-container">
-            <iframe class="pdf-viewer" src="notes.pdf"></iframe>
-        </div>
-    </center>
-</main>
+<div class="pdf-frame">
+    <iframe class="pdf-viewer" src="notes.pdf" title="Math notes"></iframe>
+</div>

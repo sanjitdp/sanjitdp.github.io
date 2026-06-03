@@ -1,193 +1,167 @@
+/* =================================================================
+   Long-form math notes. Structure and class hooks are preserved so the
+   note layout's JS (TOC scroll-spy, copy button, scroll-to-top) keeps working.
+   ================================================================= */
+
+.note-div {
+  width: 100%;
+}
+
 .note {
-    color: black;
-
-    #author {
-        text-align: center;
-        color: gray;
-        font-size: 12pt;
-        padding-top: 15px;
-    }
-
-    #date {
-        text-align: center;
-        color: gray;
-        font-size: 12pt;
-        margin-top: -10px;
-    }
-
-    #markdown-toc {
-        @media (min-width: 1000px) {
-            position: fixed;
-            top: 15%;
-            left: 0;
-            margin-left: 70%;
-
-            text-align: left;
-            max-height: 70vh; // Set maximum height
-            overflow-y: auto; // Enable vertical scrolling
-
-            .unfold>ul {
-                display: block;
-            }
-
-            ul {
-                display: none;
-            }
-
-            a.active {
-                font-weight: bold;
-            }
-        }
-
-        line-height: 1.5;
-
-        li {
-            ul {
-                padding-bottom: 0;
-                margin-bottom: 0;
-            }
-        }
-
-        // add a border
-        border-left: 1px solid #e1e4e8;
-        padding-left: 20px;
-        margin-left: 20px;
-        margin-bottom: 30px;
-
-        li {
-            list-style: none;
-            padding-top: 5px;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-    }
-
-    .title {
-        padding-top: 20px;
-        font-size: 20pt;
-        text-align: center;
-        padding-bottom: 0;
-        margin-bottom: 0;
-        width: 80%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    h1 {
-        font-weight: bold;
-        font-size: 16pt;
-        padding-bottom: 15px;
-        padding-top: 20px;
-    }
-
-    h2 {
-        font-size: 15pt;
-        font-weight: bold;
-        padding-top: 12px;
-        padding-bottom: 11px;
-    }
-
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-weight: bold;
-    }
-
-    .caption {
-        font-size: 12pt;
-        color: gray;
-        margin-left: 20px;
-        margin-right: 20px;
-        text-align: center;
-    }
-
-    blockquote {
-        padding: 10px 20px;
-        margin: 20px 0;
-        border-left: 5px solid #ccc;
-        background-color: #f9f9f9;
-        color: #555;
-        font-style: italic;
-    }
-
-    blockquote p:last-child {
-        margin-bottom: 0;
-    }
-
-    #center {
-        text-align: center;
-    }
-
-    @media (min-width: 1000px) {
-        padding-right: 25%;
-        margin-right: 11%;
-    }
-
-    text-align: justify;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 80%;
-
-    img {
-        margin-top: 20px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
+  color: var(--text);
+  text-align: left;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
-html {
-    scroll-padding-top: 3.5rem;
-    /* height of sticky header */
+.note .title {
+  font-size: 1.95rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--heading);
+  text-align: center;
+  margin: 0.75rem auto 0.5rem;
+  max-width: 22ch;
+  padding: 0;
+  width: auto;
 }
+
+.note #author,
+.note #date {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+  padding: 0;
+}
+
+.note #date {
+  margin-bottom: 0.5rem;
+}
+
+.note #links {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.note h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.note h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.note h3,
+.note h4,
+.note h5,
+.note h6 {
+  font-weight: 600;
+}
+
+.note .caption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  margin: 0.6rem auto 1.6rem;
+  max-width: 85%;
+}
+
+.note blockquote {
+  background: var(--surface);
+  border-left: 2px solid var(--line-strong);
+  padding: 0.8rem 1.15rem;
+  margin: 1.6rem 0;
+  color: var(--muted);
+}
+
+.note blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.note #center {
+  text-align: center;
+}
+
+.note img {
+  display: block;
+  margin: 1.85rem auto;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  max-width: min(100%, 560px);
+}
+
+/* ---------- table of contents ---------- */
+
+#markdown-toc {
+  line-height: 1.5;
+  font-size: 0.92rem;
+  border-left: 1px solid var(--line);
+  padding-left: 1.1rem;
+  margin: 0 0 2rem;
+}
+
+#markdown-toc,
+#markdown-toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#markdown-toc ul {
+  padding-left: 1rem;
+  margin: 0;
+}
+
+#markdown-toc li {
+  margin: 0;
+  padding-top: 0.28rem;
+}
+
+#markdown-toc a {
+  color: var(--muted);
+}
+
+#markdown-toc a.active {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+/* fixed right rail on wide screens, collapsible nested entries */
+@media (min-width: 1300px) {
+  #markdown-toc {
+    position: fixed;
+    top: 6.5rem;
+    left: calc(50% + 380px);
+    width: 220px;
+    max-height: 74vh;
+    overflow-y: auto;
+    margin: 0;
+
+    .unfold > ul {
+      display: block;
+    }
+
+    ul {
+      display: none;
+    }
+  }
+}
+
+/* ---------- header anchor links ---------- */
 
 .header-link {
-    margin-left: 8px;
-    text-decoration: none;
-    color: #000;
-    font-weight: normal;
-    visibility: hidden;
-}
-
-.scroll-to-top {
-    display: none;
-    position: fixed;
-    /* Fixed/sticky position */
-    bottom: 30px;
-    /* Place the button at the bottom of the page */
-    right: 30px;
-    /* Place the button 30px from the right */
-    z-index: 99;
-    /* Make sure it does not overlap */
-    border: none;
-    /* Remove borders */
-    outline: none;
-    /* Remove outline */
-    background-color: rgb(175, 100, 5);
-    /* Set a background color */
-    color: white;
-    /* Text color */
-    cursor: pointer;
-    /* Add a mouse pointer on hover */
-    padding: 10px 20px;
-    /* Some padding */
-    border-radius: 50px;
-    /* Rounded corners */
-    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
-    /* Add a subtle shadow to the bottom right */
-    /* Add a subtle shadow */
-    font-size: 16px;
-    /* Font size */
-    transition: background-color 0.3s, box-shadow 0.3s;
-    /* Smooth transitions */
-}
-
-.scroll-to-top:hover {
-    background-color: rgb(195, 120, 25);
+  margin-left: 0.5rem;
+  text-decoration: none;
+  color: var(--faint);
+  font-weight: normal;
+  visibility: hidden;
 }
 
 h1:hover .header-link,
@@ -196,41 +170,49 @@ h3:hover .header-link,
 h4:hover .header-link,
 h5:hover .header-link,
 h6:hover .header-link {
-    visibility: visible;
+  visibility: visible;
 }
 
+/* ---------- scroll-to-top button ---------- */
+
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(12, 12, 13, 0.18);
+  font-size: 15px;
+  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.scroll-to-top:hover {
+  background-color: var(--accent-strong);
+  transform: translateY(-2px);
+}
+
+/* ---------- code copy button ---------- */
+
 .copy-button {
-    position: absolute;
-    /* Position absolute to allow dynamic positioning */
-    background-color: #f9f9f9;
-    /* Match the background color of pre */
-    color: rgb(175, 100, 5);
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px;
-    z-index: 1000;
-    /* Ensure it is above other elements */
+  position: absolute;
+  background-color: var(--surface-2);
+  color: var(--muted);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 5px;
+  z-index: 1000;
+  transition: color 0.16s var(--ease);
 }
 
 .copy-button:hover {
-    color: rgb(195, 120, 25);
-}
-
-.copy-button {
-    position: absolute;
-    /* Position absolute to allow dynamic positioning */
-    background-color: #f9f9f9;
-    /* Match the background color of pre */
-    color: rgb(175, 100, 5);
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px;
-    z-index: 1000;
-    /* Ensure it is above other elements */
-}
-
-.copy-button:hover {
-    color: rgb(195, 120, 25);
+  color: var(--accent);
 }

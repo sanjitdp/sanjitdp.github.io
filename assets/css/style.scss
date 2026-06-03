@@ -2,27 +2,56 @@
 sitemap: false
 ---
 /*
-  Common Variables
+  Design tokens — refined minimal, light.
 
-  Feel free to change!
+  Exposed as CSS custom properties on :root so that inline <style> blocks on
+  individual pages (papers, cv, notes) can reference them with var(...) and stay
+  in sync without hand-copying hex values.
 */
 
-/* Fonts */
-$main-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-$heading-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-$regular-font-size: 13pt;
-/*1.25em; /* 20px / 16px = 1.25em; support text resizing in all browsers */
+:root {
+  /* surfaces */
+  --bg: #ffffff;
+  --surface: #fafaf9;
+  --surface-2: #f4f4f2;
 
+  /* ink */
+  --heading: #0c0c0d;
+  --text: #26262b;
+  --muted: #6b6b73;
+  --faint: #9a9aa2;
 
-/*
-  Color
+  /* lines */
+  --line: #ece9e4;
+  --line-strong: #ddd9d2;
 
-  Make sure to leave color-scheme in `_config.yml` file empty for granular control
-*/
+  /* one muted accent */
+  --accent: #3f5e78;
+  --accent-strong: #2c4659;
+  --accent-wash: #eef2f5;
 
-$text-color: #686565;
-$heading-color: #000000;
-$link-color: #121a84;
+  /* type */
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: "Petrona", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SF Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+
+  /* measure */
+  --reading: 700px;
+  --wide: 860px;
+
+  /* motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* SCSS mirrors for use inside the partials */
+$bg: #ffffff;
+$text-color: #26262b;
+$heading-color: #0c0c0d;
+$muted: #6b6b73;
+$line: #ece9e4;
+$accent: #3f5e78;
+$accent-strong: #2c4659;
+$link-color: #3f5e78;
 
 @import "ed";
 @import "syntax";

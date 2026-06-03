@@ -5,81 +5,120 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<body class="theme-base-{{site.color-scheme}}">
+<body>
 
-
-  <!--
-      Wrap is the content to shift when toggling the sidebar. We wrap the content to avoid any CSS
-      collisions with our real content.
-    -->
-  <script>
-    function myFunction(x) {
-      var y = document.getElementById("hamburger");
-      console.log(y);
-      x.parentNode.classList.toggle("change");
-    }
-  </script>
-  <div class="wrap">
-    <header class="masthead noprint">
-      <div class="middle-container">
-        <a id='name' href="{% link index.md %}">Sanjit Dandapanthula</a>
-        <div class="span" id="normal-top-links">
-          <a href="{% link cv/index.html %}">CV</a>
-          <a href="{% link papers/index.html %}">Papers</a>
-          <a href="{% link notes/index.html %}">Notes</a>
-        </div>
-        <div class="span" id="responsive-top-links">
-          <div class="hamburger" id="hamburger">
-            <div class="three-lines" onclick="myFunction(this)">
-              <div class=" bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-
-            <ul>
-              <li>
-                <a href=" {% link cv/index.html %}">CV</a>
-              </li>
-              <li>
-                <a href="{% link papers/index.html %}">Papers</a>
-              </li>
-              <li>
-                <a href="{% link notes/index.html %}">Notes</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-  </div>
-  </div>
-  </header>
-  </div>
-
-  <div class="spacer">
-
-  </div>
+  <canvas id="gol-bg" aria-hidden="true"></canvas>
 
   <main class="content" id="main">
-    {{ content | replace: '<a href="http', '<a rel=" nofollow noopener noreferrer" href="http' }}
-    </main>
-  </div>
+    {{ content | replace: '<a href="http', '<a rel="nofollow noopener noreferrer" href="http' }}
+  </main>
+
+  <script>
+    // Conway's Game of Life — a very faint, slow background texture.
+    (function () {
+      var canvas = document.getElementById('gol-bg');
+      if (!canvas || !canvas.getContext) return;
+      var ctx = canvas.getContext('2d');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var CELL = 15;                 // px per cell
+      var DENSITY = 0.16;            // seed density
+      var INTERVAL = 340;            // ms per generation
+      var EASE = 0.06;               // per-frame fade toward target (lower = softer cross-fade)
+      var MAXA = 0.09;               // peak alpha of a fully-lit cell
+      var RGB = '63, 94, 120';       // accent
+
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var cols, rows, grid, next, field, gen = 0;
+
+      function seed(d) {
+        for (var i = 0; i < grid.length; i++) grid[i] = Math.random() < d ? 1 : 0;
+      }
+
+      function resize() {
+        var w = window.innerWidth, h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cols = Math.ceil(w / CELL) + 1;
+        rows = Math.ceil(h / CELL) + 1;
+        grid = new Uint8Array(cols * rows);
+        next = new Uint8Array(cols * rows);
+        field = new Float32Array(cols * rows); // displayed intensity, eased
+        seed(DENSITY);
+        if (reduce) { field.set(grid); render(); }
+      }
+
+      function step() {
+        var alive = 0;
+        for (var y = 0; y < rows; y++) {
+          var yU = ((y - 1 + rows) % rows) * cols;
+          var yM = y * cols;
+          var yD = ((y + 1) % rows) * cols;
+          for (var x = 0; x < cols; x++) {
+            var xL = (x - 1 + cols) % cols, xR = (x + 1) % cols;
+            var n = grid[yU + xL] + grid[yU + x] + grid[yU + xR] +
+                    grid[yM + xL] + grid[yM + xR] +
+                    grid[yD + xL] + grid[yD + x] + grid[yD + xR];
+            var v = (n === 3 || (n === 2 && grid[yM + x])) ? 1 : 0;
+            next[yM + x] = v;
+            alive += v;
+          }
+        }
+        var t = grid; grid = next; next = t;
+        gen++;
+        // keep it lively: reseed if it nearly dies, sprinkle occasionally
+        if (alive < grid.length * 0.015) seed(DENSITY);
+        else if (gen % 64 === 0) {
+          for (var i = 0; i < grid.length; i++) if (Math.random() < 0.015) grid[i] = 1;
+        }
+      }
+
+      // Ease each cell's displayed alpha toward its live/dead target every frame,
+      // so cells fade in and out smoothly instead of flickering.
+      function render() {
+        var w = canvas.width / dpr, h = canvas.height / dpr;
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = 'rgb(' + RGB + ')';
+        for (var y = 0; y < rows; y++) {
+          var row = y * cols;
+          for (var x = 0; x < cols; x++) {
+            var i = row + x;
+            var f = field[i] + (grid[i] - field[i]) * EASE;
+            field[i] = f;
+            if (f > 0.012) {
+              ctx.globalAlpha = f * MAXA;
+              ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 2, CELL - 2);
+            }
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      var last = 0, running = true;
+      function loop(ts) {
+        if (running) {
+          if (ts - last >= INTERVAL) { step(); last = ts; }
+          render();
+        }
+        requestAnimationFrame(loop);
+      }
+
+      var rt;
+      window.addEventListener('resize', function () {
+        clearTimeout(rt); rt = setTimeout(resize, 200);
+      });
+      document.addEventListener('visibilitychange', function () {
+        running = !document.hidden;
+      });
+
+      resize();
+      if (!reduce) requestAnimationFrame(loop);
+    })();
+  </script>
 
 </body>
-
-<!-- Footer  -->
-<hr class=" noprint">
-      <div id="footer" class="noprint">
-        <div class='middle-container links'>
-          <a href="https://scholar.google.com/citations?user=Z9hX41UAAAAJ&hl=en"><i
-              class="ai ai-google-scholar"></i></a>
-          <a href="https://github.com/sanjitdp" rel='nofollow' target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/sanjitd" rel='nofollow' target="_blank"><i
-              class="fab fa-linkedin"></i></a>
-          <a href="mailto:sanjitd@cmu.edu" rel='nofollow'><i class="fas fa-envelope"></i></a>
-        </div>
-        <div class='copyright'>
-          <small>&#169; {{ 'now' | date: "%Y" }} Sanjit Dandapanthula</small>
-        </div>
-      </div>
 
 </html>

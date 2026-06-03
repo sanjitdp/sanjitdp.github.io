@@ -4,27 +4,33 @@ title: CV
 ---
 
 <style>
+    .page-intro {
+        color: var(--muted);
+        font-size: 0.98rem;
+        margin: 0;
+    }
+
+    .pdf-frame {
+        margin-top: 2rem;
+    }
+
     .pdf-viewer {
-        width: 80%;
-        height: 570px;
-        border: 2px solid #ccc;
-        /* Added border */
-        border-radius: 5px;
-        /* Optional: rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Added shadow */
+        width: 100%;
+        height: 82vh;
+        min-height: 480px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        box-shadow: 0 1px 2px rgba(12, 12, 13, 0.04), 0 16px 36px rgba(12, 12, 13, 0.06);
     }
 </style>
 
-<main>
-    <!-- Inline PDF viewer for CV -->
-    <br>
-    Here's a copy of my CV (<a href="cv.pdf" download>download as a PDF</a>) &mdash; current as of November 24, 2025.
-    <br>
-    <br>
-    <center>
-        <div class="pdf-container">
-            <iframe class="pdf-viewer" src="cv.pdf"></iframe>
-        </div>
-    </center>
-</main>
+<a class="home-link" href="/">&larr;&nbsp; Back</a>
+
+<header class="page-head">
+    <h1>Curriculum Vitae</h1>
+    <p class="page-intro">Current as of November 24, 2025 &mdash; <a href="cv.pdf" download>download as a PDF</a>.</p>
+</header>
+
+<div class="pdf-frame">
+    <iframe class="pdf-viewer" src="cv.pdf" title="Curriculum Vitae"></iframe>
+</div>

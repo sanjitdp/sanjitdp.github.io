@@ -25,12 +25,12 @@ sitemap: false
   --line: #e4e0d8;
   --line-strong: #d3cec3;
 
-  /* accent + a clearer, more saturated link colour */
-  --accent: #345fa8;
-  --accent-strong: #284a80;
-  --accent-wash: #e7eef9;
-  --link: #2f5ca8;
-  --link-strong: #214380;
+  /* saffron accent + a readable saffron link colour */
+  --accent: #c8821f;
+  --accent-strong: #a3661a;
+  --accent-wash: #f4ead4;
+  --link: #a85f12;
+  --link-strong: #82480c;
 
   /* type */
   --sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -51,9 +51,14 @@ $text-color: #26262b;
 $heading-color: #0c0c0d;
 $muted: #6b6b73;
 $line: #ece9e4;
-$accent: #3f5e78;
-$accent-strong: #2c4659;
-$link-color: #3f5e78;
+$accent: #c8821f;
+$accent-strong: #a3661a;
+$link-color: #a85f12;
+
+/* minimal line-art lotus motif (kept as a Sass string so libsass passes it
+   through verbatim); used as a mask, so the accent colour shows through.
+   Eight stroked petals radiating from a small centre. */
+$lotus: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.35' stroke-linejoin='round'><g><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(45 12 12)'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(90 12 12)'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(135 12 12)'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(180 12 12)'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(225 12 12)'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(270 12 12)'/><path d='M12 11C9.7 8.2 9.7 5.2 12 2.8C14.3 5.2 14.3 8.2 12 11Z' transform='rotate(315 12 12)'/></g><circle cx='12' cy='12' r='1.25' fill='black' stroke='none'/></svg>";
 
 @import "ed";
 @import "syntax";

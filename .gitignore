@@ -14,3 +14,6 @@ _site/*
 
 # macOS
 *.DS_Store
+
+# LaTeX CV source (kept locally)
+cv-latex/
